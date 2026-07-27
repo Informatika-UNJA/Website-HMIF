@@ -1,0 +1,29 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#1B2333"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="15%" cy="15%" r="60%">
+      <stop offset="0%" stop-color="#D4A657" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#D4A657" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#g2)"/>
+  <rect width="1920" height="1080" fill="url(#glowA)"/>
+  <g stroke="#2FBFA3" stroke-opacity="0.22" fill="none" stroke-width="1.4">
+    <path d="M -100 200 C 300 100, 700 320, 1100 180 S 1700 260, 2020 160"/>
+    <path d="M -100 340 C 350 240, 750 460, 1150 320 S 1750 400, 2020 300"/>
+    <path d="M -100 480 C 300 380, 800 600, 1200 460 S 1650 540, 2020 440"/>
+    <path d="M -100 620 C 400 520, 850 740, 1250 600 S 1700 680, 2020 580"/>
+    <path d="M -100 760 C 350 660, 780 880, 1180 740 S 1720 820, 2020 720"/>
+    <path d="M -100 900 C 320 800, 760 1000, 1160 880 S 1680 940, 2020 860"/>
+  </g>
+  <g fill="#D4A657" opacity="0.7">
+    <circle cx="380" cy="260" r="3.5"/>
+    <circle cx="920" cy="360" r="4.5"/>
+    <circle cx="1480" cy="300" r="3"/>
+    <circle cx="1680" cy="620" r="4"/>
+    <circle cx="620" cy="760" r="3.5"/>
+  </g>
+</svg>
