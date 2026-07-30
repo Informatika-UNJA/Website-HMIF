@@ -1,4 +1,5 @@
 import { Target, Compass, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
 import Reveal, { Stagger, StaggerItem } from "../components/Reveal";
@@ -8,10 +9,58 @@ export default function Tentang() {
   return (
     <PageTransition>
       <PageHeader
-        eyebrow="Tentang Kami"
+        eyebrow="Tentang HMIF"
         title="Mengenal HMIF Universitas Jambi"
         subtitle="Sejarah singkat, visi, misi, dan nilai yang membentuk arah organisasi kami."
       />
+
+      {/* Logo Showcase */}
+      <section className="relative bg-ink-950 overflow-hidden">
+        {/* Gradient overlay top — menyambung dari PageHeader */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink-950/80 to-transparent z-10" />
+
+        {/* Konten logo */}
+        <div className="relative z-20 flex flex-col items-center justify-center py-16 sm:py-24">
+          {/* Glow effect di belakang logo */}
+          <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gold-400/10 blur-[100px] pointer-events-none" />
+          
+          <motion.img
+            src="/logo-hmif.png"
+            alt="Logo HMIF Universitas Jambi"
+            initial={{ opacity: 0, scale: 0.85, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="relative w-48 sm:w-64 md:w-72 lg:w-80 object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.08)]"
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-8 font-display text-xl sm:text-2xl md:text-3xl font-semibold text-paper tracking-tight text-center"
+          >
+            {siteInfo.fullName}
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-2 font-mono text-sm text-gold-400 tracking-wider uppercase"
+          >
+            {siteInfo.university}
+          </motion.p>
+        </div>
+
+        {/* Curved bottom edge — transisi ke section berikutnya */}
+        <div className="absolute inset-x-0 bottom-0 z-10">
+          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto block" preserveAspectRatio="none">
+            <path d="M0 80V40C240 0 480 0 720 20C960 40 1200 60 1440 40V80H0Z" className="fill-paper" />
+          </svg>
+        </div>
+      </section>
 
       {/* Sejarah & Intro */}
       <section className="bg-paper py-20 sm:py-24">

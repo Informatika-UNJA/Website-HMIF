@@ -7,19 +7,13 @@ export default function Footer() {
     <footer className="relative bg-ink-950 border-t border-white/10 text-ink-200">
       <div className="container-hmif py-14 grid grid-cols-1 md:grid-cols-12 gap-10">
         <div className="md:col-span-5">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="font-mono text-teal-400 text-xl">&gt;_</span>
-            <span className="font-display font-semibold text-paper text-lg">
-              {siteInfo.fullName}
-            </span>
+          <div className="mb-4">
+            <img
+              src="/logo-hmif.png"
+              alt="Logo HMIF UNJA"
+              className="h-14 object-contain mix-blend-screen grayscale contrast-[2.5] opacity-90"
+            />
           </div>
-          <p className="text-sm leading-relaxed text-ink-300 max-w-sm">
-            Wadah kolaborasi, inovasi, dan pengembangan diri mahasiswa Program Studi
-            Informatika, {siteInfo.university}.
-          </p>
-          <p className="mt-6 font-mono text-xs text-ink-400">
-            $ echo "Merangkai Ide, Membangun Solusi"
-          </p>
         </div>
 
         <div className="md:col-span-3">

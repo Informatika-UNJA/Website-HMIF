@@ -20,7 +20,6 @@ import {
   prodiInfo,
   programKerja,
   iforiaInfo,
-  strukturBidang,
   galleryPlaceholder,
 } from "../data/content";
 
@@ -118,26 +117,50 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.1} className="lg:col-span-5">
-            <div className="rounded-2xl border border-ink-100 bg-ink-950 text-teal-300 font-mono text-xs sm:text-sm p-6 shadow-xl shadow-ink-900/5">
-              <p className="text-ink-400 mb-3">$ status --himpunan</p>
-              <ul className="space-y-2.5">
-                <li className="flex justify-between border-b border-white/5 pb-2">
-                  <span className="text-ink-300">bidang_kepengurusan</span>
-                  <span className="text-gold-400">{programKerja.length}</span>
-                </li>
-                <li className="flex justify-between border-b border-white/5 pb-2">
-                  <span className="text-ink-300">koordinator_bidang</span>
-                  <span className="text-gold-400">{strukturBidang.length}</span>
-                </li>
-                <li className="flex justify-between border-b border-white/5 pb-2">
-                  <span className="text-ink-300">program_unggulan</span>
-                  <span className="text-gold-400">IFORIA</span>
-                </li>
-                <li className="flex justify-between">
-                  <span className="text-ink-300">status</span>
-                  <span className="text-teal-400">active ●</span>
-                </li>
-              </ul>
+            <div className="rounded-2xl border border-ink-100 bg-white p-6 sm:p-8 shadow-lg shadow-ink-900/5">
+              <p className="font-display text-center font-semibold text-ink-900 text-base sm:text-lg mb-6">
+                Anggota Kepengurusan HMIF
+              </p>
+              <div className="grid grid-cols-3 gap-4">
+                {/* Pengurus Aktif */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full bg-gold-400/15 flex items-center justify-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-500">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                  </div>
+                  <span className="font-display text-2xl sm:text-3xl font-bold text-ink-900">50</span>
+                  <span className="text-[11px] sm:text-xs text-ink-500 mt-1 leading-tight">Total Kepengurusan Aktif</span>
+                </div>
+                {/* Total Divisi */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full bg-teal-400/15 flex items-center justify-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-600">
+                      <rect width="7" height="7" x="3" y="3" rx="1"/>
+                      <rect width="7" height="7" x="14" y="3" rx="1"/>
+                      <rect width="7" height="7" x="3" y="14" rx="1"/>
+                      <rect width="7" height="7" x="14" y="14" rx="1"/>
+                    </svg>
+                  </div>
+                  <span className="font-display text-2xl sm:text-3xl font-bold text-ink-900">4</span>
+                  <span className="text-[11px] sm:text-xs text-ink-500 mt-1 leading-tight">Total Divisi</span>
+                </div>
+                {/* Total Anggota */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-12 h-12 rounded-full bg-ink-200/30 flex items-center justify-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-ink-600">
+                      <path d="M18 21a8 8 0 0 0-16 0"/>
+                      <circle cx="10" cy="8" r="5"/>
+                      <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
+                    </svg>
+                  </div>
+                  <span className="font-display text-2xl sm:text-3xl font-bold text-ink-900">180</span>
+                  <span className="text-[11px] sm:text-xs text-ink-500 mt-1 leading-tight">Anggota HMIF</span>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>

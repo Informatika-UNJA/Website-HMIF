@@ -16,7 +16,7 @@ export const siteInfo = {
 
 export const navLinks = [
   { to: "/", label: "Beranda" },
-  { to: "/tentang", label: "Tentang Kami" },
+  { to: "/tentang", label: "Tentang HMIF" },
   { to: "/program-kerja", label: "Program Kerja" },
   { to: "/struktur-organisasi", label: "Struktur" },
   { to: "/iforia", label: "IFORIA" },
@@ -125,7 +125,7 @@ export const programKerja = [
 // Tambahkan `foto: "/team/nama-file.jpg"` jika sudah punya foto asli.
 // Selama `foto` kosong (null), akan ditampilkan ikon placeholder.
 export const strukturInti = [
-  { nama: "Nicky Pradithiya Dinatan", jabatan: "Ketua Himpunan", angkatan: "2024", foto: null },
+  { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", angkatan: "2024", foto: null },
   { nama: "Fabianto Dwitama", jabatan: "Wakil Ketua Himpunan", angkatan: "2024", foto: null },
   { nama: "Artika Sari Kosasih", jabatan: "Sekretaris Himpunan", angkatan: "2024", foto: null },
   { nama: "Ela Febriani", jabatan: "Bendahara Himpunan", angkatan: "2024", foto: null },
@@ -136,7 +136,79 @@ export const strukturBidang = [
   { bidang: "MIT", koordinator: "Khoirul Faza Perdana" },
   { bidang: "HUMAS", koordinator: "Maulidya Nazlita Az-Zahara" },
   { bidang: "DANUS", koordinator: "Fiqri Arrijal" },
-  { bidang: "IFORIA", koordinator: "Nama Koordinator IFORIA" },
+];
+
+// Data lengkap divisi beserta anggotanya untuk halaman Struktur.
+// Tambahkan foto: "/team/nama-file.jpg" untuk tiap anggota jika sudah tersedia.
+export const divisiOrganisasi = [
+  {
+    id: "bph",
+    nama: "Badan Pengurus Harian",
+    singkatan: "BPH",
+    deskripsi: "Pengurus inti yang memimpin dan mengoordinasikan seluruh kegiatan HMIF.",
+    anggota: [
+      { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", foto: "/team/nicky.jpeg" },
+      { nama: "Fabianto Dwitama", jabatan: "Wakil Ketua Himpunan", foto: null },
+      { nama: "Artika Sari Kosasih", jabatan: "Sekretaris Himpunan", foto: null },
+      { nama: "Ela Febriani", jabatan: "Bendahara Himpunan", foto: null },
+    ],
+  },
+  {
+    id: "danus",
+    nama: "Dana dan Usaha",
+    singkatan: "DANUS",
+    deskripsi: "Mengelola sumber pendanaan dan kegiatan usaha untuk mendukung program kerja HMIF.",
+    anggota: [
+      { nama: "Fiqri Arrijal", jabatan: "Ketua Divisi", foto: "/team/piqri.jpeg" },
+      { nama: "Nama Anggota 1", jabatan: "Wakil Ketua Divisi", foto: null },
+      { nama: "Nama Anggota 2", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 3", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 4", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 5", jabatan: "Anggota", foto: null },
+    ],
+  },
+  {
+    id: "humas",
+    nama: "Hubungan Masyarakat",
+    singkatan: "HUMAS",
+    deskripsi: "Menjaga citra HMIF, mengelola publikasi, dan membangun relasi dengan pihak eksternal.",
+    anggota: [
+      { nama: "Maulidya Nazlita Az-Zahara", jabatan: "Ketua Divisi", foto: null },
+      { nama: "Nama Anggota 1", jabatan: "Wakil Ketua Divisi", foto: null },
+      { nama: "Nama Anggota 2", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 3", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 4", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 5", jabatan: "Anggota", foto: null },
+    ],
+  },
+  {
+    id: "psda",
+    nama: "Pengembangan Sumber Daya Anggota",
+    singkatan: "PSDA",
+    deskripsi: "Menyiapkan mahasiswa Informatika yang siap berorganisasi dan berkembang secara personal.",
+    anggota: [
+      { nama: "Rizky Ramadhan Alfarizi", jabatan: "Ketua Divisi", foto: null },
+      { nama: "Nama Anggota 1", jabatan: "Wakil Ketua Divisi", foto: null },
+      { nama: "Nama Anggota 2", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 3", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 4", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 5", jabatan: "Anggota", foto: null },
+    ],
+  },
+  {
+    id: "mit",
+    nama: "Media Informasi dan Teknologi",
+    singkatan: "MIT",
+    deskripsi: "Mendorong budaya belajar teknis, eksplorasi teknologi, dan pengelolaan media digital HMIF.",
+    anggota: [
+      { nama: "Khoirul Faza Perdana", jabatan: "Ketua Divisi", foto: null },
+      { nama: "Nama Anggota 1", jabatan: "Wakil Ketua Divisi", foto: null },
+      { nama: "Nama Anggota 2", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 3", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 4", jabatan: "Anggota", foto: null },
+      { nama: "Nama Anggota 5", jabatan: "Anggota", foto: null },
+    ],
+  },
 ];
 
 export const iforiaInfo = {
