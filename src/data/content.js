@@ -103,7 +103,7 @@ export const programKerja = [
   },
   {
     kode: "DANUS",
-    nama: "Dana Usaha",
+    nama: "Dana dan Usaha",
     deskripsi: "Menyalurkan potensi mahasiswa di luar bidang akademik.",
     program: [
       "Turnamen olahraga & e-sport antar angkatan",
