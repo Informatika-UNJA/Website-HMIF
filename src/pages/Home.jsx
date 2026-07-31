@@ -39,7 +39,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="eyebrow text-teal-400 mb-4 flex items-center gap-2"
           >
-            <span className="text-gold-400">&gt;</span> whoami — {siteInfo.fullName}
+            <span className="text-gold-400">&gt;</span> whoami? {siteInfo.fullName}
           </motion.p>
 
           <motion.h1
@@ -217,8 +217,8 @@ export default function Home() {
             </Link>
           </Reveal>
 
-          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {programKerja.slice(0, 6).map((bidang) => (
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {programKerja.slice(0, 4).map((bidang) => (
               <StaggerItem key={bidang.kode}>
                 <Link
                   to="/program-kerja"
@@ -250,7 +250,7 @@ export default function Home() {
                 {iforiaInfo.timeline[iforiaInfo.timeline.length - 1].versi}
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper tracking-tight mb-4">
-                IFORIA — {iforiaInfo.tagline}
+                IFORIA: {iforiaInfo.tagline}
               </h2>
               <p className="text-ink-300 leading-relaxed max-w-2xl">{iforiaInfo.deskripsi}</p>
             </div>
