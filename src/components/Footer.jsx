@@ -50,7 +50,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-hmif py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-ink-400">
-          <p>© {new Date().getFullYear()} {siteInfo.fullName} — {siteInfo.university}</p>
+          <p>© {new Date().getFullYear()} {siteInfo.fullName}, {siteInfo.university}</p>
           <p className="font-mono">status: <span className="text-teal-400">aktif</span></p>
         </div>
       </div>
