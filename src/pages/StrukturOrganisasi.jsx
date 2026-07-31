@@ -246,7 +246,7 @@ export default function StrukturOrganisasi() {
         <div className="container-hmif">
           <Reveal>
             <p className="eyebrow text-teal-600 mb-6">Navigasi Cepat</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               {divisiOrganisasi.map((d, i) => (
                 <button
                   key={d.id}
@@ -254,7 +254,7 @@ export default function StrukturOrganisasi() {
                     setActiveDivisi(i);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 text-left hover:shadow-md hover:border-ink-200 transition-all duration-300 group"
+                  className="flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 text-left hover:shadow-md hover:border-ink-200 transition-all duration-300 group w-full sm:w-[calc(50%-0.375rem)] lg:w-[calc(33.333%-0.5rem)]"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ink-950 text-gold-400 font-mono text-xs font-bold">
                     {d.singkatan}
