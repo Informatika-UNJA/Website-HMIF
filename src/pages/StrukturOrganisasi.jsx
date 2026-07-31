@@ -28,9 +28,9 @@ export default function StrukturOrganisasi() {
             </h2>
           </Reveal>
 
-          {/* Tab Navigation — horizontal scroll on mobile */}
-          <div className="mb-10 -mx-6 sm:mx-0 px-6 sm:px-0 overflow-x-auto scrollbar-hide">
-            <div className="flex gap-2 w-max sm:w-auto sm:flex-wrap">
+          {/* Tab Navigation — horizontal scroll on mobile, 3 atas + 2 bawah (centered) di sm ke atas */}
+          <div className="mb-10 -mx-6 sm:mx-0 px-6 sm:px-0 overflow-x-auto scrollbar-hide sm:overflow-visible">
+            <div className="flex gap-2 w-max sm:hidden">
               {divisiOrganisasi.map((d, i) => (
                 <button
                   key={d.id}
@@ -50,6 +50,54 @@ export default function StrukturOrganisasi() {
                   </span>
                 </button>
               ))}
+            </div>
+
+            <div className="hidden sm:flex sm:flex-col sm:items-center sm:gap-2">
+              <div className="flex flex-wrap justify-center gap-2">
+                {divisiOrganisasi.slice(0, 3).map((d, i) => (
+                  <button
+                    key={d.id}
+                    onClick={() => setActiveDivisi(i)}
+                    className={`relative shrink-0 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                      activeDivisi === i
+                        ? "bg-ink-950 text-paper shadow-lg shadow-ink-950/20"
+                        : "bg-white text-ink-600 border border-ink-100 hover:border-ink-300 hover:text-ink-900"
+                    }`}
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      <span className={`font-mono text-xs ${activeDivisi === i ? "text-gold-400" : "text-ink-400"}`}>
+                        {d.singkatan}
+                      </span>
+                      <span>—</span>
+                      <span>{d.nama}</span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+              <div className="flex flex-wrap justify-center gap-2">
+                {divisiOrganisasi.slice(3, 5).map((d, iOffset) => {
+                  const i = iOffset + 3;
+                  return (
+                    <button
+                      key={d.id}
+                      onClick={() => setActiveDivisi(i)}
+                      className={`relative shrink-0 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                        activeDivisi === i
+                          ? "bg-ink-950 text-paper shadow-lg shadow-ink-950/20"
+                          : "bg-white text-ink-600 border border-ink-100 hover:border-ink-300 hover:text-ink-900"
+                      }`}
+                    >
+                      <span className="relative z-10 flex items-center gap-2">
+                        <span className={`font-mono text-xs ${activeDivisi === i ? "text-gold-400" : "text-ink-400"}`}>
+                          {d.singkatan}
+                        </span>
+                        <span>—</span>
+                        <span>{d.nama}</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
