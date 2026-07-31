@@ -1,5 +1,8 @@
 # Website HMIF Universitas Jambi
 
+<img width="1920" height="965" alt="Screenshot From 2026-07-31 09-07-42" src="https://github.com/user-attachments/assets/0ec51e7b-a29b-42e1-8dc7-3a192477745b" />
+
+
 Website profil **Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi**, dibangun dengan
 React + Vite, Tailwind CSS, dan Framer Motion.
 
@@ -14,9 +17,9 @@ React + Vite, Tailwind CSS, dan Framer Motion.
 - Halaman **Kontak** dengan form (mailto) + info kanal resmi
 - Latar belakang (background) yang **berganti-ganti foto otomatis** dengan efek crossfade
 - Animasi Framer Motion di seluruh halaman (scroll reveal, page transition, hover, dsb.)
-- Semua teks adalah **karangan/placeholder** — silakan diedit bebas
+- Semua teks adalah **karangan/placeholder** silakan diedit bebas
 
-## 🚀 Menjalankan di Komputer Sendiri
+## 🚀 Try it yourself!
 
 Pastikan sudah menginstall [Node.js](https://nodejs.org) (versi 18 ke atas).
 
@@ -96,10 +99,10 @@ public/
 
 ## 🎨 Konsep Desain
 
-- **Warna**: navy gelap (`ink`) sebagai warna utama, **gold** (aksen budaya/keunikan),
-  dan **teal** (aksen teknologi) — kombinasi khas, bukan template generik.
+- **Warna**: dark chocolate (`ink`) sebagai warna utama dimana itu adalah warna himpunan, **gold** (aksen budaya/keunikan),
+  dan **teal** (aksen teknologi) kombinasi khas, bukan template generik.
 - **Tipografi**: `Space Grotesk` (judul), `Plus Jakarta Sans` (isi), `JetBrains Mono`
-  (label/aksen bergaya "terminal" — cocok untuk identitas mahasiswa Informatika).
+  (label/aksen bergaya "terminal" cocok untuk identitas mahasiswa Informatika).
 - **Motif signature**: gaya terminal/console (`>_`, tag versi `IFORIA // 2025`) dan
   timeline bergaya git-log untuk riwayat IFORIA tiap tahun.
 
