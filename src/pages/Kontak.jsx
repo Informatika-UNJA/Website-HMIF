@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, AtSign, MapPin, Send, Insta } from "lucide-react";
+import { Mail, AtSign, MapPin, Send } from "lucide-react";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import { siteInfo, contactChannels } from "../data/content";
