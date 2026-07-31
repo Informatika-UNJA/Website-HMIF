@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, CircleCheck } from "lucide-react";
-import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import { programKerja } from "../data/content";
@@ -10,7 +9,7 @@ export default function ProgramKerja() {
   const [openKode, setOpenKode] = useState(programKerja[0]?.kode);
 
   return (
-    <PageTransition>
+    <main>
       <PageHeader
         eyebrow="Program Kerja"
         title="Enam bidang, satu arah tujuan"
@@ -72,6 +71,6 @@ export default function ProgramKerja() {
           </div>
         </div>
       </section>
-    </PageTransition>
+    </main>
   );
 }

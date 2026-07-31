@@ -1,13 +1,12 @@
 import { Target, Compass, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
 import Reveal, { Stagger, StaggerItem } from "../components/Reveal";
 import { aboutHmif, prodiInfo, siteInfo } from "../data/content";
 
 export default function Tentang() {
   return (
-    <PageTransition>
+    <main>
       <PageHeader
         eyebrow="Tentang HMIF"
         title="Mengenal HMIF Universitas Jambi"
@@ -154,6 +153,6 @@ export default function Tentang() {
           </Reveal>
         </div>
       </section>
-    </PageTransition>
+    </main>
   );
 }

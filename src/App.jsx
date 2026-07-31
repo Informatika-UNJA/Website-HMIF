@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -21,24 +20,20 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  const location = useLocation();
-
   return (
     <div className="min-h-screen flex flex-col bg-paper">
       <Navbar />
       <ScrollToTop />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/tentang" element={<Tentang />} />
-          <Route path="/program-kerja" element={<ProgramKerja />} />
-          <Route path="/struktur-organisasi" element={<StrukturOrganisasi />} />
-          <Route path="/iforia" element={<Iforia />} />
-          <Route path="/galeri" element={<Galeri />} />
-          <Route path="/kontak" element={<Kontak />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </AnimatePresence>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tentang" element={<Tentang />} />
+        <Route path="/program-kerja" element={<ProgramKerja />} />
+        <Route path="/struktur-organisasi" element={<StrukturOrganisasi />} />
+        <Route path="/iforia" element={<Iforia />} />
+        <Route path="/galeri" element={<Galeri />} />
+        <Route path="/kontak" element={<Kontak />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
       <Footer />
     </div>
   );

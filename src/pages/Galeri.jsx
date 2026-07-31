@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ImageIcon } from "lucide-react";
-import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import { galleryCategories, galleryPlaceholder } from "../data/content";
@@ -15,7 +14,7 @@ export default function Galeri() {
       : galleryPlaceholder.filter((g) => g.category === active);
 
   return (
-    <PageTransition>
+    <main>
       <PageHeader
         eyebrow="Galeri"
         title="Momen-Momen HMIF"
@@ -78,6 +77,6 @@ export default function Galeri() {
           </motion.div>
         </div>
       </section>
-    </PageTransition>
+    </main>
   );
 }

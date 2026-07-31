@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import PageTransition from "../components/PageTransition";
 
 export default function NotFound() {
   return (
-    <PageTransition>
+    <main>
       <section className="min-h-[70svh] flex items-center justify-center bg-ink-950 text-center px-6">
         <div>
           <p className="font-mono text-teal-400 text-sm mb-4">$ error 404</p>
@@ -22,6 +21,6 @@ export default function NotFound() {
           </Link>
         </div>
       </section>
-    </PageTransition>
+    </main>
   );
 }

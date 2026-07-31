@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { GitBranch, Target, Sparkle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import PageTransition from "../components/PageTransition";
 import Reveal, { Stagger, StaggerItem } from "../components/Reveal";
 import BackgroundSlider from "../components/BackgroundSlider";
 import { iforiaInfo, backgroundImages } from "../data/content";
@@ -10,7 +9,7 @@ export default function Iforia() {
   const latest = iforiaInfo.timeline[iforiaInfo.timeline.length - 1];
 
   return (
-    <PageTransition>
+    <main>
       {/* Ini Hero khusus IFORIA */}
       <section className="relative overflow-hidden pt-36 pb-20 sm:pt-44 sm:pb-24">
         <BackgroundSlider images={backgroundImages} interval={8000} overlay="strong" />
@@ -179,6 +178,6 @@ export default function Iforia() {
           </Reveal>
         </div>
       </section>
-    </PageTransition>
+    </main>
   );
 }

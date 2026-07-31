@@ -91,8 +91,6 @@ export default function Home() {
             <span>{siteInfo.university}</span>
             <span className="text-teal-500">·</span>
             <span>Program Studi Informatika</span>
-            <span className="text-teal-500">·</span>
-            <span className="text-gold-400">status: aktif</span>
           </motion.div>
         </div>
       </section>
@@ -101,7 +99,7 @@ export default function Home() {
       <section className="relative bg-paper py-24 sm:py-28">
         <div className="container-hmif grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <Reveal className="lg:col-span-7" y={28}>
-            <p className="eyebrow text-teal-600 mb-4">01 — Tentang Himpunan</p>
+            <p className="eyebrow text-teal-600 mb-4">Tentang Himpunan</p>
             <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight mb-6">
               Satu himpunan, satu keluarga besar Informatika
             </h2>

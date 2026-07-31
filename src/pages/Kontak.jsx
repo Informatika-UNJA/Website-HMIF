@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Mail, AtSign, MapPin, Send } from "lucide-react";
-import PageTransition from "../components/PageTransition";
+import { Mail, AtSign, MapPin, Send, Insta } from "lucide-react";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import { siteInfo, contactChannels } from "../data/content";
@@ -22,7 +21,7 @@ export default function Kontak() {
   };
 
   return (
-    <PageTransition>
+    <main>
       <PageHeader
         eyebrow="Kontak"
         title="Mari terhubung dengan kami"
@@ -116,6 +115,6 @@ export default function Kontak() {
           </Reveal>
         </div>
       </section>
-    </PageTransition>
+    </main>
   );
 }

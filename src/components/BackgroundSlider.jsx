@@ -37,7 +37,7 @@ export default function BackgroundSlider({
 
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
-      <AnimatePresence mode="sync">
+      <AnimatePresence initial={false} mode="sync">
         <motion.img
           key={images[index]}
           src={images[index]}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navLinks, siteInfo } from "../data/content";
+import { navLinks } from "../data/content";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,11 +41,23 @@ export default function Navbar() {
               to={link.to}
               end={link.to === "/"}
               className={({ isActive }) =>
-                `relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${isActive ? "text-ink-950 bg-teal-400" : "text-ink-100 hover:text-white hover:bg-white/5"
+                `relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${
+                  isActive ? "text-ink-950 font-semibold" : "text-ink-100 hover:text-white hover:bg-white/5"
                 }`
               }
             >
-              {link.label}
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-nav-pill"
+                      className="absolute inset-0 bg-teal-400 rounded-full"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.label}</span>
+                </>
+              )}
             </NavLink>
           ))}
         </div>
@@ -89,11 +101,23 @@ export default function Navbar() {
                     to={link.to}
                     end={link.to === "/"}
                     className={({ isActive }) =>
-                      `flex items-center justify-between px-3 py-3 rounded-lg text-base font-medium ${isActive ? "text-teal-400 bg-white/5" : "text-ink-100"
+                      `relative flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                        isActive ? "text-teal-400 font-semibold" : "text-ink-100 hover:bg-white/5"
                       }`
                     }
                   >
-                    {link.label}
+                    {({ isActive }) => (
+                      <>
+                        {isActive && (
+                          <motion.span
+                            layoutId="active-mobile-nav-pill"
+                            className="absolute inset-0 bg-white/10 border-l-4 border-teal-400 rounded-lg"
+                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                          />
+                        )}
+                        <span className="relative z-10">{link.label}</span>
+                      </>
+                    )}
                   </NavLink>
                 </motion.div>
               ))}
