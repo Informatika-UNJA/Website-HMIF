@@ -185,10 +185,10 @@ export default function Home() {
               const Icon = fokusIcons[i % fokusIcons.length];
               return (
                 <StaggerItem key={item.title}>
-                  <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-teal-400/40 hover:bg-white/[0.05] transition-colors">
-                    <Icon className="text-teal-400 mb-4" size={22} />
-                    <h3 className="font-display font-semibold text-paper mb-2">{item.title}</h3>
-                    <p className="text-sm text-ink-300 leading-relaxed">{item.desc}</p>
+                  <div className="h-full rounded-2xl border border-white/10 bg-teal-100 p-6 hover:border-white/40 hover:bg-teal-100/[0.9] transition-colors">
+                    <Icon className="text-teal-600 mb-4" size={23} />
+                    <h3 className="font-display font-semibold text-ink-900 mb-2">{item.title}</h3>
+                    <p className="text-sm text-ink-500 leading-relaxed">{item.desc}</p>
                   </div>
                 </StaggerItem>
               );

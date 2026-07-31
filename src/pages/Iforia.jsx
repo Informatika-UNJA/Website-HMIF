@@ -90,14 +90,14 @@ export default function Iforia() {
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {iforiaInfo.rangkaian.map((r, i) => (
               <StaggerItem key={r.judul}>
-                <div className="relative h-full rounded-2xl border border-white/10 bg-white/[0.03] p-5 hover:border-teal-400/40 transition-colors">
-                  <span className="font-mono text-xs text-teal-400 font-semibold">
+                <div className="relative h-full rounded-2xl border  border-white/10 bg-teal-100 p-6 hover:border-white/40 hover:bg-teal-100/[0.9] transition-colors">
+                  <span className="font-mono text-sm text-teal-600 font-semibold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-display font-medium text-paper text-sm mt-3 mb-2">
+                  <h3 className="font-display font-semibold text-ink-900 text-lg mt-3 mb-2">
                     {r.judul}
                   </h3>
-                  <p className="text-xs text-ink-300 leading-relaxed">{r.desc}</p>
+                  <p className="text-xs text-ink-600 leading-relaxed">{r.desc}</p>
                 </div>
               </StaggerItem>
             ))}

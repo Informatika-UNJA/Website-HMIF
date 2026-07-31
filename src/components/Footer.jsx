@@ -13,6 +13,12 @@ export default function Footer() {
               alt="Logo HMIF UNJA"
               className="h-14 object-contain mix-blend-screen grayscale contrast-[2.5] opacity-90"
             />
+            <h3 className="mt-3 text-lg font-bold text-white tracking-wide">
+              {siteInfo.fullName}
+            </h3>
+            <p className="text-sm text-ink-400 mt-1">
+              {siteInfo.university}
+            </p>
           </div>
         </div>
 

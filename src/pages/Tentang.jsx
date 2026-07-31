@@ -95,11 +95,11 @@ export default function Tentang() {
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {aboutHmif.misi.map((m, i) => (
               <StaggerItem key={i}>
-                <div className="flex gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-5 h-full hover:border-teal-400/40 transition-colors">
-                  <span className="font-mono text-teal-400 text-sm shrink-0 font-semibold">
+                <div className="flex gap-4 rounded-xl border border-white/10 bg-teal-100 p-6 h-full hover:border-teal-300 transition-colors">
+                  <span className="font-mono text-teal-600 text-sm shrink-0 font-semibold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-ink-200 text-sm leading-relaxed">{m}</p>
+                  <p className="text-ink-900 text-sm font-medium leading-relaxed">{m}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -143,10 +143,10 @@ export default function Tentang() {
           <Reveal delay={0.1} className="lg:col-span-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {prodiInfo.fokus.map((f) => (
-                <div key={f.title} className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-                  <Target className="text-teal-400 mb-3" size={18} />
-                  <h4 className="font-display text-paper font-medium text-sm mb-1.5">{f.title}</h4>
-                  <p className="text-xs text-ink-300 leading-relaxed">{f.desc}</p>
+                <div key={f.title} className="rounded-xl border border-white/10 bg-teal-100 p-5">
+                  <Target className="text-teal-600 mb-3" size={18} />
+                  <h4 className="font-display text-ink-900 font-medium text-sm mb-1.5">{f.title}</h4>
+                  <p className="text-xs text-ink-500 leading-relaxed">{f.desc}</p>
                 </div>
               ))}
             </div>

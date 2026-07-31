@@ -212,7 +212,7 @@ export const divisiOrganisasi = [
       { nama: "Dika Jaya Saputra", jabatan: "Wakil Ketua Divisi", foto: null },
       { nama: "Nabilla Lidyan Nisa", jabatan: "Sekretaris Divisi", foto: null },
       { nama: "Diky Bintang Pamungkas", jabatan: "Ketua Bidang Fotografi dan Vidiografi", foto: null },
-      { nama: "Muhammad Farris Daffarindra", jabatan: "Anggota", foto: null },
+      { nama: "M. Faris Daffarindra", jabatan: "Anggota", foto: null },
       { nama: "Muhammad Aziz Syah Dani", jabatan: "Anggota", foto: null },
       { nama: "Fajri Aulia", jabatan: "Anggota", foto: null },
       { nama: "Rifky Ramadhan", jabatan: "Anggota", foto: null },
