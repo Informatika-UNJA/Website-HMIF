@@ -95,8 +95,8 @@ export default function Tentang() {
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {aboutHmif.misi.map((m, i) => (
               <StaggerItem key={i}>
-                <div className="flex gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-5 h-full">
-                  <span className="font-mono text-gold-400 text-sm shrink-0">
+                <div className="flex gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-5 h-full hover:border-teal-400/40 transition-colors">
+                  <span className="font-mono text-teal-400 text-sm shrink-0 font-semibold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <p className="text-ink-200 text-sm leading-relaxed">{m}</p>
@@ -119,8 +119,8 @@ export default function Tentang() {
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {aboutHmif.nilai.map((n) => (
               <StaggerItem key={n.title}>
-                <div className="h-full rounded-2xl border border-ink-100 bg-white p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                  <Sparkles className="text-gold-500 mb-4" size={22} />
+                <div className="h-full rounded-2xl border border-ink-100 bg-white p-6 shadow-sm hover:shadow-md hover:border-teal-400/40 hover:-translate-y-1 transition-all duration-300">
+                  <Sparkles className="text-teal-400 mb-4" size={22} />
                   <h3 className="font-display font-semibold text-ink-900 mb-2">{n.title}</h3>
                   <p className="text-sm text-ink-500 leading-relaxed">{n.desc}</p>
                 </div>

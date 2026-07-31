@@ -60,7 +60,7 @@ export default function Kontak() {
             <p className="eyebrow text-teal-600 mb-6">Kirim Pesan</p>
             <form onSubmit={handleSubmit} className="rounded-2xl border border-ink-100 bg-white p-7 shadow-sm space-y-5">
               <div>
-                <label className="text-xs font-mono uppercase tracking-wider text-ink-400 mb-1.5 block">
+                <label className="text-xs font-mono uppercase tracking-wider text-ink-4000 mb-1.5 block">
                   Nama
                 </label>
                 <input
@@ -69,11 +69,11 @@ export default function Kontak() {
                   value={form.nama}
                   onChange={handleChange}
                   placeholder="Nama lengkap"
-                  className="w-full rounded-lg border border-ink-100 bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-ink-300 focus:border-teal-400 outline-none transition-colors"
+                  className="w-full rounded-lg border border-ink-100 bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-ink-3000 focus:border-teal-400 outline-none transition-colors"
                 />
               </div>
               <div>
-                <label className="text-xs font-mono uppercase tracking-wider text-ink-400 mb-1.5 block">
+                <label className="text-xs font-mono uppercase tracking-wider text-ink-4000 mb-1.5 block">
                   Email
                 </label>
                 <input
@@ -83,11 +83,11 @@ export default function Kontak() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="nama@email.com"
-                  className="w-full rounded-lg border border-ink-100 bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-ink-300 focus:border-teal-400 outline-none transition-colors"
+                  className="w-full rounded-lg border border-ink-100 bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-ink-3000 focus:border-teal-400 outline-none transition-colors"
                 />
               </div>
               <div>
-                <label className="text-xs font-mono uppercase tracking-wider text-ink-400 mb-1.5 block">
+                <label className="text-xs font-mono uppercase tracking-wider text-ink-4000 mb-1.5 block">
                   Pesan
                 </label>
                 <textarea
@@ -97,7 +97,7 @@ export default function Kontak() {
                   value={form.pesan}
                   onChange={handleChange}
                   placeholder="Tulis pesan Anda di sini..."
-                  className="w-full rounded-lg border border-ink-100 bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-ink-300 focus:border-teal-400 outline-none transition-colors resize-none"
+                  className="w-full rounded-lg border border-ink-100 bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-ink-3000 focus:border-teal-400 outline-none transition-colors resize-none"
                 />
               </div>
               <button
@@ -106,7 +106,7 @@ export default function Kontak() {
               >
                 Kirim Pesan <Send size={15} />
               </button>
-              <p className="text-xs text-ink-400">
+              <p className="text-xs text-ink-4000">
                 Tombol ini akan membuka aplikasi email default Anda. Untuk mengaktifkan
                 pengiriman langsung dari situs, hubungkan form ini ke layanan seperti
                 Formspree atau backend Anda sendiri.

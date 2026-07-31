@@ -99,7 +99,7 @@ export default function Home() {
       <section className="relative bg-paper py-24 sm:py-28">
         <div className="container-hmif grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <Reveal className="lg:col-span-7" y={28}>
-            <p className="eyebrow text-teal-600 mb-4">Tentang Himpunan</p>
+            <p className="eyebrow text-teal-600 mb-4">01. Tentang Himpunan</p>
             <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight mb-6">
               Satu himpunan, satu keluarga besar Informatika
             </h2>
@@ -171,7 +171,7 @@ export default function Home() {
 
         <div className="container-hmif relative">
           <Reveal className="max-w-2xl mb-14">
-            <p className="eyebrow text-gold-400 mb-4">02 — Program Studi</p>
+            <p className="eyebrow text-gold-400 mb-4">02. Program Studi</p>
             <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper tracking-tight mb-6">
               Program Studi Informatika {siteInfo.university}
             </h2>
@@ -202,7 +202,7 @@ export default function Home() {
         <div className="container-hmif">
           <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
             <div>
-              <p className="eyebrow text-teal-600 mb-4">03 — Program Kerja</p>
+              <p className="eyebrow text-teal-600 mb-4">03. Program Kerja</p>
               <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight max-w-xl">
                 Enam bidang, satu tujuan bersama
               </h2>
@@ -270,7 +270,7 @@ export default function Home() {
         <div className="container-hmif">
           <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
             <div>
-              <p className="eyebrow text-teal-600 mb-4">04 — Galeri</p>
+              <p className="eyebrow text-teal-600 mb-4">04. Galeri</p>
               <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight">
                 Momen-momen HMIF
               </h2>
