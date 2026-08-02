@@ -21,7 +21,6 @@ export const navLinks = [
   { to: "/struktur-organisasi", label: "Struktur" },
   { to: "/iforia", label: "IFORIA" },
   { to: "/galeri", label: "Galeri" },
-  { to: "/kontak", label: "Kontak" },
 ];
 
 // Daftar foto latar belakang yang berganti otomatis.
