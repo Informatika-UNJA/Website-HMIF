@@ -12,7 +12,7 @@ export default function Iforia() {
     <main>
       {/* Ini Hero khusus IFORIA */}
       <section className="relative overflow-hidden pt-36 pb-20 sm:pt-44 sm:pb-24">
-        <BackgroundSlider images={backgroundImages} interval={8000} overlay="strong" />
+        <BackgroundSlider images={backgroundImages}/>
         <div className="container-hmif relative z-10">
           <motion.span
             initial={{ opacity: 0, y: 10 }}

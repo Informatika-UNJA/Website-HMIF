@@ -13,7 +13,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
  */
 export default function BackgroundSlider({
   images = [],
-  interval = 6000,
+  interval = 3000,
   overlay = "strong",
   className = "",
 }) {
@@ -45,7 +45,7 @@ export default function BackgroundSlider({
           initial={{ opacity: 0, scale: reduceMotion ? 1 : 1.06 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: reduceMotion ? 0.2 : 1.6, ease: "easeInOut" }}
+          transition={{ duration: reduceMotion ? 0.2 : 1.0, ease: "easeInOut" }}
           className="absolute inset-0 h-full w-full object-cover"
         />
       </AnimatePresence>

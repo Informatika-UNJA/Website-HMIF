@@ -30,7 +30,7 @@ export default function Home() {
     <PageTransition>
       {/* ============ HERO ============ */}
       <section className="relative min-h-[100svh] flex items-end overflow-hidden">
-        <BackgroundSlider images={backgroundImages} interval={6000} overlay="strong" />
+        <BackgroundSlider images={backgroundImages}/>
 
         <div className="container-hmif relative z-10 pb-16 pt-40 sm:pb-24">
           <motion.p
