@@ -30,7 +30,7 @@ export default function Home() {
     <PageTransition>
       {/* ============ HERO ============ */}
       <section className="relative min-h-[100svh] flex items-end overflow-hidden">
-        <BackgroundSlider images={backgroundImages}/>
+        <BackgroundSlider images={backgroundImages} interval={5000} />
 
         <div className="container-hmif relative z-10 pb-16 pt-40 sm:pb-24">
           <motion.p
@@ -97,7 +97,7 @@ export default function Home() {
 
       {/* ============ TENTANG HMIF — RINGKAS ============ */}
       <section className="relative bg-paper py-24 sm:py-28">
-        <div className="container-hmif grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="container-hmif grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <Reveal className="lg:col-span-7" y={28}>
             <p className="eyebrow text-teal-600 mb-4">01. Tentang Himpunan</p>
             <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight mb-6">
@@ -115,50 +115,13 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.1} className="lg:col-span-5">
-            <div className="rounded-2xl border border-ink-100 bg-white p-6 sm:p-8 shadow-lg shadow-ink-900/5">
-              <p className="font-display text-center font-semibold text-ink-900 text-base sm:text-lg mb-6">
-                Anggota Kepengurusan HMIF
-              </p>
-              <div className="grid grid-cols-3 gap-4">
-                {/* Pengurus Aktif */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-gold-400/15 flex items-center justify-center mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-500">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                      <circle cx="9" cy="7" r="4"/>
-                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                  </div>
-                  <span className="font-display text-2xl sm:text-3xl font-bold text-ink-900">50</span>
-                  <span className="text-[11px] sm:text-xs text-ink-500 mt-1 leading-tight">Total Kepengurusan Aktif</span>
-                </div>
-                {/* Total Divisi */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-teal-400/15 flex items-center justify-center mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-600">
-                      <rect width="7" height="7" x="3" y="3" rx="1"/>
-                      <rect width="7" height="7" x="14" y="3" rx="1"/>
-                      <rect width="7" height="7" x="3" y="14" rx="1"/>
-                      <rect width="7" height="7" x="14" y="14" rx="1"/>
-                    </svg>
-                  </div>
-                  <span className="font-display text-2xl sm:text-3xl font-bold text-ink-900">4</span>
-                  <span className="text-[11px] sm:text-xs text-ink-500 mt-1 leading-tight">Total Divisi</span>
-                </div>
-                {/* Total Anggota */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-ink-200/30 flex items-center justify-center mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-ink-600">
-                      <path d="M18 21a8 8 0 0 0-16 0"/>
-                      <circle cx="10" cy="8" r="5"/>
-                      <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
-                    </svg>
-                  </div>
-                  <span className="font-display text-2xl sm:text-3xl font-bold text-ink-900">180</span>
-                  <span className="text-[11px] sm:text-xs text-ink-500 mt-1 leading-tight">Anggota HMIF</span>
-                </div>
-              </div>
+            <div className="relative group overflow-hidden rounded-2xl shadow-xl shadow-ink-900/10">
+              <img
+                src={aboutHmif.image}
+                alt="Gambar Pengurus HMIF"
+                className="w-full h-[360px] sm:h-[360px] object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-ink-950/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
             </div>
           </Reveal>
         </div>
@@ -170,15 +133,29 @@ export default function Home() {
         <div className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-gold-500/10 blur-3xl" />
 
         <div className="container-hmif relative">
-          <Reveal className="max-w-2xl mb-14">
-            <p className="eyebrow text-gold-400 mb-4">02. Program Studi</p>
-            <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper tracking-tight mb-6">
-              Program Studi Informatika {siteInfo.university}
-            </h2>
-            <p className="text-ink-300 text-base sm:text-lg leading-relaxed">
-              {prodiInfo.intro}
-            </p>
-          </Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-14">
+            <Reveal className="lg:col-span-7">
+              <p className="eyebrow text-gold-400 mb-4">02. Program Studi</p>
+              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper tracking-tight mb-6">
+                Program Studi Informatika {siteInfo.university}
+              </h2>
+              <p className="text-ink-300 text-base sm:text-lg leading-relaxed">
+                {prodiInfo.intro}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.1} className="lg:col-span-5 flex justify-center lg:justify-center">
+              <img
+                src={prodiInfo.logo}
+                alt={`Logo Program Studi Informatika ${siteInfo.university}`}
+                className="max-h-48 sm:max-h-60 w-auto object-contain transition-transform duration-500 hover:scale-105 drop-shadow-[0_0_25px_rgba(255,255,255,0.08)]"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/logo-hmif.png";
+                }}
+              />
+            </Reveal>
+          </div>
 
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {prodiInfo.fokus.map((item, i) => {

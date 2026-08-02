@@ -33,6 +33,7 @@ export const backgroundImages = [
 ];
 
 export const aboutHmif = {
+  image: "/backgrounds/foto-3.jpg",
   intro:
     "Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi adalah organisasi kemahasiswaan tingkat program studi yang menaungi seluruh mahasiswa Informatika. Terbentuk seiring berdirinya Program Studi Informatika, HMIF hadir sebagai rumah bagi mahasiswa untuk berkarya, berorganisasi, dan bertumbuh bersama mulai dari nol, menuju satu ekosistem mahasiswa Informatika yang solid.",
   sejarah:
@@ -55,6 +56,7 @@ export const aboutHmif = {
 };
 
 export const prodiInfo = {
+  logo: "/logo-prodi.png",
   intro:
     "Program Studi Informatika Universitas Jambi hadir untuk menjawab kebutuhan sumber daya manusia di bidang teknologi informasi yang terus berkembang. Sebagai salah satu program studi termuda di lingkungan Fakultas Sains dan Teknologi, Informatika UNJA dirancang dengan kurikulum yang relevan dengan kebutuhan industri masa kini. Mulai dari rekayasa perangkat lunak, kecerdasan buatan, hingga infrastruktur jaringan dan data.",
   fokus: [
