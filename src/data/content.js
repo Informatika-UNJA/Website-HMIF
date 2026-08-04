@@ -81,11 +81,11 @@ export const programKerja = [
   {
     kode: "MIT",
     nama: "Media Informasi & Teknologi",
-    deskripsi: "Mendorong budaya belajar teknis dan eksplorasi teknologi di luar kelas.",
+    deskripsi: "Bergerak di bidang publikasi digital dan berfungsi sebagai media penyampaian informasi.",
     program: [
       "Maintenance & pengembangan website HMIF",
       "Workshop pemrograman & teknologi terkini",
-      "Kelompok belajar kompetitif (competitive programming, hackathon)",
+      "Menghandle media sosial HMIF dan publikasi konten kreatif",
       "Kolaborasi proyek riset mahasiswa",
     ],
   },

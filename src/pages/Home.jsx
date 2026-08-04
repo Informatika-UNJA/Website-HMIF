@@ -9,6 +9,8 @@ import {
   Network,
   Brain,
   ImageIcon,
+  Share2,
+  Briefcase,
 } from "lucide-react";
 import BackgroundSlider from "../components/BackgroundSlider";
 import PageTransition from "../components/PageTransition";
@@ -23,6 +25,13 @@ import {
 } from "../data/content";
 
 const fokusIcons = [Code2, Brain, Network, Cpu];
+
+const bidangIcons = {
+  PSDA: Users,
+  MIT: Code2,
+  HUMAS: Share2,
+  DANUS: Briefcase,
+};
 
 export default function Home() {
   return (
@@ -174,7 +183,7 @@ export default function Home() {
             <div>
               <p className="eyebrow text-teal-600 mb-4">03. Program Kerja</p>
               <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight max-w-xl">
-                Enam bidang, satu tujuan bersama
+                Divisi & Fokus Program Kerja HMIF
               </h2>
             </div>
             <Link
@@ -185,23 +194,36 @@ export default function Home() {
             </Link>
           </Reveal>
 
-          <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {programKerja.slice(0, 4).map((bidang) => (
-              <StaggerItem key={bidang.kode}>
-                <Link
-                  to="/program-kerja"
-                  className="group flex h-full flex-col rounded-2xl border border-ink-100 bg-white p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                >
-                  <span className="font-mono text-xs tracking-widest text-gold-600 mb-3">
-                    {bidang.kode}
-                  </span>
-                  <h3 className="font-display font-semibold text-ink-900 mb-2 group-hover:text-teal-600 transition-colors">
-                    {bidang.nama}
-                  </h3>
-                  <p className="text-sm text-ink-500 leading-relaxed">{bidang.deskripsi}</p>
-                </Link>
-              </StaggerItem>
-            ))}
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {programKerja.map((bidang) => {
+              const IconComponent = bidangIcons[bidang.kode] || Layers;
+              return (
+                <StaggerItem key={bidang.kode}>
+                  <Link
+                    to="/program-kerja"
+                    className="group flex h-full flex-col justify-between rounded-2xl border border-ink-100 bg-white p-7 shadow-sm hover:shadow-md hover:border-teal-500/40 transition-all duration-300"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-5">
+                        <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
+                          <IconComponent size={22} />
+                        </div>
+                        <span className="font-mono text-xs font-semibold tracking-wider text-amber-700 bg-amber-50 px-3 py-1 rounded-md border border-amber-200">
+                          {bidang.kode}
+                        </span>
+                      </div>
+
+                      <h3 className="font-display font-semibold text-xl text-ink-900 mb-2 group-hover:text-teal-600 transition-colors">
+                        {bidang.nama}
+                      </h3>
+                      <p className="text-sm text-ink-600 leading-relaxed mb-2">
+                        {bidang.deskripsi}
+                      </p>
+                    </div>
+                  </Link>
+                </StaggerItem>
+              );
+            })}
           </Stagger>
         </div>
       </section>
