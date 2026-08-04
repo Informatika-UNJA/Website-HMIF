@@ -19,7 +19,6 @@ import {
   aboutHmif,
   prodiInfo,
   programKerja,
-  iforiaInfo,
   galleryPlaceholder,
 } from "../data/content";
 
@@ -73,12 +72,6 @@ export default function Home() {
             >
               Tentang Kami
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              to="/iforia"
-              className="inline-flex items-center gap-2 rounded-full border border-gold-400/50 text-gold-300 font-semibold px-6 py-3 text-sm hover:bg-gold-400 hover:text-ink-950 transition-colors"
-            >
-              Lihat IFORIA
             </Link>
           </motion.div>
 
@@ -213,34 +206,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ IFORIA SPOTLIGHT ============ */}
-      <section className="relative overflow-hidden bg-ink-950 py-24 sm:py-28">
-        <div className="pointer-events-none absolute inset-0 opacity-40">
-          <div className="absolute top-0 left-1/3 h-72 w-72 rounded-full bg-gold-500/20 blur-3xl" />
-        </div>
-        <div className="container-hmif relative">
-          <Reveal className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center rounded-3xl border border-gold-400/20 bg-gradient-to-br from-white/[0.04] to-transparent p-8 sm:p-12">
-            <div className="lg:col-span-8">
-              <span className="inline-block font-mono text-xs tracking-widest text-ink-950 bg-gold-400 rounded-full px-3 py-1 mb-5">
-                {iforiaInfo.timeline[iforiaInfo.timeline.length - 1].versi}
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper tracking-tight mb-4">
-                IFORIA: {iforiaInfo.tagline}
-              </h2>
-              <p className="text-ink-300 leading-relaxed max-w-2xl">{iforiaInfo.deskripsi}</p>
-            </div>
-            <div className="lg:col-span-4 flex lg:justify-end">
-              <Link
-                to="/iforia"
-                className="group inline-flex items-center gap-2 rounded-full bg-gold-400 text-ink-950 font-semibold px-6 py-3 text-sm hover:bg-gold-300 transition-colors"
-              >
-                Selengkapnya
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* ============ GALERI PREVIEW ============ */}
       <section className="relative bg-paper py-24 sm:py-28">

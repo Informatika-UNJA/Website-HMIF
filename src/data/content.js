@@ -19,7 +19,6 @@ export const navLinks = [
   { to: "/tentang", label: "Tentang HMIF" },
   { to: "/program-kerja", label: "Program Kerja" },
   { to: "/struktur-organisasi", label: "Struktur" },
-  { to: "/iforia", label: "IFORIA" },
   { to: "/galeri", label: "Galeri" },
 ];
 
@@ -37,7 +36,7 @@ export const aboutHmif = {
   intro:
     "Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi adalah organisasi kemahasiswaan tingkat program studi yang menaungi seluruh mahasiswa Informatika. Terbentuk seiring berdirinya Program Studi Informatika, HMIF hadir sebagai rumah bagi mahasiswa untuk berkarya, berorganisasi, dan bertumbuh bersama mulai dari nol, menuju satu ekosistem mahasiswa Informatika yang solid.",
   sejarah:
-    "HMIF UNJA lahir dari semangat sekelompok mahasiswa angkatan pertama Program Studi Informatika yang ingin memiliki wadah resmi untuk menyalurkan aspirasi, minat, dan bakat. Meski masih muda, HMIF dibangun dengan visi jangka panjang: menjadi fondasi budaya organisasi yang akan diwariskan ke angkatan-angkatan berikutnya.",
+    "HMIF UNJA resmi berdiri sejak tanggal 1 April 2026. HMIF UNJA lahir dari semangat sekelompok mahasiswa angkatan pertama Program Studi Informatika yang ingin memiliki wadah resmi untuk menyalurkan aspirasi, minat, dan bakat. Meski masih muda, HMIF dibangun dengan visi jangka panjang: menjadi fondasi budaya organisasi yang akan diwariskan ke angkatan-angkatan berikutnya.",
   visi:
     "Menjadi himpunan mahasiswa yang adaptif, kolaboratif, dan berdampak. Melahirkan lulusan Informatika UNJA yang unggul secara akademik, matang secara organisasi, dan siap berkontribusi bagi masyarakat serta industri teknologi.",
   misi: [
@@ -223,39 +222,8 @@ export const divisiOrganisasi = [
   },
 ];
 
-export const iforiaInfo = {
-  singkatan: "Informatics Orientation & Adaptation",
-  tagline: "Gerbang pertama menuju keluarga besar Informatika UNJA",
-  deskripsi:
-    "IFORIA adalah program Pengenalan Kehidupan Kampus (PKK) tingkat Program Studi Informatika Universitas Jambi. Diselenggarakan setiap tahun oleh HMIF, IFORIA menjadi jembatan pertama bagi mahasiswa baru untuk mengenal lingkungan akademik, budaya organisasi, serta keluarga besar Informatika sebelum memulai perjalanan perkuliahan mereka.",
-  tujuan: [
-    "Mengenalkan mahasiswa baru pada sistem akademik dan lingkungan kampus Informatika.",
-    "Membangun rasa kekeluargaan antar mahasiswa lintas angkatan sejak awal.",
-    "Menanamkan nilai, budaya, dan identitas Informatika UNJA sejak dini.",
-    "Menjadi sarana regenerasi kepemimpinan dan kepanitiaan mahasiswa.",
-  ],
-  rangkaian: [
-    { judul: "Pra-Acara", desc: "Kedatangan peserta dan Pembekalan panitia, pembagian kelompok, dan pengumpulan tugas pengenalan." },
-    { judul: "Hari Pengenalan Akademik", desc: "Pengenalan program studi, dosen, dan sistem perkuliahan. Serta penjelasan mengenai proses akademik. Dan materi dari dosen" },
-    { judul: "Hari Pengenalan Organisasi", desc: "Pengenalan HMIF, unit kegiatan, dan alur berorganisasi. Prodi Informatika" },
-    { judul: "Malam Keakraban", desc: "Sesi kebersamaan lintas angkatan untuk mempererat kekeluargaan." },
-    { judul: "Penutupan & Simbolisasi", desc: "Serah-terima simbolis mahasiswa baru ke dalam keluarga besar Informatika." },
-  ],
-  // Setiap tahun bakalan terus bertambah entrinyo bang, jadi tambahin edisi baru di sini bang. -Aziz
-  timeline: [
-    {
-      tahun: "2026",
-      versi: "IFORIA // 2026",
-      tema: "Akan diumumkan",
-      deskripsi: "Persiapan sedang berlangsung nantikan pengumuman resmi dari HMIF.",
-      status: "Edisi Pertama",
-    },
-  ],
-};
-
 export const galleryCategories = [
   { key: "kegiatan", label: "Kegiatan Himpunan" },
-  { key: "iforia", label: "IFORIA" },
   { key: "kelas", label: "Kehidupan Kampus" },
   { key: "prestasi", label: "Prestasi" },
 ];
