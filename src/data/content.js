@@ -19,9 +19,7 @@ export const navLinks = [
   { to: "/tentang", label: "Tentang HMIF" },
   { to: "/program-kerja", label: "Program Kerja" },
   { to: "/struktur-organisasi", label: "Struktur" },
-  { to: "/iforia", label: "IFORIA" },
   { to: "/galeri", label: "Galeri" },
-  { to: "/kontak", label: "Kontak" },
 ];
 
 // Daftar foto latar belakang yang berganti otomatis.
@@ -34,10 +32,11 @@ export const backgroundImages = [
 ];
 
 export const aboutHmif = {
+  image: "/backgrounds/foto-3.jpg",
   intro:
     "Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi adalah organisasi kemahasiswaan tingkat program studi yang menaungi seluruh mahasiswa Informatika. Terbentuk seiring berdirinya Program Studi Informatika, HMIF hadir sebagai rumah bagi mahasiswa untuk berkarya, berorganisasi, dan bertumbuh bersama mulai dari nol, menuju satu ekosistem mahasiswa Informatika yang solid.",
   sejarah:
-    "HMIF UNJA lahir dari semangat sekelompok mahasiswa angkatan pertama Program Studi Informatika yang ingin memiliki wadah resmi untuk menyalurkan aspirasi, minat, dan bakat. Meski masih muda, HMIF dibangun dengan visi jangka panjang: menjadi fondasi budaya organisasi yang akan diwariskan ke angkatan-angkatan berikutnya.",
+    "HMIF UNJA resmi berdiri sejak tanggal 1 April 2026. HMIF UNJA lahir dari semangat sekelompok mahasiswa angkatan pertama Program Studi Informatika yang ingin memiliki wadah resmi untuk menyalurkan aspirasi, minat, dan bakat. Meski masih muda, HMIF dibangun dengan visi jangka panjang: menjadi fondasi budaya organisasi yang akan diwariskan ke angkatan-angkatan berikutnya.",
   visi:
     "Menjadi himpunan mahasiswa yang adaptif, kolaboratif, dan berdampak. Melahirkan lulusan Informatika UNJA yang unggul secara akademik, matang secara organisasi, dan siap berkontribusi bagi masyarakat serta industri teknologi.",
   misi: [
@@ -56,6 +55,7 @@ export const aboutHmif = {
 };
 
 export const prodiInfo = {
+  logo: "/logo-prodi.png",
   intro:
     "Program Studi Informatika Universitas Jambi hadir untuk menjawab kebutuhan sumber daya manusia di bidang teknologi informasi yang terus berkembang. Sebagai salah satu program studi termuda di lingkungan Fakultas Sains dan Teknologi, Informatika UNJA dirancang dengan kurikulum yang relevan dengan kebutuhan industri masa kini. Mulai dari rekayasa perangkat lunak, kecerdasan buatan, hingga infrastruktur jaringan dan data.",
   fokus: [
@@ -81,11 +81,11 @@ export const programKerja = [
   {
     kode: "MIT",
     nama: "Media Informasi & Teknologi",
-    deskripsi: "Mendorong budaya belajar teknis dan eksplorasi teknologi di luar kelas.",
+    deskripsi: "Bergerak di bidang publikasi digital dan berfungsi sebagai media penyampaian informasi.",
     program: [
       "Maintenance & pengembangan website HMIF",
       "Workshop pemrograman & teknologi terkini",
-      "Kelompok belajar kompetitif (competitive programming, hackathon)",
+      "Menghandle media sosial HMIF dan publikasi konten kreatif",
       "Kolaborasi proyek riset mahasiswa",
     ],
   },
@@ -212,7 +212,7 @@ export const divisiOrganisasi = [
       { nama: "Dika Jaya Saputra", jabatan: "Wakil Ketua Divisi", foto: null },
       { nama: "Nabilla Lidyan Nisa", jabatan: "Sekretaris Divisi", foto: null },
       { nama: "Diky Bintang Pamungkas", jabatan: "Ketua Bidang Fotografi dan Vidiografi", foto: null },
-      { nama: "Muhammad Farris Daffarindra", jabatan: "Anggota", foto: null },
+      { nama: "M. Faris Daffarindra", jabatan: "Anggota", foto: null },
       { nama: "Muhammad Aziz Syah Dani", jabatan: "Anggota", foto: null },
       { nama: "Fajri Aulia", jabatan: "Anggota", foto: null },
       { nama: "Rifky Ramadhan", jabatan: "Anggota", foto: null },
@@ -222,49 +222,23 @@ export const divisiOrganisasi = [
   },
 ];
 
-export const iforiaInfo = {
-  singkatan: "Informatics Orientation & Adaptation",
-  tagline: "Gerbang pertama menuju keluarga besar Informatika UNJA",
-  deskripsi:
-    "IFORIA adalah program Pengenalan Kehidupan Kampus (PKK) tingkat Program Studi Informatika Universitas Jambi. Diselenggarakan setiap tahun oleh HMIF, IFORIA menjadi jembatan pertama bagi mahasiswa baru untuk mengenal lingkungan akademik, budaya organisasi, serta keluarga besar Informatika sebelum memulai perjalanan perkuliahan mereka.",
-  tujuan: [
-    "Mengenalkan mahasiswa baru pada sistem akademik dan lingkungan kampus Informatika.",
-    "Membangun rasa kekeluargaan antar mahasiswa lintas angkatan sejak awal.",
-    "Menanamkan nilai, budaya, dan identitas Informatika UNJA sejak dini.",
-    "Menjadi sarana regenerasi kepemimpinan dan kepanitiaan mahasiswa.",
-  ],
-  rangkaian: [
-    { judul: "Pra-Acara", desc: "Kedatangan peserta dan Pembekalan panitia, pembagian kelompok, dan pengumpulan tugas pengenalan." },
-    { judul: "Hari Pengenalan Akademik", desc: "Pengenalan program studi, dosen, dan sistem perkuliahan. Serta penjelasan mengenai proses akademik. Dan materi dari dosen" },
-    { judul: "Hari Pengenalan Organisasi", desc: "Pengenalan HMIF, unit kegiatan, dan alur berorganisasi. Prodi Informatika" },
-    { judul: "Malam Keakraban", desc: "Sesi kebersamaan lintas angkatan untuk mempererat kekeluargaan." },
-    { judul: "Penutupan & Simbolisasi", desc: "Serah-terima simbolis mahasiswa baru ke dalam keluarga besar Informatika." },
-  ],
-  // Setiap tahun bakalan terus bertambah entrinyo bang, jadi tambahin edisi baru di sini bang. -Aziz
-  timeline: [
-    {
-      tahun: "2026",
-      versi: "IFORIA // 2026",
-      tema: "Akan diumumkan",
-      deskripsi: "Persiapan sedang berlangsung nantikan pengumuman resmi dari HMIF.",
-      status: "Edisi Pertama",
-    },
-  ],
-};
-
 export const galleryCategories = [
   { key: "kegiatan", label: "Kegiatan Himpunan" },
-  { key: "iforia", label: "IFORIA" },
   { key: "kelas", label: "Kehidupan Kampus" },
   { key: "prestasi", label: "Prestasi" },
 ];
 
 // Letakkan foto pada /public/gallery/ lalu daftarkan di sini.
-export const galleryPlaceholder = new Array(8).fill(0).map((_, i) => ({
-  id: i + 1,
-  category: galleryCategories[i % galleryCategories.length].key,
-  caption: "Ganti dengan keterangan foto bang -Aziz",
-}));
+// export const galleryPlaceholder = new Array(8).fill(0).map((_, i) => ({
+//   id: i + 1,
+//   category: galleryCategories[i % galleryCategories.length].key,
+//   caption: "Ganti dengan keterangan foto bang -Aziz",
+// }));
+
+// Letakkan foto pada /public/gallery/ lalu daftarkan di sini.
+export const galleryPlaceholder = [
+  { id: 1, category: "kegiatan", caption: "Pengukuhan Himpunan Mahasiswa Informatika", src: "/gallery/pengukuhan-1.jpg" },
+];
 
 export const contactChannels = [
   { label: "Email", value: siteInfo.email, href: `mailto:${siteInfo.email}` },

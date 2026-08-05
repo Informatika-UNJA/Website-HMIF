@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -9,28 +10,41 @@ import {
   Network,
   Brain,
   ImageIcon,
+  Share2,
+  Briefcase,
+  ZoomIn,
 } from "lucide-react";
 import BackgroundSlider from "../components/BackgroundSlider";
 import PageTransition from "../components/PageTransition";
 import Reveal, { Stagger, StaggerItem } from "../components/Reveal";
+import ImageModal from "../components/ImageModal";
 import {
   siteInfo,
   backgroundImages,
   aboutHmif,
   prodiInfo,
   programKerja,
-  iforiaInfo,
   galleryPlaceholder,
 } from "../data/content";
 
 const fokusIcons = [Code2, Brain, Network, Cpu];
 
+const bidangIcons = {
+  PSDA: Users,
+  MIT: Code2,
+  HUMAS: Share2,
+  DANUS: Briefcase,
+};
+
 export default function Home() {
+  const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(null);
+  const homeGallery = galleryPlaceholder.slice(0, 4);
+
   return (
     <PageTransition>
       {/* ============ HERO ============ */}
       <section className="relative min-h-[100svh] flex items-end overflow-hidden">
-        <BackgroundSlider images={backgroundImages} interval={6000} overlay="strong" />
+        <BackgroundSlider images={backgroundImages} interval={5000} />
 
         <div className="container-hmif relative z-10 pb-16 pt-40 sm:pb-24">
           <motion.p
@@ -74,12 +88,6 @@ export default function Home() {
               Tentang Kami
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <Link
-              to="/iforia"
-              className="inline-flex items-center gap-2 rounded-full border border-gold-400/50 text-gold-300 font-semibold px-6 py-3 text-sm hover:bg-gold-400 hover:text-ink-950 transition-colors"
-            >
-              Lihat IFORIA
-            </Link>
           </motion.div>
 
           <motion.div
@@ -91,15 +99,13 @@ export default function Home() {
             <span>{siteInfo.university}</span>
             <span className="text-teal-500">·</span>
             <span>Program Studi Informatika</span>
-            <span className="text-teal-500">·</span>
-            <span className="text-gold-400">status: aktif</span>
           </motion.div>
         </div>
       </section>
 
       {/* ============ TENTANG HMIF — RINGKAS ============ */}
       <section className="relative bg-paper py-24 sm:py-28">
-        <div className="container-hmif grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="container-hmif grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <Reveal className="lg:col-span-7" y={28}>
             <p className="eyebrow text-teal-600 mb-4">01. Tentang Himpunan</p>
             <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight mb-6">
@@ -117,50 +123,13 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.1} className="lg:col-span-5">
-            <div className="rounded-2xl border border-ink-100 bg-white p-6 sm:p-8 shadow-lg shadow-ink-900/5">
-              <p className="font-display text-center font-semibold text-ink-900 text-base sm:text-lg mb-6">
-                Anggota Kepengurusan HMIF
-              </p>
-              <div className="grid grid-cols-3 gap-4">
-                {/* Pengurus Aktif */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-gold-400/15 flex items-center justify-center mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-500">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                      <circle cx="9" cy="7" r="4"/>
-                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                  </div>
-                  <span className="font-display text-2xl sm:text-3xl font-bold text-ink-900">50</span>
-                  <span className="text-[11px] sm:text-xs text-ink-500 mt-1 leading-tight">Total Kepengurusan Aktif</span>
-                </div>
-                {/* Total Divisi */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-teal-400/15 flex items-center justify-center mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-600">
-                      <rect width="7" height="7" x="3" y="3" rx="1"/>
-                      <rect width="7" height="7" x="14" y="3" rx="1"/>
-                      <rect width="7" height="7" x="3" y="14" rx="1"/>
-                      <rect width="7" height="7" x="14" y="14" rx="1"/>
-                    </svg>
-                  </div>
-                  <span className="font-display text-2xl sm:text-3xl font-bold text-ink-900">4</span>
-                  <span className="text-[11px] sm:text-xs text-ink-500 mt-1 leading-tight">Total Divisi</span>
-                </div>
-                {/* Total Anggota */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 rounded-full bg-ink-200/30 flex items-center justify-center mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-ink-600">
-                      <path d="M18 21a8 8 0 0 0-16 0"/>
-                      <circle cx="10" cy="8" r="5"/>
-                      <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
-                    </svg>
-                  </div>
-                  <span className="font-display text-2xl sm:text-3xl font-bold text-ink-900">180</span>
-                  <span className="text-[11px] sm:text-xs text-ink-500 mt-1 leading-tight">Anggota HMIF</span>
-                </div>
-              </div>
+            <div className="relative group overflow-hidden rounded-2xl shadow-xl shadow-ink-900/10">
+              <img
+                src={aboutHmif.image}
+                alt="Gambar Pengurus HMIF"
+                className="w-full h-[360px] sm:h-[360px] object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-ink-950/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
             </div>
           </Reveal>
         </div>
@@ -172,25 +141,39 @@ export default function Home() {
         <div className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-gold-500/10 blur-3xl" />
 
         <div className="container-hmif relative">
-          <Reveal className="max-w-2xl mb-14">
-            <p className="eyebrow text-gold-400 mb-4">02. Program Studi</p>
-            <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper tracking-tight mb-6">
-              Program Studi Informatika {siteInfo.university}
-            </h2>
-            <p className="text-ink-300 text-base sm:text-lg leading-relaxed">
-              {prodiInfo.intro}
-            </p>
-          </Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-14">
+            <Reveal className="lg:col-span-7">
+              <p className="eyebrow text-gold-400 mb-4">02. Program Studi</p>
+              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper tracking-tight mb-6">
+                Program Studi Informatika {siteInfo.university}
+              </h2>
+              <p className="text-ink-300 text-base sm:text-lg leading-relaxed">
+                {prodiInfo.intro}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.1} className="lg:col-span-5 flex justify-center lg:justify-center">
+              <img
+                src={prodiInfo.logo}
+                alt={`Logo Program Studi Informatika ${siteInfo.university}`}
+                className="max-h-48 sm:max-h-60 w-auto object-contain transition-transform duration-500 hover:scale-105 drop-shadow-[0_0_25px_rgba(255,255,255,0.08)]"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/logo-hmif.png";
+                }}
+              />
+            </Reveal>
+          </div>
 
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {prodiInfo.fokus.map((item, i) => {
               const Icon = fokusIcons[i % fokusIcons.length];
               return (
                 <StaggerItem key={item.title}>
-                  <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 hover:border-teal-400/40 hover:bg-white/[0.05] transition-colors">
-                    <Icon className="text-teal-400 mb-4" size={22} />
-                    <h3 className="font-display font-semibold text-paper mb-2">{item.title}</h3>
-                    <p className="text-sm text-ink-300 leading-relaxed">{item.desc}</p>
+                  <div className="h-full rounded-2xl border border-white/10 bg-teal-100 p-6 hover:border-white/40 hover:bg-teal-100/[0.9] transition-colors">
+                    <Icon className="text-teal-600 mb-4" size={23} />
+                    <h3 className="font-display font-semibold text-ink-900 mb-2">{item.title}</h3>
+                    <p className="text-sm text-ink-500 leading-relaxed">{item.desc}</p>
                   </div>
                 </StaggerItem>
               );
@@ -206,7 +189,7 @@ export default function Home() {
             <div>
               <p className="eyebrow text-teal-600 mb-4">03. Program Kerja</p>
               <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight max-w-xl">
-                Enam bidang, satu tujuan bersama
+                Divisi & Fokus Program Kerja HMIF
               </h2>
             </div>
             <Link
@@ -217,58 +200,43 @@ export default function Home() {
             </Link>
           </Reveal>
 
-          <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {programKerja.slice(0, 4).map((bidang) => (
-              <StaggerItem key={bidang.kode}>
-                <Link
-                  to="/program-kerja"
-                  className="group flex h-full flex-col rounded-2xl border border-ink-100 bg-white p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                >
-                  <span className="font-mono text-xs tracking-widest text-gold-600 mb-3">
-                    {bidang.kode}
-                  </span>
-                  <h3 className="font-display font-semibold text-ink-900 mb-2 group-hover:text-teal-600 transition-colors">
-                    {bidang.nama}
-                  </h3>
-                  <p className="text-sm text-ink-500 leading-relaxed">{bidang.deskripsi}</p>
-                </Link>
-              </StaggerItem>
-            ))}
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {programKerja.map((bidang) => {
+              const IconComponent = bidangIcons[bidang.kode] || Layers;
+              return (
+                <StaggerItem key={bidang.kode}>
+                  <Link
+                    to="/program-kerja"
+                    className="group flex h-full flex-col justify-between rounded-2xl border border-ink-100 bg-white p-7 shadow-sm hover:shadow-md hover:border-teal-500/40 transition-all duration-300"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-5">
+                        <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
+                          <IconComponent size={22} />
+                        </div>
+                        <span className="font-mono text-xs font-semibold tracking-wider text-amber-700 bg-amber-50 px-3 py-1 rounded-md border border-amber-200">
+                          {bidang.kode}
+                        </span>
+                      </div>
+
+                      <h3 className="font-display font-semibold text-xl text-ink-900 mb-2 group-hover:text-teal-600 transition-colors">
+                        {bidang.nama}
+                      </h3>
+                      <p className="text-sm text-ink-600 leading-relaxed mb-2">
+                        {bidang.deskripsi}
+                      </p>
+                    </div>
+                  </Link>
+                </StaggerItem>
+              );
+            })}
           </Stagger>
         </div>
       </section>
 
-      {/* ============ IFORIA SPOTLIGHT ============ */}
-      <section className="relative overflow-hidden bg-ink-950 py-24 sm:py-28">
-        <div className="pointer-events-none absolute inset-0 opacity-40">
-          <div className="absolute top-0 left-1/3 h-72 w-72 rounded-full bg-gold-500/20 blur-3xl" />
-        </div>
-        <div className="container-hmif relative">
-          <Reveal className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center rounded-3xl border border-gold-400/20 bg-gradient-to-br from-white/[0.04] to-transparent p-8 sm:p-12">
-            <div className="lg:col-span-8">
-              <span className="inline-block font-mono text-xs tracking-widest text-ink-950 bg-gold-400 rounded-full px-3 py-1 mb-5">
-                {iforiaInfo.timeline[iforiaInfo.timeline.length - 1].versi}
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper tracking-tight mb-4">
-                IFORIA: {iforiaInfo.tagline}
-              </h2>
-              <p className="text-ink-300 leading-relaxed max-w-2xl">{iforiaInfo.deskripsi}</p>
-            </div>
-            <div className="lg:col-span-4 flex lg:justify-end">
-              <Link
-                to="/iforia"
-                className="group inline-flex items-center gap-2 rounded-full bg-gold-400 text-ink-950 font-semibold px-6 py-3 text-sm hover:bg-gold-300 transition-colors"
-              >
-                Selengkapnya
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* ============ GALERI PREVIEW ============ */}
-      <section className="relative bg-paper py-24 sm:py-28">
+      <section className="relative bg-ink-50 py-24 sm:py-28">
         <div className="container-hmif">
           <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
             <div>
@@ -286,15 +254,28 @@ export default function Home() {
           </Reveal>
 
           <Stagger className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {galleryPlaceholder.slice(0, 4).map((g) => (
+            {homeGallery.map((g, idx) => (
               <StaggerItem key={g.id}>
-                <Link
-                  to="/galeri"
-                  className="group relative aspect-square rounded-xl overflow-hidden bg-ink-100 flex items-center justify-center"
+                <div
+                  onClick={() => setSelectedGalleryIndex(idx)}
+                  className="group relative aspect-square rounded-xl overflow-hidden bg-ink-900 cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 ring-0 hover:ring-2 hover:ring-gold-400/50"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-ink-700 to-ink-900 opacity-90 group-hover:scale-105 transition-transform duration-500" />
-                  <ImageIcon className="relative text-ink-300" size={28} />
-                </Link>
+                  <img
+                    src={g.src}
+                    alt={g.caption}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3">
+                    <div className="flex justify-end">
+                      <span className="p-1.5 rounded-full bg-black/50 text-white backdrop-blur-sm shadow-md group-hover:scale-110 transition-transform">
+                        <ZoomIn size={14} />
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-white line-clamp-1">{g.caption}</p>
+                    </div>
+                  </div>
+                </div>
               </StaggerItem>
             ))}
           </Stagger>
@@ -330,6 +311,14 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      <ImageModal
+        isOpen={selectedGalleryIndex !== null}
+        onClose={() => setSelectedGalleryIndex(null)}
+        images={homeGallery}
+        currentIndex={selectedGalleryIndex ?? 0}
+        setCurrentIndex={setSelectedGalleryIndex}
+      />
     </PageTransition>
   );
 }

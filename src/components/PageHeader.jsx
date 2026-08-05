@@ -5,7 +5,7 @@ import { backgroundImages } from "../data/content";
 export default function PageHeader({ eyebrow, title, subtitle }) {
   return (
     <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-20">
-      <BackgroundSlider images={backgroundImages} interval={9000} overlay="strong" />
+      <BackgroundSlider images={backgroundImages}/>
       <div className="container-hmif relative z-10">
         <motion.p
           initial={{ opacity: 0, y: 10 }}

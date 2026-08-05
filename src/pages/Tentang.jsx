@@ -1,13 +1,12 @@
 import { Target, Compass, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
 import Reveal, { Stagger, StaggerItem } from "../components/Reveal";
 import { aboutHmif, prodiInfo, siteInfo } from "../data/content";
 
 export default function Tentang() {
   return (
-    <PageTransition>
+    <main>
       <PageHeader
         eyebrow="Tentang HMIF"
         title="Mengenal HMIF Universitas Jambi"
@@ -96,11 +95,11 @@ export default function Tentang() {
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {aboutHmif.misi.map((m, i) => (
               <StaggerItem key={i}>
-                <div className="flex gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-5 h-full">
-                  <span className="font-mono text-gold-400 text-sm shrink-0">
+                <div className="flex gap-4 rounded-xl border border-white/10 bg-teal-100 p-6 h-full hover:border-teal-300 transition-colors">
+                  <span className="font-mono text-teal-600 text-sm shrink-0 font-semibold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-ink-200 text-sm leading-relaxed">{m}</p>
+                  <p className="text-ink-900 text-sm font-medium leading-relaxed">{m}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -120,8 +119,8 @@ export default function Tentang() {
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {aboutHmif.nilai.map((n) => (
               <StaggerItem key={n.title}>
-                <div className="h-full rounded-2xl border border-ink-100 bg-white p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                  <Sparkles className="text-gold-500 mb-4" size={22} />
+                <div className="h-full rounded-2xl border border-ink-100 bg-white p-6 shadow-sm hover:shadow-md hover:border-teal-400/40 hover:-translate-y-1 transition-all duration-300">
+                  <Sparkles className="text-teal-400 mb-4" size={22} />
                   <h3 className="font-display font-semibold text-ink-900 mb-2">{n.title}</h3>
                   <p className="text-sm text-ink-500 leading-relaxed">{n.desc}</p>
                 </div>
@@ -144,16 +143,16 @@ export default function Tentang() {
           <Reveal delay={0.1} className="lg:col-span-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {prodiInfo.fokus.map((f) => (
-                <div key={f.title} className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-                  <Target className="text-teal-400 mb-3" size={18} />
-                  <h4 className="font-display text-paper font-medium text-sm mb-1.5">{f.title}</h4>
-                  <p className="text-xs text-ink-300 leading-relaxed">{f.desc}</p>
+                <div key={f.title} className="rounded-xl border border-white/10 bg-teal-100 p-5">
+                  <Target className="text-teal-600 mb-3" size={18} />
+                  <h4 className="font-display text-ink-900 font-medium text-sm mb-1.5">{f.title}</h4>
+                  <p className="text-xs text-ink-500 leading-relaxed">{f.desc}</p>
                 </div>
               ))}
             </div>
           </Reveal>
         </div>
       </section>
-    </PageTransition>
+    </main>
   );
 }
