@@ -3,7 +3,7 @@
 Website profil **Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi**, dibangun dengan
 React + Vite, Tailwind CSS, dan Framer Motion.
 
-<img width="1920" height="965" alt="Screenshot From 2026-07-31 09-07-42" src="https://github.com/user-attachments/assets/0ec51e7b-a29b-42e1-8dc7-3a192477745b" />
+<img alt="Screenshot From 2026-07-31 09-07-42" src="https://github.com/user-attachments/assets/afa19a5a-57eb-494f-9894-55fdc162d8dc" />
 
 ## ✨ Fitur
 
