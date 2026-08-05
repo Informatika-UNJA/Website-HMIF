@@ -51,6 +51,7 @@ export default function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="active-nav-pill"
+                      layout="x"
                       className="absolute inset-0 bg-teal-400 rounded-full"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
@@ -111,6 +112,7 @@ export default function Navbar() {
                         {isActive && (
                           <motion.span
                             layoutId="active-mobile-nav-pill"
+                            layout="y"
                             className="absolute inset-0 bg-white/10 border-l-4 border-teal-400 rounded-lg"
                             transition={{ type: "spring", stiffness: 380, damping: 30 }}
                           />

@@ -60,12 +60,17 @@ export default function Kontak() {
             <p className="eyebrow text-teal-600 mb-6">Kirim Pesan</p>
             <form onSubmit={handleSubmit} className="rounded-2xl border border-ink-100 bg-white p-7 shadow-sm space-y-5">
               <div>
-                <label className="text-xs font-mono uppercase tracking-wider text-ink-4000 mb-1.5 block">
+                <label
+                  htmlFor="nama"
+                  className="text-xs font-mono uppercase tracking-wider text-ink-4000 mb-1.5 block"
+                >
                   Nama
                 </label>
                 <input
                   required
+                  id="nama"
                   name="nama"
+                  autoComplete="name"
                   value={form.nama}
                   onChange={handleChange}
                   placeholder="Nama lengkap"
@@ -73,13 +78,18 @@ export default function Kontak() {
                 />
               </div>
               <div>
-                <label className="text-xs font-mono uppercase tracking-wider text-ink-4000 mb-1.5 block">
+                <label
+                  htmlFor="email"
+                  className="text-xs font-mono uppercase tracking-wider text-ink-4000 mb-1.5 block"
+                >
                   Email
                 </label>
                 <input
                   required
                   type="email"
+                  id="email"
                   name="email"
+                  autoComplete="email"
                   value={form.email}
                   onChange={handleChange}
                   placeholder="nama@email.com"
@@ -87,12 +97,16 @@ export default function Kontak() {
                 />
               </div>
               <div>
-                <label className="text-xs font-mono uppercase tracking-wider text-ink-4000 mb-1.5 block">
+                <label
+                  htmlFor="pesan"
+                  className="text-xs font-mono uppercase tracking-wider text-ink-4000 mb-1.5 block"
+                >
                   Pesan
                 </label>
                 <textarea
                   required
                   rows={5}
+                  id="pesan"
                   name="pesan"
                   value={form.pesan}
                   onChange={handleChange}
