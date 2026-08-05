@@ -229,11 +229,16 @@ export const galleryCategories = [
 ];
 
 // Letakkan foto pada /public/gallery/ lalu daftarkan di sini.
-export const galleryPlaceholder = new Array(8).fill(0).map((_, i) => ({
-  id: i + 1,
-  category: galleryCategories[i % galleryCategories.length].key,
-  caption: "Ganti dengan keterangan foto bang -Aziz",
-}));
+// export const galleryPlaceholder = new Array(8).fill(0).map((_, i) => ({
+//   id: i + 1,
+//   category: galleryCategories[i % galleryCategories.length].key,
+//   caption: "Ganti dengan keterangan foto bang -Aziz",
+// }));
+
+// Letakkan foto pada /public/gallery/ lalu daftarkan di sini.
+export const galleryPlaceholder = [
+  { id: 1, category: "kegiatan", caption: "Pengukuhan Himpunan Mahasiswa Informatika", src: "/gallery/pengukuhan-1.jpg" },
+];
 
 export const contactChannels = [
   { label: "Email", value: siteInfo.email, href: `mailto:${siteInfo.email}` },

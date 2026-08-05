@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { ImageIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ZoomIn } from "lucide-react";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
+import ImageModal from "../components/ImageModal";
 import { galleryCategories, galleryPlaceholder } from "../data/content";
 
 export default function Galeri() {
   const [active, setActive] = useState("semua");
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
   const filtered =
     active === "semua"
@@ -23,60 +25,84 @@ export default function Galeri() {
 
       <section className="bg-paper py-16 sm:py-20">
         <div className="container-hmif">
-          <Reveal className="flex flex-wrap gap-2.5 mb-10">
-            <button
-              onClick={() => setActive("semua")}
-              className={`font-mono text-xs uppercase tracking-wider px-4 py-2 rounded-full border transition-colors ${
-                active === "semua"
-                  ? "bg-ink-900 text-paper border-ink-900"
-                  : "border-ink-200 text-ink-500 hover:border-ink-400"
-              }`}
-            >
-              Semua
-            </button>
-            {galleryCategories.map((c) => (
+          <div role="group" aria-label="Filter galeri">
+            <Reveal className="flex flex-wrap gap-2.5 mb-10">
               <button
-                key={c.key}
-                onClick={() => setActive(c.key)}
-                className={`font-mono text-xs uppercase tracking-wider px-4 py-2 rounded-full border transition-colors ${
-                  active === c.key
+                onClick={() => setActive("semua")}
+                aria-pressed={active === "semua"}
+                className={`font-mono text-xs uppercase tracking-wider px-4 py-2 rounded-full border transition-colors cursor-pointer ${
+                  active === "semua"
                     ? "bg-ink-900 text-paper border-ink-900"
                     : "border-ink-200 text-ink-500 hover:border-ink-400"
                 }`}
               >
-                {c.label}
+                Semua
               </button>
-            ))}
-          </Reveal>
+              {galleryCategories.map((c) => (
+                <button
+                  key={c.key}
+                  onClick={() => setActive(c.key)}
+                  aria-pressed={active === c.key}
+                  className={`font-mono text-xs uppercase tracking-wider px-4 py-2 rounded-full border transition-colors cursor-pointer ${
+                    active === c.key
+                      ? "bg-ink-900 text-paper border-ink-900"
+                      : "border-ink-200 text-ink-500 hover:border-ink-400"
+                  }`}
+                >
+                  {c.label}
+                </button>
+              ))}
+            </Reveal>
+          </div>
 
-          <motion.div
-            layout
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
-          >
-            {filtered.map((g) => (
-              <motion.div
-                layout
-                key={g.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.35 }}
-                className="group relative aspect-square rounded-xl overflow-hidden bg-ink-900"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-ink-700 via-ink-800 to-ink-900 group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-ink-400">
-                  <ImageIcon size={26} />
-                  <span className="font-mono text-[10px] uppercase tracking-wider">
-                    {g.category}
-                  </span>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <p className="text-xs text-white truncate">{g.caption}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <AnimatePresence mode="popLayout">
+              {filtered.map((g, idx) => (
+                <motion.div
+                  layout="position"
+                  key={g.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  onClick={() => setSelectedIndex(idx)}
+                  className="group relative aspect-square rounded-xl overflow-hidden bg-ink-900 cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 ring-0 hover:ring-2 hover:ring-gold-400/50"
+                >
+                  <img
+                    src={g.src}
+                    alt={g.caption}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3.5">
+                    <div className="flex justify-end">
+                      <span className="p-2 rounded-full bg-black/50 text-white backdrop-blur-sm shadow-md group-hover:scale-110 transition-transform">
+                        <ZoomIn size={16} />
+                      </span>
+                    </div>
+                    <div>
+                      <span className="inline-block font-mono text-[10px] uppercase tracking-wider text-gold-300 bg-black/40 px-2 py-0.5 rounded mb-1">
+                        {g.category}
+                      </span>
+                      <p className="text-xs font-medium text-white line-clamp-2">{g.caption}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <ImageModal
+        isOpen={selectedIndex !== null}
+        onClose={() => setSelectedIndex(null)}
+        images={filtered}
+        currentIndex={selectedIndex ?? 0}
+        setCurrentIndex={setSelectedIndex}
+      />
     </main>
   );
 }

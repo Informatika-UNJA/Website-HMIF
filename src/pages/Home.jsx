@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -11,10 +12,12 @@ import {
   ImageIcon,
   Share2,
   Briefcase,
+  ZoomIn,
 } from "lucide-react";
 import BackgroundSlider from "../components/BackgroundSlider";
 import PageTransition from "../components/PageTransition";
 import Reveal, { Stagger, StaggerItem } from "../components/Reveal";
+import ImageModal from "../components/ImageModal";
 import {
   siteInfo,
   backgroundImages,
@@ -34,6 +37,9 @@ const bidangIcons = {
 };
 
 export default function Home() {
+  const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(null);
+  const homeGallery = galleryPlaceholder.slice(0, 4);
+
   return (
     <PageTransition>
       {/* ============ HERO ============ */}
@@ -230,7 +236,7 @@ export default function Home() {
 
 
       {/* ============ GALERI PREVIEW ============ */}
-      <section className="relative bg-paper py-24 sm:py-28">
+      <section className="relative bg-ink-50 py-24 sm:py-28">
         <div className="container-hmif">
           <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
             <div>
@@ -248,15 +254,28 @@ export default function Home() {
           </Reveal>
 
           <Stagger className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {galleryPlaceholder.slice(0, 4).map((g) => (
+            {homeGallery.map((g, idx) => (
               <StaggerItem key={g.id}>
-                <Link
-                  to="/galeri"
-                  className="group relative aspect-square rounded-xl overflow-hidden bg-ink-100 flex items-center justify-center"
+                <div
+                  onClick={() => setSelectedGalleryIndex(idx)}
+                  className="group relative aspect-square rounded-xl overflow-hidden bg-ink-900 cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 ring-0 hover:ring-2 hover:ring-gold-400/50"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-ink-700 to-ink-900 opacity-90 group-hover:scale-105 transition-transform duration-500" />
-                  <ImageIcon className="relative text-ink-300" size={28} />
-                </Link>
+                  <img
+                    src={g.src}
+                    alt={g.caption}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3">
+                    <div className="flex justify-end">
+                      <span className="p-1.5 rounded-full bg-black/50 text-white backdrop-blur-sm shadow-md group-hover:scale-110 transition-transform">
+                        <ZoomIn size={14} />
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-white line-clamp-1">{g.caption}</p>
+                    </div>
+                  </div>
+                </div>
               </StaggerItem>
             ))}
           </Stagger>
@@ -292,6 +311,14 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      <ImageModal
+        isOpen={selectedGalleryIndex !== null}
+        onClose={() => setSelectedGalleryIndex(null)}
+        images={homeGallery}
+        currentIndex={selectedGalleryIndex ?? 0}
+        setCurrentIndex={setSelectedGalleryIndex}
+      />
     </PageTransition>
   );
 }
