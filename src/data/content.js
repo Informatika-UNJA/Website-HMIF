@@ -141,6 +141,7 @@ export const divisiOrganisasi = [
       { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", foto: "/team/nicky.jpeg" },
       { nama: "Fabianto Dwitama", jabatan: "Wakil Ketua Himpunan", foto: null },
       { nama: "Artika Sari Kosasih", jabatan: "Sekretaris Himpunan", foto: null },
+      { nama: "Naufal Faisa", jabatan: "Sekretaris 2 Himpunan", foto: null },
       { nama: "Ela Febriani", jabatan: "Bendahara Himpunan", foto: null },
     ],
   },
