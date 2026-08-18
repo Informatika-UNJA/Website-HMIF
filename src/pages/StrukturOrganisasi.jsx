@@ -68,7 +68,7 @@ export default function StrukturOrganisasi() {
                       <span className={`font-mono text-xs ${activeDivisi === i ? "text-gold-400" : "text-ink-400"}`}>
                         {d.singkatan}
                       </span>
-                      <span>—</span>
+                      <span>:</span>
                       <span>{d.nama}</span>
                     </span>
                   </button>
@@ -91,7 +91,7 @@ export default function StrukturOrganisasi() {
                         <span className={`font-mono text-xs ${activeDivisi === i ? "text-gold-400" : "text-ink-400"}`}>
                           {d.singkatan}
                         </span>
-                        <span>—</span>
+                        <span>:</span>
                         <span>{d.nama}</span>
                       </span>
                     </button>
