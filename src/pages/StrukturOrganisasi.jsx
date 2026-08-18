@@ -45,7 +45,7 @@ export default function StrukturOrganisasi() {
                     <span className={`font-mono text-xs ${activeDivisi === i ? "text-gold-400" : "text-ink-400"}`}>
                       {d.singkatan}
                     </span>
-                    <span className="hidden sm:inline">—</span>
+                    <span className="hidden sm:inline">:</span>
                     <span className="hidden sm:inline">{d.nama}</span>
                   </span>
                 </button>
