@@ -20,7 +20,7 @@ export default function Footer() {
               {siteInfo.university}
             </p>
             <a
-              href={`https://instagram.com/${siteInfo.instagram.replace("@", "")}`}
+              href={`https://instagram.com/hmifunja/${siteInfo.instagram.replace("@", "")}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram HMIF UNJA"
