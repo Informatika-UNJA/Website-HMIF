@@ -10,7 +10,7 @@ export const siteInfo = {
   universityShort: "UNJA",
   tagline: "Merangkai Ide, Membangun Solusi",
   email: "hmif@unja.ac.id",
-  instagram: "@hmifunja",
+  instagram: "hmifunja",
   address: "Fakultas Sains dan Teknologi, Universitas Jambi, Kampus Mendalo, Jambi",
 };
 
