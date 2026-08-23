@@ -13,6 +13,7 @@ React + Vite, Tailwind CSS, dan Framer Motion.
 - Halaman **Struktur Organisasi** (pengurus inti + koordinator bidang)
 - Halaman khusus **IFORIA** (PKK Prodi Informatika) lengkap dengan riwayat edisi per tahun
 - Halaman **Galeri** dengan filter kategori
+- Halaman **Berita** dengan arsip, filter kategori, dan detail artikel berbasis Markdown
 - Halaman **Kontak** dengan form (mailto) + info kanal resmi
 - Latar belakang (background) yang **berganti-ganti foto otomatis** dengan efek crossfade
 - Animasi Framer Motion di seluruh halaman (scroll reveal, page transition, hover, dsb.)
@@ -80,11 +81,15 @@ src/data/content.js
 
 Edit langsung di file tersebut — perubahan akan otomatis muncul di semua halaman terkait.
 
+Konten berita dikelola terpisah sebagai file Markdown di `src/content/news/`. Lihat
+`src/content/news/README.md` untuk format metadata dan cara menambah artikel baru.
+
 ## 📁 Struktur Folder
 
 ```
 src/
 ├── components/     → Navbar, Footer, BackgroundSlider, animasi reveal, dll
+├── content/news/   → Artikel berita dalam format Markdown
 ├── data/
 │   └── content.js  → SEMUA teks & data konten (paling penting untuk diedit)
 ├── pages/          → Setiap halaman situs (Home, Tentang, IFORIA, dll)

@@ -19,6 +19,7 @@ export const navLinks = [
   { to: "/tentang", label: "Tentang HMIF" },
   { to: "/program-kerja", label: "Program Kerja" },
   { to: "/struktur-organisasi", label: "Struktur" },
+  { to: "/berita", label: "Berita" },
   { to: "/galeri", label: "Galeri" },
 ];
 

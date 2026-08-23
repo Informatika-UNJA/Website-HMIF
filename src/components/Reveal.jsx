@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 /**
  * Reveal — membungkus konten agar muncul dengan fade + slide saat discroll
- * ke dalam viewport. Menghormati prefers-reduced-motion secara otomatis
- * lewat CSS global (lihat index.css).
+ * ke dalam viewport. Pada prefers-reduced-motion, konten langsung ditampilkan
+ * tanpa state transform awal.
  */
 export default function Reveal({
   children,
@@ -14,9 +14,10 @@ export default function Reveal({
   as = "div",
 }) {
   const Comp = motion[as] || motion.div;
+  const shouldReduceMotion = useReducedMotion();
   return (
     <Comp
-      initial={{ opacity: 0, y }}
+      initial={shouldReduceMotion ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
@@ -28,9 +29,11 @@ export default function Reveal({
 }
 
 export function Stagger({ children, className = "", stagger = 0.1, delay = 0 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial="hidden"
+      initial={shouldReduceMotion ? false : "hidden"}
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
       transition={{ staggerChildren: stagger, delayChildren: delay }}

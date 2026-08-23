@@ -9,10 +9,10 @@ import {
   Cpu,
   Network,
   Brain,
-  ImageIcon,
   Share2,
   Briefcase,
   ZoomIn,
+  ArrowUpRight,
 } from "lucide-react";
 import BackgroundSlider from "../components/BackgroundSlider";
 import PageTransition from "../components/PageTransition";
@@ -26,6 +26,7 @@ import {
   programKerja,
   galleryPlaceholder,
 } from "../data/content";
+import { formatNewsDate, newsArticles } from "../utils/news";
 
 const fokusIcons = [Code2, Brain, Network, Cpu];
 
@@ -39,6 +40,7 @@ const bidangIcons = {
 export default function Home() {
   const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(null);
   const homeGallery = galleryPlaceholder.slice(0, 4);
+  const latestNews = newsArticles.slice(0, 3);
 
   return (
     <PageTransition>
@@ -234,13 +236,117 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ BERITA TERBARU ============ */}
+      <section id="berita-terbaru" className="relative scroll-mt-16 overflow-hidden bg-ink-950 py-24 sm:scroll-mt-20 sm:py-28">
+        <div className="container-hmif">
+          <Reveal className="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="eyebrow mb-4 text-gold-400">04. Berita Terbaru</p>
+              <h2 className="max-w-2xl text-balance font-display text-3xl font-semibold tracking-tight text-paper sm:text-4xl">
+                Kabar terbaru dari HMIF
+              </h2>
+            </div>
+            <Link
+              to="/berita"
+              className="inline-flex min-h-11 w-fit items-center gap-2 border-b-2 border-gold-400 pb-0.5 text-sm font-semibold text-paper transition-colors duration-150 hover:text-gold-300"
+            >
+              Lihat semua berita
+              <ArrowRight aria-hidden="true" size={16} strokeWidth={2} />
+            </Link>
+          </Reveal>
+
+          {latestNews.length > 0 ? (
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+              <Reveal as="article" className="lg:col-span-7">
+                <Link to={`/berita/${latestNews[0].slug}`} className="group block">
+                  <div className="overflow-hidden rounded-3xl shadow-[0_0_0_1px_oklch(1_0_0/0.08),0_20px_48px_-28px_oklch(0_0_0/0.8)]">
+                    <img
+                      src={latestNews[0].cover}
+                      alt={latestNews[0].coverAlt}
+                      className="aspect-[16/10] w-full object-cover outline outline-1 -outline-offset-1 outline-white/10 transition-transform duration-500 ease-out group-hover:scale-[1.025]"
+                    />
+                  </div>
+                  <div className="mt-7 flex items-start justify-between gap-6">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                        <span className="eyebrow text-gold-400">{latestNews[0].category}</span>
+                        <span aria-hidden="true" className="text-ink-500">·</span>
+                        <time dateTime={latestNews[0].date} className="text-sm text-ink-300">
+                          {formatNewsDate(latestNews[0].date)}
+                        </time>
+                      </div>
+                      <h3 className="mt-3 max-w-2xl text-balance font-display text-2xl font-semibold leading-tight tracking-tight text-paper transition-colors duration-150 group-hover:text-gold-300 sm:text-3xl">
+                        {latestNews[0].title}
+                      </h3>
+                      <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-ink-300">
+                        {latestNews[0].excerpt}
+                      </p>
+                    </div>
+                    <span className="mt-1 hidden size-11 shrink-0 items-center justify-center rounded-full text-paper shadow-[0_0_0_1px_oklch(1_0_0/0.18)] transition-[background-color,color] duration-150 group-hover:bg-gold-400 group-hover:text-ink-950 sm:flex">
+                      <ArrowUpRight aria-hidden="true" size={20} strokeWidth={1.5} />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+
+              <div className="flex flex-col divide-y divide-white/10 border-y border-white/10 lg:col-span-5 lg:border-t-0">
+                {latestNews.slice(1).map((article, index) => (
+                  <Reveal as="article" key={article.slug} delay={0.1 + index * 0.08} className="flex-1">
+                    <Link
+                      to={`/berita/${article.slug}`}
+                      className="group/row grid h-full gap-5 py-7 sm:grid-cols-[9rem_1fr] sm:items-center lg:grid-cols-1 xl:grid-cols-[9rem_1fr]"
+                    >
+                      <div className="overflow-hidden rounded-xl">
+                        <img
+                          src={article.cover}
+                          alt={article.coverAlt}
+                          loading="lazy"
+                          className="aspect-[16/10] w-full object-cover outline outline-1 -outline-offset-1 outline-white/10 transition-transform duration-300 ease-out group-hover/row:scale-[1.025]"
+                        />
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                            <span className="eyebrow text-gold-400">{article.category}</span>
+                            <span aria-hidden="true" className="text-ink-500">·</span>
+                            <time dateTime={article.date} className="text-xs text-ink-400">
+                              {formatNewsDate(article.date)}
+                            </time>
+                          </div>
+                          <h3 className="mt-3 text-balance font-display text-xl font-semibold leading-tight text-paper transition-colors duration-150 group-hover/row:text-gold-300">
+                            {article.title}
+                          </h3>
+                          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-ink-300">
+                            {article.excerpt}
+                          </p>
+                        </div>
+                        <ArrowUpRight
+                          aria-hidden="true"
+                          className="mt-1 shrink-0 text-ink-400 transition-[color,scale] duration-150 group-hover/row:text-gold-300 group-active/row:scale-[0.96]"
+                          size={20}
+                          strokeWidth={1.5}
+                        />
+                      </div>
+                    </Link>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <Reveal className="py-12 text-center">
+              <p className="text-ink-300">Belum ada berita yang diterbitkan.</p>
+            </Reveal>
+          )}
+        </div>
+      </section>
+
 
       {/* ============ GALERI PREVIEW ============ */}
       <section className="relative bg-ink-50 py-24 sm:py-28">
         <div className="container-hmif">
           <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
             <div>
-              <p className="eyebrow text-teal-600 mb-4">04. Galeri</p>
+              <p className="eyebrow text-teal-600 mb-4">05. Galeri</p>
               <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight">
                 Momen-momen HMIF
               </h2>
