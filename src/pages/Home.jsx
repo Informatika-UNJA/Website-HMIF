@@ -185,49 +185,57 @@ export default function Home() {
       </section>
 
       {/* ============ PROGRAM KERJA PREVIEW ============ */}
-      <section className="relative bg-paper py-24 sm:py-28">
-        <div className="container-hmif">
-          <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
-            <div>
-              <p className="eyebrow text-teal-600 mb-4">03. Program Kerja</p>
-              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight max-w-xl">
-                Divisi & Fokus Program Kerja HMIF
+      <section id="program-kerja" className="relative scroll-mt-16 bg-paper py-24 sm:scroll-mt-20 sm:py-28">
+        <div className="container-hmif grid gap-14 lg:grid-cols-12 lg:gap-12 xl:gap-20">
+          <Reveal className="lg:col-span-4" y={28}>
+            <div className="lg:sticky lg:top-32">
+              <p className="eyebrow mb-4 text-teal-600">03. Program Kerja</p>
+              <h2 className="max-w-lg text-balance font-display text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl">
+                Empat divisi, satu arah gerak
               </h2>
+              <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-ink-500 sm:text-lg">
+                Setiap divisi memiliki peran khusus, lalu bergerak sebagai satu sistem untuk mendukung mahasiswa Informatika.
+              </p>
+              <Link
+                to="/program-kerja"
+                className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-ink-900 py-2.5 ps-5 pe-[18px] text-sm font-semibold text-paper transition-[background-color,scale] duration-150 ease-out hover:bg-ink-700 active:scale-[0.96]"
+              >
+                Jelajahi semua program
+                <ArrowRight aria-hidden="true" size={16} strokeWidth={2} />
+              </Link>
             </div>
-            <Link
-              to="/program-kerja"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-900 border-b-2 border-gold-400 pb-0.5 w-fit hover:text-teal-600 transition-colors"
-            >
-              Lihat semua program <ArrowRight size={15} />
-            </Link>
           </Reveal>
 
-          <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <Stagger className="divide-y divide-ink-200 border-y border-ink-200 lg:col-span-8" stagger={0.08}>
             {programKerja.map((bidang) => {
               const IconComponent = bidangIcons[bidang.kode] || Layers;
               return (
                 <StaggerItem key={bidang.kode}>
                   <Link
                     to="/program-kerja"
-                    className="group flex h-full flex-col justify-between rounded-2xl border border-ink-100 bg-white p-7 shadow-sm hover:shadow-md hover:border-teal-500/40 transition-all duration-300"
+                    className="group grid min-h-44 grid-cols-[1fr_auto] gap-x-4 gap-y-5 py-8 transition-colors duration-150 hover:bg-white/70 sm:grid-cols-[8rem_1fr_auto] sm:items-center sm:gap-7 sm:px-5 sm:-mx-5"
                   >
-                    <div>
-                      <div className="flex items-center justify-between mb-5">
-                        <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
-                          <IconComponent size={22} />
-                        </div>
-                        <span className="font-mono text-xs font-semibold tracking-wider text-amber-700 bg-amber-50 px-3 py-1 rounded-md border border-amber-200">
-                          {bidang.kode}
-                        </span>
-                      </div>
+                    <div className="col-start-1 row-start-1 flex items-center gap-3 sm:flex-col sm:items-start">
+                      <span className="flex size-12 items-center justify-center rounded-xl bg-white text-teal-700 shadow-[0_0_0_1px_oklch(0_0_0/0.06),0_2px_4px_oklch(0_0_0/0.06)] transition-[background-color,color,box-shadow] duration-150 group-hover:bg-ink-900 group-hover:text-paper group-hover:shadow-[0_0_0_1px_oklch(0_0_0/0.08),0_4px_8px_oklch(0_0_0/0.08)]">
+                        <IconComponent aria-hidden="true" size={22} strokeWidth={1.5} />
+                      </span>
+                      <span className="eyebrow whitespace-nowrap text-teal-600">
+                        {bidang.kode}
+                      </span>
+                    </div>
 
-                      <h3 className="font-display font-semibold text-xl text-ink-900 mb-2 group-hover:text-teal-600 transition-colors">
+                    <div className="col-span-2 row-start-2 sm:col-span-1 sm:col-start-2 sm:row-start-1">
+                      <h3 className="text-balance font-display text-xl font-semibold leading-tight text-ink-900 transition-colors duration-150 group-hover:text-teal-700 sm:text-2xl">
                         {bidang.nama}
                       </h3>
-                      <p className="text-sm text-ink-600 leading-relaxed mb-2">
+                      <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-ink-500 sm:text-base">
                         {bidang.deskripsi}
                       </p>
                     </div>
+
+                    <span className="col-start-2 row-start-1 flex size-11 items-center justify-center self-start rounded-full text-ink-600 shadow-[0_0_0_1px_oklch(0_0_0/0.12)] transition-[background-color,color,scale] duration-150 ease-out group-hover:bg-gold-400 group-hover:text-ink-950 group-active:scale-[0.96] sm:col-start-3 sm:self-auto">
+                      <ArrowUpRight aria-hidden="true" size={20} strokeWidth={1.5} />
+                    </span>
                   </Link>
                 </StaggerItem>
               );
@@ -237,9 +245,9 @@ export default function Home() {
       </section>
 
       {/* ============ BERITA TERBARU ============ */}
-      <section id="berita-terbaru" className="relative scroll-mt-16 overflow-hidden bg-ink-950 py-24 sm:scroll-mt-20 sm:py-28">
+      <section id="berita-terbaru" className="relative scroll-mt-16 overflow-hidden bg-ink-950 py-20 sm:scroll-mt-20 sm:py-24">
         <div className="container-hmif">
-          <Reveal className="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <Reveal className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="eyebrow mb-4 text-gold-400">04. Berita Terbaru</p>
               <h2 className="max-w-2xl text-balance font-display text-3xl font-semibold tracking-tight text-paper sm:text-4xl">
@@ -256,17 +264,17 @@ export default function Home() {
           </Reveal>
 
           {latestNews.length > 0 ? (
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
               <Reveal as="article" className="lg:col-span-7">
                 <Link to={`/berita/${latestNews[0].slug}`} className="group block">
                   <div className="overflow-hidden rounded-3xl shadow-[0_0_0_1px_oklch(1_0_0/0.08),0_20px_48px_-28px_oklch(0_0_0/0.8)]">
                     <img
                       src={latestNews[0].cover}
                       alt={latestNews[0].coverAlt}
-                      className="aspect-[16/10] w-full object-cover outline outline-1 -outline-offset-1 outline-white/10 transition-transform duration-500 ease-out group-hover:scale-[1.025]"
+                      className="aspect-video w-full object-cover outline outline-1 -outline-offset-1 outline-white/10 transition-transform duration-500 ease-out group-hover:scale-[1.025]"
                     />
                   </div>
-                  <div className="mt-7 flex items-start justify-between gap-6">
+                  <div className="mt-6 flex items-start justify-between gap-6">
                     <div>
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                         <span className="eyebrow text-gold-400">{latestNews[0].category}</span>
@@ -278,7 +286,7 @@ export default function Home() {
                       <h3 className="mt-3 max-w-2xl text-balance font-display text-2xl font-semibold leading-tight tracking-tight text-paper transition-colors duration-150 group-hover:text-gold-300 sm:text-3xl">
                         {latestNews[0].title}
                       </h3>
-                      <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-ink-300">
+                      <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-ink-300">
                         {latestNews[0].excerpt}
                       </p>
                     </div>
@@ -294,7 +302,7 @@ export default function Home() {
                   <Reveal as="article" key={article.slug} delay={0.1 + index * 0.08} className="flex-1">
                     <Link
                       to={`/berita/${article.slug}`}
-                      className="group/row grid h-full gap-5 py-7 sm:grid-cols-[9rem_1fr] sm:items-center lg:grid-cols-1 xl:grid-cols-[9rem_1fr]"
+                      className="group/row grid h-full gap-5 py-6 sm:grid-cols-[9rem_1fr] sm:items-center lg:grid-cols-1 xl:grid-cols-[9rem_1fr]"
                     >
                       <div className="overflow-hidden rounded-xl">
                         <img
