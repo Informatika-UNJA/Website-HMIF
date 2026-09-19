@@ -116,7 +116,7 @@ export const programKerja = [
 // Tambahkan `foto: "/team/nama-file.jpg"` jika sudah punya foto asli.
 // Selama `foto` kosong (null), akan ditampilkan ikon placeholder.
 export const strukturInti = [
-  { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", angkatan: "2024", foto: null },
+  { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", angkatan: "2024", foto: "/team/NICKY PRADHITIYA DINATA.JPG" },
   { nama: "Fabianto Dwitama", jabatan: "Wakil Ketua Himpunan", angkatan: "2024", foto: null },
   { nama: "Artika Sari Kosasih", jabatan: "Sekretaris Himpunan", angkatan: "2024", foto: null },
   { nama: "Ela Febriani", jabatan: "Bendahara Himpunan", angkatan: "2024", foto: null },
@@ -156,11 +156,11 @@ export const divisiOrganisasi = [
       { nama: "Nandhita Novelie Mykella", jabatan: "Sekretaris Divisi", foto: "/team/Nandhita Novelie Mykella .JPG" },
       { nama: "Nagita Syahira Putri", jabatan: "Bendahara Divisi", foto: "/team/NAGITA SYAHIRA PUTRI .JPG" },
       { nama: "Johanes Sinalsal Sinulingga", jabatan: "Ketua Bidang Kewirausahaan", foto: "/team/Johanes Sinalsal.JPG" },
-      { nama: "Muhammad Ariq Milzam Alfarabi", jabatan: "Ketua Bidang Relasi dan Marketing", foto: null },
+      { nama: "Muhammad Ariiq Milzam Alfarabi", jabatan: "Ketua Bidang Relasi dan Marketing", foto: null },
       { nama: "Rafli Rahmat", jabatan: "Anggota", foto: "/team/Rafli Rahmat .jpg" },
       { nama: "Alfredo Nobel Tambunan", jabatan: "Anggota", foto: null },
       { nama: "Sirr Hanif Al-Mufarrid", jabatan: "Anggota", foto: "/team/Sir.JPG" },
-      { nama: "Farel Herdiyan", jabatan: "Anggota", foto: "/team/Farrel.JPG" },
+      { nama: "Farrel Herdiyan", jabatan: "Anggota", foto: "/team/Farrel.JPG" },
     ],
   },
   {
@@ -175,11 +175,11 @@ export const divisiOrganisasi = [
       { nama: "Alya Resya Madani", jabatan: "Sekretaris Divisi", foto: "/team/Alya Resya Madani.JPG" },
       { nama: "Reza", jabatan: "Ketua Bidang Manajemen Sosial Media", foto: "/team/Reza.JPG" },
       { nama: "Albi Muhtarom", jabatan: "Anggota", foto: "/team/Albi Muhtarom.JPG" },
-      { nama: "Fuad Rizqi Abhori", jabatan: "Anggota", foto: "/team/Fuad.JPG" },
+      { nama: "Fuad Rizqi Abrori", jabatan: "Anggota", foto: "/team/Fuad.JPG" },
       { nama: "Siti Manisa", jabatan: "Anggota", foto: "/team/Siti Manisa.JPG" },
       { nama: "Muhammad Akbar Ciptasati", jabatan: "Anggota", foto: "/team/Muhammad Akbar Ciptasati.JPG" },
       { nama: "Dego Septiano", jabatan: "Anggota", foto: "/team/Dego septiano.JPG" },
-      { nama: "Riocta Lukie Ramadian", jabatan: "Anggota", foto: null },
+      { nama: "Riolocta Lukie Ramadian", jabatan: "Anggota", foto: null },
       { nama: "Ello Bagas Wicaksono", jabatan: "Anggota", foto: "/team/Ello Bagas Wicaksono .JPG" },
       { nama: "Sebastian Muhtadi", jabatan: "Anggota", foto: "/team/Sebastian Muhtadi.jpg" },
     ],
@@ -211,9 +211,9 @@ export const divisiOrganisasi = [
     anggota: [
       { nama: "Khoirul Faza Perdana", jabatan: "Ketua Divisi", foto: "/team/Faza.JPG" },
       { nama: "Dika Jaya Saputra", jabatan: "Wakil Ketua Divisi", foto: "/team/Dika.JPG" },
-      { nama: "Nabilla Lidyan Nisa", jabatan: "Sekretaris Divisi", foto: "/team/Nabila Lidyan Nisa_F1E325037.JPG" },
+      { nama: "Nabila Lidyan Nisa", jabatan: "Sekretaris Divisi", foto: "/team/Nabila Lidyan Nisa_F1E325037.JPG" },
       { nama: "Diky Bintang Pamungkas", jabatan: "Ketua Bidang Fotografi dan Vidiografi", foto: null },
-      { nama: "M. Faris Daffarindra", jabatan: "Anggota", foto: "/team/M. Faris Daffarindra.JPG" },
+      { nama: "M. Faris Daffarindra", jabatan: "Ketua Bidang Desain", foto: "/team/M. Faris Daffarindra.JPG" },
       { nama: "Muhammad Aziz Syah Dani", jabatan: "Anggota", foto: "/team/Muhammad Aziz Syah Dani.JPG" },
       { nama: "Fajri Aulia", jabatan: "Anggota", foto: "/team/Fajri Aulia.JPG" },
       { nama: "Rifky Ramadhan", jabatan: "Anggota", foto: "/team/Rifky Ramadan.JPG" },
