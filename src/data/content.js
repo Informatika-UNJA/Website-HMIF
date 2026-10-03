@@ -105,11 +105,11 @@ export const programKerja = [
   {
     kode: "DANUS",
     nama: "Dana dan Usaha",
-    deskripsi: "Menyalurkan potensi mahasiswa di luar bidang akademik.",
+    deskripsi: "Mengelola dan mengusahakan sumber pendanaan dan berbagai kebutuhan yang diperlukan untuk menunjang kelancaran setiap program kerja yang akan dilaksanakan oleh Himpunan Mahasiswa Informatika.",
     program: [
-      "Turnamen olahraga & e-sport antar angkatan",
-      "Malam apresiasi seni dan kreativitas mahasiswa",
-      "Klub-klub minat mahasiswa Informatika",
+      "Menjual merchandise official HMIF (Jaket, Pdh, dll.)",
+      "Menjual souvenir/merchandise resmi HMIF (Stiker, Gantungan kunci, dll.)",
+      "Menyelenggarakan bazar atau event kreatif",
     ],
   },
 ];
@@ -117,7 +117,7 @@ export const programKerja = [
 // Tambahkan `foto: "/team/nama-file.jpg"` jika sudah punya foto asli.
 // Selama `foto` kosong (null), akan ditampilkan ikon placeholder.
 export const strukturInti = [
-  { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", angkatan: "2024", foto: null },
+  { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", angkatan: "2024", foto: "/team/NICKY PRADHITIYA DINATA.JPG" },
   { nama: "Fabianto Dwitama", jabatan: "Wakil Ketua Himpunan", angkatan: "2024", foto: null },
   { nama: "Artika Sari Kosasih", jabatan: "Sekretaris Himpunan", angkatan: "2024", foto: null },
   { nama: "Ela Febriani", jabatan: "Bendahara Himpunan", angkatan: "2024", foto: null },
@@ -131,95 +131,106 @@ export const strukturBidang = [
 ];
 
 // Data lengkap divisi beserta anggotanya untuk halaman Struktur.
+// Tambahkan fotoBersama: "/team/nama-file-bersama.jpg" untuk foto kelompok divisi
 // Tambahkan foto: "/team/nama-file.jpg" untuk tiap anggota jika sudah tersedia.
 export const divisiOrganisasi = [
   {
     id: "bph",
     nama: "Badan Pengurus Harian",
     singkatan: "BPH",
-    deskripsi: "Pengurus inti yang memimpin dan mengoordinasikan seluruh kegiatan HMIF.",
+    fotoBersama: "/team/BPH.JPG", // Masukkan path foto bersama pengurus BPH, misal: "/team/bph-bersama.jpg"
+    deskripsi:
+      "Badan Pengurus Harian (BPH) merupakan poros utama kepemimpinan dan manajemen organisasi di lingkungan Himpunan Mahasiswa Informatika (HMIF). Divisi inti ini bertanggung jawab penuh dalam merumuskan arah kebijakan strategis, mengoordinasikan seluruh divisi dan badan otonom, mengawal stabilitas internal, serta menjaga kesinambungan visi dan misi himpunan agar seluruh agenda kerja terlaksana secara terarah, akuntabel, dan profesional.",
     anggota: [
-      { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", foto: "/team/nicky.jpeg" },
+      { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", foto: "/team/NICKY PRADHITIYA DINATA.JPG" },
       { nama: "Fabianto Dwitama", jabatan: "Wakil Ketua Himpunan", foto: null },
       { nama: "Artika Sari Kosasih", jabatan: "Sekretaris Himpunan", foto: null },
       { nama: "Naufal Faisa", jabatan: "Sekretaris 2 Himpunan", foto: null },
-      { nama: "Ela Febriani", jabatan: "Bendahara Himpunan", foto: null },
+      { nama: "Ela Febriani", jabatan: "Bendahara Himpunan", foto: "/team/Ela.JPG" },
     ],
   },
   {
     id: "danus",
     nama: "Dana dan Usaha",
     singkatan: "DANUS",
-    deskripsi: "Mengelola sumber pendanaan dan kegiatan usaha untuk mendukung program kerja HMIF.",
+    fotoBersama: "/team/Danus.JPG", // Masukkan path foto bersama pengurus Danus, misal: "/team/danus-bersama.jpg"
+    deskripsi:
+      "Divisi Dana Usaha (Danus) adalah divisi yang bertanggung jawab dalam merancang, mengelola, dan melaksanakan kegiatan usaha organisasi guna memperoleh sumber pendanaan mandiri. Divisi ini berperan sebagai penunjang keuangan himpunan mahasiswa melalui kegiatan kewirausahaan yang kreatif, inovatif, dan berkelanjutan, sehingga dapat mendukung pelaksanaan program kerja serta meningkatkan kemandirian finansial organisasi.",
     anggota: [
-      { nama: "Fiqri Arrijal", jabatan: "Ketua Divisi", foto: "/team/piqri.jpeg" },
-      { nama: "Novindra Augustiar", jabatan: "Wakil Ketua Divisi", foto: null },
-      { nama: "Nandhita Novelie Mykella", jabatan: "Sekretaris Divisi", foto: null },
-      { nama: "Nagita Syahira Putri", jabatan: "Bendahara Divisi", foto: null },
-      { nama: "Johanes Sinalsal Sinulingga", jabatan: "Ketua Bidang Kewirausahaan", foto: null },
-      { nama: "Muhammad Ariq Milzam Alfarabi", jabatan: "Ketua Bidang Relasi dan Marketing", foto: null },
-      { nama: "Rafli Rahmat", jabatan: "Anggota", foto: null },
-      { nama: "Alfredo Nobel Tambunan", jabatan: "Anggota", foto: null },
-      { nama: "Sirr Hanif Al-Mufarrid", jabatan: "Anggota", foto: null },
-      { nama: "Farel Herdiyan", jabatan: "Anggota", foto: null },
+      { nama: "Fiqri Arrijal", jabatan: "Ketua Divisi", foto: "/team/Fiqri Arrijal.JPG" },
+      { nama: "Novindra Augustiar", jabatan: "Wakil Ketua Divisi", foto: "/team/Novindraaugustiar.JPG" },
+      { nama: "Nandhita Novelie Mykella", jabatan: "Sekretaris Divisi", foto: "/team/Nandhita Novelie Mykella .JPG" },
+      { nama: "Nagita Syahira Putri", jabatan: "Bendahara Divisi", foto: "/team/NAGITA SYAHIRA PUTRI .JPG" },
+      { nama: "Johanes Sinalsal Sinulingga", jabatan: "Ketua Bidang Kewirausahaan", foto: "/team/Johanes Sinalsal.JPG" },
+      { nama: "Muhammad Ariiq Milzam Alfarabi", jabatan: "Ketua Bidang Relasi dan Marketing", foto: null },
+      { nama: "Rafli Rahmat", jabatan: "Anggota", foto: "/team/Rafli Rahmat .jpg" },
+      { nama: "Alfredo Nobel Tambunan", jabatan: "Anggota", foto: "/team/nobel.JPG" },
+      { nama: "Sirr Hanif Al-Mufarrid", jabatan: "Anggota", foto: "/team/Sir.JPG" },
+      { nama: "Farrel Herdiyan", jabatan: "Anggota", foto: "/team/Farrel.JPG" },
     ],
   },
   {
     id: "humas",
     nama: "Hubungan Masyarakat",
     singkatan: "HUMAS",
-    deskripsi: "Menjaga citra HMIF, mengelola publikasi, dan membangun relasi dengan pihak eksternal.",
+    fotoBersama: "/team/HUMAS.JPG", // Masukkan path foto bersama pengurus Humas, misal: "/team/humas-bersama.jpg"
+    deskripsi:
+      "Divisi Hubungan Masyarakat (Humas) merupakan garda terdepan dalam membangun dan menjaga citra positif Himpunan Mahasiswa Informatika (HMIF). Divisi ini bertugas menjalin komunikasi strategis, memperluas jejaring kemitraan dengan instansi eksternal, alumni, dan organisasi mitra, serta mengelola publikasi media sosial untuk memastikan keterbukaan informasi dan relasi yang harmonis.",
     anggota: [
-      { nama: "Maulidya Nazlita Az-Zahara", jabatan: "Ketua Divisi", foto: null },
-      { nama: "Ridho Pangestu", jabatan: "Wakil Ketua Divisi", foto: null },
-      { nama: "Muhammad Albar Alzaky", jabatan: "Ketua Bidang Relasi dan Kemitraan", foto: null },
-      { nama: "Alya Resya Madani", jabatan: "Sekretaris Divisi", foto: null },
-      { nama: "Reza", jabatan: "Ketua Bidang Manajemen Sosial Media", foto: null },
-      { nama: "Albi Muhtarom", jabatan: "Anggota", foto: null },
-      { nama: "Fuad Rizqi Abhori", jabatan: "Anggota", foto: null },
-      { nama: "Siti Manisa", jabatan: "Anggota", foto: null },
-      { nama: "Muhammad Akbar Ciptasati", jabatan: "Anggota", foto: null },
-      { nama: "Dego Septiano", jabatan: "Anggota", foto: null },
-      { nama: "Riocta Lukie Ramadian", jabatan: "Anggota", foto: null },
-      { nama: "Ello Bagas Wicaksono", jabatan: "Anggota", foto: null },
-      { nama: "Sebastian Muhtadi", jabatan: "Anggota", foto: null },
+      { nama: "Maulidya Nazlita Az-Zahara", jabatan: "Ketua Divisi", foto: "/team/Maulidya Nazlita Az-Zahara .JPG" },
+      { nama: "Ridho Pangestu", jabatan: "Wakil Ketua Divisi", foto: "/team/Ridho Pangestu .JPG" },
+      { nama: "Muhammad Albar Alzaky", jabatan: "Ketua Bidang Relasi dan Kemitraan", foto: "/team/jekz.JPG" },
+      { nama: "Alya Resya Madani", jabatan: "Sekretaris Divisi", foto: "/team/Alya Resya Madani.JPG" },
+      { nama: "Reza", jabatan: "Ketua Bidang Manajemen Sosial Media", foto: "/team/Reza.JPG" },
+      { nama: "Albi Muhtarom", jabatan: "Anggota", foto: "/team/Albi Muhtarom.JPG" },
+      { nama: "Fuad Rizqi Abrori", jabatan: "Anggota", foto: "/team/Fuad.JPG" },
+      { nama: "Siti Manisa", jabatan: "Anggota", foto: "/team/Siti Manisa.JPG" },
+      { nama: "Muhammad Akbar Ciptasati", jabatan: "Anggota", foto: "/team/Muhammad Akbar Ciptasati.JPG" },
+      { nama: "Dego Septiano", jabatan: "Anggota", foto: "/team/Dego septiano.JPG" },
+      { nama: "Riolocta Lukie Ramadian", jabatan: "Anggota", foto: null },
+      { nama: "Ello Bagas Wicaksono", jabatan: "Anggota", foto: "/team/Ello Bagas Wicaksono .JPG" },
+      { nama: "Sebastian Muhtadi", jabatan: "Anggota", foto: "/team/Sebastian Muhtadi.jpg" },
     ],
   },
   {
     id: "psda",
     nama: "Pemberdayaan Sumber Daya Anggota",
     singkatan: "PSDA",
-    deskripsi: "Menyiapkan mahasiswa Informatika yang siap berorganisasi dan berkembang secara personal.",
+    fotoBersama: "/team/PSDA.JPG", // Masukkan path foto bersama pengurus PSDA, misal: "/team/psda-bersama.jpg"
+    deskripsi:
+      "Divisi Pemberdayaan Sumber Daya Anggota (PSDA) berfokus pada pembinaan karakter, pengembangan potensi diri, dan penguatan solidaritas antar-anggota HMIF. Divisi ini menginisiasi berbagai program kaderisasi, pelatihan kepemimpinan, dan kegiatan pengembangan internal guna mencetak insan akademis Informatika yang berintegritas, aktif, dan berdaya saing.",
     anggota: [
-      { nama: "Rizky Ramadhan Alfarizi", jabatan: "Ketua Divisi", foto: null },
-      { nama: "Rizki Pratama", jabatan: "Wakil Ketua Divisi", foto: null },
-      { nama: "Nurriska Alfadillah", jabatan: "Sekretaris Divisi", foto: null },
+      { nama: "Rizky Ramadhan Alfarizi", jabatan: "Ketua Divisi", foto: "/team/Rizky Ramadhan Alfarizi.JPG" },
+      { nama: "Rizki Pratama", jabatan: "Wakil Ketua Divisi", foto: "/team/prat.JPG" },
+      { nama: "Nurriska Alfadillah", jabatan: "Sekretaris Divisi", foto: "/team/Nurriska Alfadilah.JPG" },
       { nama: "Dimas Juliandra Marshall", jabatan: "Ketua Bidang Pengembangan Kapasitas Anggota", foto: null },
-      { nama: "Dava Fajar Al'valah", jabatan: "Anggota", foto: null },
-      { nama: "Miratil Hayati", jabatan: "Anggota", foto: null },
-      { nama: "Muhammad Abizar Al-Ghifari", jabatan: "Anggota", foto: null },
-      { nama: "Haikal Razan", jabatan: "Anggota", foto: null },
-      { nama: "Jeffry Favian Meker", jabatan: "Anggota", foto: null },
-      { nama: "Muhammad Adrian Alfifbran", jabatan: "Anggota", foto: null },
-      { nama: "Nawfal Abyaz Sadat", jabatan: "Anggota", foto: null },
+      { nama: "Dava Fajar Al'valah", jabatan: "Anggota", foto: "/team/Dava fajar Al'valah.JPG" },
+      { nama: "Miratil Hayati", jabatan: "Anggota", foto: "/team/MIRATIL HAYATI.JPG" },
+      { nama: "Muhammad Abizar Al-Ghifari", jabatan: "Anggota", foto: "/team/M.Abizar Al-Ghifari.jpeg" },
+      { nama: "Haikal Razan", jabatan: "Anggota", foto: "/team/Haikal Razan.JPG" },
+      { nama: "Jeffry Favian Meker", jabatan: "Anggota", foto: "/team/Jeffry.jpeg" },
+      { nama: "Muhammad Adrian Alfifbran", jabatan: "Anggota", foto: "/team/Muhammad Adrian alfibran.JPG" },
+      { nama: "Nawfal Abyaz Sadat", jabatan: "Anggota", foto: "/team/Katsuto.JPG" },
     ],
   },
   {
     id: "mit",
     nama: "Media Informasi dan Teknologi",
     singkatan: "MIT",
-    deskripsi: "Mendorong budaya belajar teknis, eksplorasi teknologi, dan pengelolaan media digital HMIF.",
+    fotoBersama: "/team/MIT.JPG", // Masukkan path foto bersama pengurus MIT, misal: "/team/mit-bersama.jpg"
+    deskripsi:
+      "Divisi Media Informasi dan Teknologi (MIT) adalah divisi teknis dan kreatif yang bertugas mendorong eksplorasi teknologi informasi, riset, serta pengembangan inovasi digital di lingkungan HMIF. Selain itu, divisi ini bertanggung jawab atas pengelolaan infrastruktur sistem informasi himpunan, dokumentasi multimedia, serta penciptaan aset visual dan konten kreatif yang edukatif dan inspiratif.",
     anggota: [
-      { nama: "Khoirul Faza Perdana", jabatan: "Ketua Divisi", foto: null },
-      { nama: "Dika Jaya Saputra", jabatan: "Wakil Ketua Divisi", foto: null },
-      { nama: "Nabilla Lidyan Nisa", jabatan: "Sekretaris Divisi", foto: null },
+      { nama: "Khoirul Faza Perdana", jabatan: "Ketua Divisi", foto: "/team/Faza.JPG" },
+      { nama: "Dika Jaya Saputra", jabatan: "Wakil Ketua Divisi", foto: "/team/Dika.JPG" },
+      { nama: "Nabila Lidyan Nisa", jabatan: "Sekretaris Divisi", foto: "/team/Nabila Lidyan Nisa_F1E325037.JPG" },
       { nama: "Diky Bintang Pamungkas", jabatan: "Ketua Bidang Fotografi dan Vidiografi", foto: null },
-      { nama: "M. Faris Daffarindra", jabatan: "Anggota", foto: null },
-      { nama: "Muhammad Aziz Syah Dani", jabatan: "Anggota", foto: null },
-      { nama: "Fajri Aulia", jabatan: "Anggota", foto: null },
-      { nama: "Rifky Ramadhan", jabatan: "Anggota", foto: null },
-      { nama: "Pascal Touriqe Alkhoiri", jabatan: "Anggota", foto: null },
-      { nama: "Measya Shafila Veliandri", jabatan: "Anggota", foto: null },
+      { nama: "M. Faris Daffarindra", jabatan: "Ketua Bidang Desain", foto: "/team/M. Faris Daffarindra.JPG" },
+      { nama: "Muhammad Aziz Syah Dani", jabatan: "Anggota", foto: "/team/Muhammad Aziz Syah Dani.JPG" },
+      { nama: "Fajri Aulia", jabatan: "Anggota", foto: "/team/Fajri Aulia.JPG" },
+      { nama: "Rifky Ramadhan", jabatan: "Anggota", foto: "/team/Rifky Ramadan.JPG" },
+      { nama: "Pascal Touriqe Alkhoiri", jabatan: "Anggota", foto: "/team/Pascal Touriqe Alkhoiri .JPG" },
+      { nama: "Measya Shafila Veliandri", jabatan: "Anggota", foto: "/team/Measya Shafila Veliandri.JPG" },
     ],
   },
 ];
@@ -240,10 +251,65 @@ export const galleryCategories = [
 // Letakkan foto pada /public/gallery/ lalu daftarkan di sini.
 export const galleryPlaceholder = [
   { id: 1, category: "kegiatan", caption: "Pengukuhan Himpunan Mahasiswa Informatika", src: "/gallery/pengukuhan-1.jpg" },
+  { id: 2, category: "kegiatan", caption: "Pembukaan Himpunan Mahasiswa Informatika", src: "/gallery/Pengukuhan-2.JPG" },
+  { id: 3, category: "kegiatan", caption: "Malam Keakraban Himpunan Mahasiswa Informatika", src: "/gallery/Makrab.JPG" },
+  { id: 4, category: "kegiatan", caption: "Lomba antar Divisi saat Makrab HMIF", src: "/gallery/Makrab-2.JPG" },
+  { id: 5, category: "kegiatan", caption: " Pkkmb-Fst Universitas Jambi", src: "/gallery/pkkmb-fst.jpg" },
+  { id: 6, category: "kegiatan", caption: " Malam Keakraban Himpunan Mahasiswa Informatika", src: "/gallery/makrab-3.jpg" },
+  { id: 7, category: "kegiatan", caption: " Pengukuhan Himpunan Mahasiswa Informatika", src: "/gallery/pengukuhan-3.jpg" },
+  { id: 8, category: "kegiatan", caption: " Malam Keakraban Himpunan Mahasiswa Informatika", src: "/gallery/makrab-4.jpg" },
+
+
+
+
 ];
 
 export const contactChannels = [
   { label: "Email", value: siteInfo.email, href: `mailto:${siteInfo.email}` },
   { label: "Instagram", value: siteInfo.instagram, href: "https://instagram.com/hmifunja" },
   { label: "Lokasi", value: siteInfo.address, href: "https://www.google.com/maps/place/Fakultas+Sains+dan+Teknologi+UNJA/@-1.614875,103.519825,1086m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2e2f62c01aa6b39b:0x79e2b7ce458689aa!8m2!3d-1.614875!4d103.519825!16s%2Fg%2F11c30r4v1m?entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" },
+];
+
+export const beritaCategories = [
+  { key: "semua", label: "Semua Berita" },
+  { key: "himpunan", label: "Himpunan" },
+];
+
+export const beritaList = [
+  {
+    id: 1,
+    slug: "pengukuhan-kepengurusan-hmif-unja",
+    judul: "Pengukuhan Resmi Pengurus HMIF UNJA Periode Berjalan",
+    ringkasan: "Pelantikan dan pengukuhan resmi pengurus Himpunan Mahasiswa Informatika Universitas Jambi di Fakultas Sains dan Teknologi, menandai komitmen baru penguatan kolaborasi mahasiswa.",
+    isi: [
+      "Pelantikan dan pengukuhan jajaran pengurus Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi periode berjalan resmi diselenggarakan dengan khidmat di lingkungan Fakultas Sains dan Teknologi. Acara ini dihadiri oleh pimpinan fakultas, koordinator program studi, para dosen pembina, serta perwakilan lembaga kemahasiswaan se-FST UNJA.",
+      "Dalam sambutannya, Ketua Himpunan HMIF menyampaikan tekad kepengurusan untuk menjadikan HMIF sebagai wadah akselerasi potensi akademik maupun non-akademik bagi seluruh mahasiswa Informatika. Fokus utama kepengurusan mencakup peningkatan budaya riset dan kompetisi, pengembangan jejaring industri teknologi, serta penanaman karakter kepemimpinan yang berintegritas.",
+      "Prosesi pengukuhan diakhiri dengan pembacaan ikrar pengurus dan penandatanganan berita acara serah terima amanah, dilanjutkan dengan sesi foto bersama seluruh jajaran pengurus baru bersama dosen pembina."
+    ],
+    kategori: "himpunan",
+    kategoriLabel: "Himpunan",
+    tanggal: "15 Maret 2026",
+    penulis: "Divisi Humas",
+    waktuBaca: "3 menit",
+    gambar: "/gallery/pengukuhan-1.jpg",
+    featured: true,
+  },
+  {
+    id: 2,
+    slug: "malam-keakraban-makrab-mahasiswa-informatika",
+    judul: "Malam Keakraban (Makrab) HMIF: Mempererat Solidaritas Antar-Angkatan",
+    ringkasan: "Kegiatan Makrab HMIF sukses digelar dengan berbagai agenda sharing session, team-building, dan dialog terbuka antar-mahasiswa Informatika UNJA.",
+    isi: [
+      "Guna memupuk rasa kebersamaan dan meruntuhkan sekat antar-angkatan, HMIF menyelenggarakan kegiatan Malam Keakraban (Makrab) yang diikuti oleh mahasiswa aktif program studi Informatika.",
+      "Rangkaian acara diawali dengan sesi pembagian kelompok lintas angkatan, perlombaan kekompakan tim, hingga diskusi santai mengenai pengalaman kuliah dan kiat menghadapi tantangan perkuliahan di bidang teknologi.",
+      "Koordinator Divisi PSDA menuturkan bahwa kekompakan mahasiswa adalah modal fundamental bagi keberlangsungan organisasi. Melalui suasana kekeluargaan yang hangat, kegiatan ini berhasil memperkuat rasa memiliki terhadap almamater dan himpunan."
+    ],
+    kategori: "himpunan",
+    kategoriLabel: "himpunan",
+    tanggal: "28 Februari 2026",
+    penulis: "Divisi PSDA",
+    waktuBaca: "4 menit",
+    gambar: "/gallery/Makrab.JPG",
+    featured: false,
+  },
 ];

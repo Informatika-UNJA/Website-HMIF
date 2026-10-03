@@ -20,7 +20,7 @@ export default function Galeri() {
       <PageHeader
         eyebrow="Galeri"
         title="Momen-Momen HMIF"
-        subtitle="Dokumentasi kegiatan himpunan. Letakkan foto asli di folder /public/gallery lalu perbarui data pada src/data/content.js."
+        subtitle="Dokumentasi kegiatan himpunan."
       />
 
       <section className="bg-paper py-16 sm:py-20">
@@ -30,11 +30,10 @@ export default function Galeri() {
               <button
                 onClick={() => setActive("semua")}
                 aria-pressed={active === "semua"}
-                className={`font-mono text-xs uppercase tracking-wider px-4 py-2 rounded-full border transition-colors cursor-pointer ${
-                  active === "semua"
+                className={`font-mono text-xs uppercase tracking-wider px-4 py-2 rounded-full border transition-colors cursor-pointer ${active === "semua"
                     ? "bg-ink-900 text-paper border-ink-900"
                     : "border-ink-200 text-ink-500 hover:border-ink-400"
-                }`}
+                  }`}
               >
                 Semua
               </button>
@@ -43,11 +42,10 @@ export default function Galeri() {
                   key={c.key}
                   onClick={() => setActive(c.key)}
                   aria-pressed={active === c.key}
-                  className={`font-mono text-xs uppercase tracking-wider px-4 py-2 rounded-full border transition-colors cursor-pointer ${
-                    active === c.key
+                  className={`font-mono text-xs uppercase tracking-wider px-4 py-2 rounded-full border transition-colors cursor-pointer ${active === c.key
                       ? "bg-ink-900 text-paper border-ink-900"
                       : "border-ink-200 text-ink-500 hover:border-ink-400"
-                  }`}
+                    }`}
                 >
                   {c.label}
                 </button>

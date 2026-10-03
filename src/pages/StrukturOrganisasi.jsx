@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UserRound, ChevronRight } from "lucide-react";
+import { UserRound, Users, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
@@ -21,15 +21,15 @@ export default function StrukturOrganisasi() {
       {/* Divisi Tabs + Content */}
       <section className="bg-paper py-16 sm:py-20">
         <div className="container-hmif">
-          <Reveal className="mb-10">
-            <p className="eyebrow text-teal-600 mb-4">Divisi Kepengurusan</p>
+          <Reveal className="mb-10 text-center">
+            <p className="eyebrow text-teal-600 mb-2">Divisi Kepengurusan</p>
             <h2 className="font-display text-2xl sm:text-3xl font-semibold text-ink-900">
-              Pilih divisi untuk melihat anggotanya
+              Pilih divisi untuk melihat kepengurusan
             </h2>
           </Reveal>
 
           {/* Tab Navigation — horizontal scroll on mobile, 3 atas + 2 bawah (centered) di sm ke atas */}
-          <div className="mb-10 -mx-6 sm:mx-0 px-6 sm:px-0 overflow-x-auto scrollbar-hide sm:overflow-visible">
+          <div className="mb-12 -mx-6 sm:mx-0 px-6 sm:px-0 overflow-x-auto scrollbar-hide sm:overflow-visible">
             <div className="flex gap-2 w-max sm:hidden">
               {divisiOrganisasi.map((d, i) => (
                 <button
@@ -110,25 +110,84 @@ export default function StrukturOrganisasi() {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             >
-              {/* Divisi Header Card */}
-              <div className="rounded-2xl bg-ink-950 p-6 sm:p-8 mb-8">
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gold-400/10 border border-gold-400/20">
-                    <span className="font-mono text-gold-400 text-sm font-bold">{current.singkatan}</span>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl sm:text-2xl font-semibold text-paper">
-                      {current.nama}
-                    </h3>
-                    <p className="text-ink-300 text-sm mt-1 leading-relaxed max-w-xl">
-                      {current.deskripsi}
-                    </p>
-                  </div>
+              {/* 1. Judul Divisi (Centered) */}
+              <div className="text-center mb-8 sm:mb-10">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-mono tracking-wider bg-gold-400/15 text-gold-700 border border-gold-400/30 mb-3">
+                  <span>HMIF UNJA</span>
+                  <span>•</span>
+                  <span>{current.singkatan}</span>
+                </div>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-ink-900 tracking-tight">
+                  {current.id === "bph" ? "Badan Pengurus Harian" : `Divisi ${current.nama}`}
+                </h2>
+              </div>
+
+              {/* 2. Space Khusus Foto Pengurus Bersama */}
+              <div className="max-w-4xl mx-auto mb-10 sm:mb-12">
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-ink-200/80 bg-white shadow-xl shadow-ink-950/5 group">
+                  {current.fotoBersama ? (
+                    <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-ink-100">
+                      <img
+                        src={current.fotoBersama}
+                        alt={`Foto Bersama ${current.nama}`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent pointer-events-none opacity-70" />
+                      <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 text-paper pointer-events-none">
+                        <p className="text-[11px] font-mono uppercase tracking-widest text-gold-400">Foto Bersama</p>
+                        <h4 className="font-display text-base sm:text-xl font-bold text-white">
+                          Keluarga Besar {current.nama} HMIF UNJA
+                        </h4>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full flex flex-col items-center justify-center p-6 sm:p-12 text-center bg-gradient-to-b from-white via-ink-50/40 to-ink-100/30">
+                      <div className="absolute inset-0 bg-[radial-gradient(#C69A74_1px,transparent_1px)] [background-size:20px_20px] opacity-25 pointer-events-none" />
+                      <div className="relative z-10 flex flex-col items-center max-w-lg">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-ink-200 shadow-md flex items-center justify-center mb-4 text-ink-600 group-hover:scale-105 transition-transform duration-300">
+                          <Users size={32} className="text-ink-600" />
+                        </div>
+                        <span className="px-3 py-1 bg-gold-400/20 text-ink-900 border border-gold-400/30 rounded-full font-mono text-[11px] font-semibold uppercase tracking-wider mb-2">
+                          Space Foto Bersama
+                        </span>
+                        <h4 className="font-display text-lg sm:text-2xl font-bold text-ink-900 mb-2">
+                          Foto Bersama {current.id === "bph" ? "BPH" : current.nama}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-ink-600 leading-relaxed max-w-md">
+                          Space khusus foto bersama pengurus {current.nama}. Letakkan foto di folder public (rasio lanskap 16:9).
+                        </p>
+                        <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-ink-100/90 text-ink-700 text-[11px] font-mono border border-ink-200 shadow-xs">
+                          <span>Konfigurasi di <code>content.js</code> → <code>fotoBersama</code></span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
-              {/* Members Grid */}
-              <div className={`grid gap-4 ${
+              {/* 3. Penjelasan untuk Setiap Divisi di Bawah Foto Bersama */}
+              <div className="max-w-3xl mx-auto text-center mb-14 sm:mb-16 px-4">
+                <h4 className="font-display font-semibold text-xs sm:text-sm uppercase tracking-wider text-ink-400 mb-3">
+                  {current.id === "bph" ? "Badan Pengurus Harian" : `Divisi ${current.nama}`}
+                </h4>
+                <p className="text-ink-700 text-sm sm:text-base leading-relaxed text-justify sm:text-center font-normal">
+                  {current.deskripsi}
+                </p>
+              </div>
+
+              {/* 4. Subtitle / Heading Baru: Struktur Divisi */}
+              <div className="text-center mb-10 sm:mb-12">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink-900 tracking-tight">
+                  Struktur Divisi
+                </h3>
+                <div className="w-12 h-1 bg-gold-500 mx-auto mt-2.5 rounded-full" />
+                <p className="text-ink-500 text-xs sm:text-sm mt-2 font-mono">
+                  Susunan pengurus dan personalia {current.nama}
+                </p>
+              </div>
+
+              {/* 5. Foto Struktur Pengurus Sendiri-Sendiri */}
+              <div className={`grid gap-4 sm:gap-6 ${
                 current.anggota.length <= 4
                   ? "grid-cols-2 sm:grid-cols-4"
                   : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
@@ -138,10 +197,10 @@ export default function StrukturOrganisasi() {
                     key={`${current.id}-${member.nama}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: i * 0.06 }}
+                    transition={{ duration: 0.4, delay: i * 0.05 }}
                     className="group"
                   >
-                    <div className="rounded-2xl border border-ink-100 bg-white overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div className="rounded-2xl border border-ink-100 bg-white overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full">
                       {/* Photo area */}
                       <div className="relative aspect-[3/4] bg-gradient-to-b from-ink-100 to-ink-50 overflow-hidden">
                         {member.foto ? (
@@ -151,7 +210,7 @@ export default function StrukturOrganisasi() {
                             className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                         ) : (
-                          <div className="absolute inset-0 flex flex-col items-center justify-center">
+                          <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
                             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-ink-200/50 flex items-center justify-center mb-2">
                               <UserRound className="text-ink-400" size={28} />
                             </div>
@@ -159,17 +218,17 @@ export default function StrukturOrganisasi() {
                           </div>
                         )}
                         {/* Jabatan badge overlay */}
-                        {member.jabatan !== "Anggota" && (
-                          <div className="absolute top-2 left-2">
-                            <span className="inline-block px-2.5 py-1 bg-ink-950/80 backdrop-blur-sm text-gold-400 text-[10px] font-mono tracking-wider uppercase rounded-full">
+                        {member.jabatan && (
+                          <div className="absolute top-2.5 left-2.5 z-10">
+                            <span className="inline-block px-2.5 py-1 bg-ink-950/85 backdrop-blur-sm text-gold-400 text-[10px] font-mono tracking-wider uppercase rounded-md shadow-sm border border-white/10">
                               {member.jabatan === "Koordinator" ? "Koordinator" : member.jabatan.replace(" Himpunan", "")}
                             </span>
                           </div>
                         )}
                       </div>
                       {/* Info */}
-                      <div className="p-3 sm:p-4 text-center">
-                        <h4 className="font-display font-semibold text-ink-900 text-xs sm:text-sm leading-tight">
+                      <div className="p-3.5 sm:p-4 text-center flex-1 flex flex-col justify-center bg-white border-t border-ink-100/50">
+                        <h4 className="font-display font-semibold text-ink-900 text-xs sm:text-sm leading-snug">
                           {member.nama}
                         </h4>
                         <p className="text-[11px] text-ink-500 mt-1 font-mono">
