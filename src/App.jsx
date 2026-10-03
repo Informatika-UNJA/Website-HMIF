@@ -7,7 +7,6 @@ import Tentang from "./pages/Tentang";
 import ProgramKerja from "./pages/ProgramKerja";
 import StrukturOrganisasi from "./pages/StrukturOrganisasi";
 import Galeri from "./pages/Galeri";
-import Berita from "./pages/Berita";
 import Kontak from "./pages/Kontak";
 import NotFound from "./pages/NotFound";
 
