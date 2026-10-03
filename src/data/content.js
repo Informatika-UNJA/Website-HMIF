@@ -19,6 +19,7 @@ export const navLinks = [
   { to: "/tentang", label: "Tentang HMIF" },
   { to: "/program-kerja", label: "Program Kerja" },
   { to: "/struktur-organisasi", label: "Struktur" },
+  { to: "/berita", label: "Berita" },
   { to: "/galeri", label: "Galeri" },
 ];
 
@@ -267,4 +268,48 @@ export const contactChannels = [
   { label: "Email", value: siteInfo.email, href: `mailto:${siteInfo.email}` },
   { label: "Instagram", value: siteInfo.instagram, href: "https://instagram.com/hmifunja" },
   { label: "Lokasi", value: siteInfo.address, href: "https://www.google.com/maps/place/Fakultas+Sains+dan+Teknologi+UNJA/@-1.614875,103.519825,1086m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2e2f62c01aa6b39b:0x79e2b7ce458689aa!8m2!3d-1.614875!4d103.519825!16s%2Fg%2F11c30r4v1m?entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" },
+];
+
+export const beritaCategories = [
+  { key: "semua", label: "Semua Berita" },
+  { key: "himpunan", label: "Himpunan" },
+];
+
+export const beritaList = [
+  {
+    id: 1,
+    slug: "pengukuhan-kepengurusan-hmif-unja",
+    judul: "Pengukuhan Resmi Pengurus HMIF UNJA Periode Berjalan",
+    ringkasan: "Pelantikan dan pengukuhan resmi pengurus Himpunan Mahasiswa Informatika Universitas Jambi di Fakultas Sains dan Teknologi, menandai komitmen baru penguatan kolaborasi mahasiswa.",
+    isi: [
+      "Pelantikan dan pengukuhan jajaran pengurus Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi periode berjalan resmi diselenggarakan dengan khidmat di lingkungan Fakultas Sains dan Teknologi. Acara ini dihadiri oleh pimpinan fakultas, koordinator program studi, para dosen pembina, serta perwakilan lembaga kemahasiswaan se-FST UNJA.",
+      "Dalam sambutannya, Ketua Himpunan HMIF menyampaikan tekad kepengurusan untuk menjadikan HMIF sebagai wadah akselerasi potensi akademik maupun non-akademik bagi seluruh mahasiswa Informatika. Fokus utama kepengurusan mencakup peningkatan budaya riset dan kompetisi, pengembangan jejaring industri teknologi, serta penanaman karakter kepemimpinan yang berintegritas.",
+      "Prosesi pengukuhan diakhiri dengan pembacaan ikrar pengurus dan penandatanganan berita acara serah terima amanah, dilanjutkan dengan sesi foto bersama seluruh jajaran pengurus baru bersama dosen pembina."
+    ],
+    kategori: "himpunan",
+    kategoriLabel: "Himpunan",
+    tanggal: "15 Maret 2026",
+    penulis: "Divisi Humas",
+    waktuBaca: "3 menit",
+    gambar: "/gallery/pengukuhan-1.jpg",
+    featured: true,
+  },
+  {
+    id: 2,
+    slug: "malam-keakraban-makrab-mahasiswa-informatika",
+    judul: "Malam Keakraban (Makrab) HMIF: Mempererat Solidaritas Antar-Angkatan",
+    ringkasan: "Kegiatan Makrab HMIF sukses digelar dengan berbagai agenda sharing session, team-building, dan dialog terbuka antar-mahasiswa Informatika UNJA.",
+    isi: [
+      "Guna memupuk rasa kebersamaan dan meruntuhkan sekat antar-angkatan, HMIF menyelenggarakan kegiatan Malam Keakraban (Makrab) yang diikuti oleh mahasiswa aktif program studi Informatika.",
+      "Rangkaian acara diawali dengan sesi pembagian kelompok lintas angkatan, perlombaan kekompakan tim, hingga diskusi santai mengenai pengalaman kuliah dan kiat menghadapi tantangan perkuliahan di bidang teknologi.",
+      "Koordinator Divisi PSDA menuturkan bahwa kekompakan mahasiswa adalah modal fundamental bagi keberlangsungan organisasi. Melalui suasana kekeluargaan yang hangat, kegiatan ini berhasil memperkuat rasa memiliki terhadap almamater dan himpunan."
+    ],
+    kategori: "himpunan",
+    kategoriLabel: "himpunan",
+    tanggal: "28 Februari 2026",
+    penulis: "Divisi PSDA",
+    waktuBaca: "4 menit",
+    gambar: "/gallery/Makrab.JPG",
+    featured: false,
+  },
 ];

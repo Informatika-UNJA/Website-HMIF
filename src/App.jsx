@@ -7,6 +7,7 @@ import Tentang from "./pages/Tentang";
 import ProgramKerja from "./pages/ProgramKerja";
 import StrukturOrganisasi from "./pages/StrukturOrganisasi";
 import Galeri from "./pages/Galeri";
+import Berita from "./pages/Berita";
 import Kontak from "./pages/Kontak";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/tentang" element={<Tentang />} />
         <Route path="/program-kerja" element={<ProgramKerja />} />
         <Route path="/struktur-organisasi" element={<StrukturOrganisasi />} />
+        <Route path="/berita" element={<Berita />} />
         <Route path="/galeri" element={<Galeri />} />
         <Route path="/kontak" element={<Kontak />} />
         <Route path="*" element={<NotFound />} />
