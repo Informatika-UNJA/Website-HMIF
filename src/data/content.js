@@ -158,7 +158,7 @@ export const divisiOrganisasi = [
       { nama: "Johanes Sinalsal Sinulingga", jabatan: "Ketua Bidang Kewirausahaan", foto: "/team/Johanes Sinalsal.JPG" },
       { nama: "Muhammad Ariiq Milzam Alfarabi", jabatan: "Ketua Bidang Relasi dan Marketing", foto: null },
       { nama: "Rafli Rahmat", jabatan: "Anggota", foto: "/team/Rafli Rahmat .jpg" },
-      { nama: "Alfredo Nobel Tambunan", jabatan: "Anggota", foto: null },
+      { nama: "Alfredo Nobel Tambunan", jabatan: "Anggota", foto: "/team/nobel.JPG" },
       { nama: "Sirr Hanif Al-Mufarrid", jabatan: "Anggota", foto: "/team/Sir.JPG" },
       { nama: "Farrel Herdiyan", jabatan: "Anggota", foto: "/team/Farrel.JPG" },
     ],
@@ -191,7 +191,7 @@ export const divisiOrganisasi = [
     deskripsi: "Menyiapkan mahasiswa Informatika yang siap berorganisasi dan berkembang secara personal.",
     anggota: [
       { nama: "Rizky Ramadhan Alfarizi", jabatan: "Ketua Divisi", foto: "/team/Rizky Ramadhan Alfarizi.JPG" },
-      { nama: "Rizki Pratama", jabatan: "Wakil Ketua Divisi", foto: null },
+      { nama: "Rizki Pratama", jabatan: "Wakil Ketua Divisi", foto: "/team/prat.JPG" },
       { nama: "Nurriska Alfadillah", jabatan: "Sekretaris Divisi", foto: "/team/Nurriska Alfadilah.JPG" },
       { nama: "Dimas Juliandra Marshall", jabatan: "Ketua Bidang Pengembangan Kapasitas Anggota", foto: null },
       { nama: "Dava Fajar Al'valah", jabatan: "Anggota", foto: "/team/Dava fajar Al'valah.JPG" },
