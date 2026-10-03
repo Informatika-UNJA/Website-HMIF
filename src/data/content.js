@@ -104,11 +104,11 @@ export const programKerja = [
   {
     kode: "DANUS",
     nama: "Dana dan Usaha",
-    deskripsi: "Menyalurkan potensi mahasiswa di luar bidang akademik.",
+    deskripsi: "Mengelola dan mengusahakan sumber pendanaan dan berbagai kebutuhan yang diperlukan untuk menunjang kelancaran setiap program kerja yang akan dilaksanakan oleh Himpunan Mahasiswa Informatika.",
     program: [
-      "Turnamen olahraga & e-sport antar angkatan",
-      "Malam apresiasi seni dan kreativitas mahasiswa",
-      "Klub-klub minat mahasiswa Informatika",
+      "Menjual merchandise official HMIF (Jaket, Pdh, dll.)",
+      "Menjual souvenir/merchandise resmi HMIF (Stiker, Gantungan kunci, dll.)",
+      "Menyelenggarakan bazar atau event kreatif",
     ],
   },
 ];
@@ -242,6 +242,14 @@ export const galleryPlaceholder = [
   { id: 2, category: "kegiatan", caption: "Pembukaan Himpunan Mahasiswa Informatika", src: "/gallery/Pengukuhan-2.JPG" },
   { id: 3, category: "kegiatan", caption: "Malam Keakraban Himpunan Mahasiswa Informatika", src: "/gallery/Makrab.JPG" },
   { id: 4, category: "kegiatan", caption: "Lomba antar Divisi saat Makrab HMIF", src: "/gallery/Makrab-2.JPG" },
+  { id: 5, category: "kegiatan", caption: " Pkkmb-Fst Universitas Jambi", src: "/gallery/pkkmb-fst.jpg" },
+  { id: 6, category: "kegiatan", caption: " Malam Keakraban Himpunan Mahasiswa Informatika", src: "/gallery/makrab-3.jpg" },
+  { id: 7, category: "kegiatan", caption: " Pengukuhan Himpunan Mahasiswa Informatika", src: "/gallery/pengukuhan-3.jpg" },
+  { id: 8, category: "kegiatan", caption: " Malam Keakraban Himpunan Mahasiswa Informatika", src: "/gallery/makrab-4.jpg" },
+
+
+
+
 ];
 
 export const contactChannels = [
