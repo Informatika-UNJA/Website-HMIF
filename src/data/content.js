@@ -130,13 +130,16 @@ export const strukturBidang = [
 ];
 
 // Data lengkap divisi beserta anggotanya untuk halaman Struktur.
+// Tambahkan fotoBersama: "/team/nama-file-bersama.jpg" untuk foto kelompok divisi
 // Tambahkan foto: "/team/nama-file.jpg" untuk tiap anggota jika sudah tersedia.
 export const divisiOrganisasi = [
   {
     id: "bph",
     nama: "Badan Pengurus Harian",
     singkatan: "BPH",
-    deskripsi: "Pengurus inti yang memimpin dan mengoordinasikan seluruh kegiatan HMIF.",
+    fotoBersama: "/team/BPH.JPG", // Masukkan path foto bersama pengurus BPH, misal: "/team/bph-bersama.jpg"
+    deskripsi:
+      "Badan Pengurus Harian (BPH) merupakan poros utama kepemimpinan dan manajemen organisasi di lingkungan Himpunan Mahasiswa Informatika (HMIF). Divisi inti ini bertanggung jawab penuh dalam merumuskan arah kebijakan strategis, mengoordinasikan seluruh divisi dan badan otonom, mengawal stabilitas internal, serta menjaga kesinambungan visi dan misi himpunan agar seluruh agenda kerja terlaksana secara terarah, akuntabel, dan profesional.",
     anggota: [
       { nama: "Nicky Pradithiya Dinata", jabatan: "Ketua Himpunan", foto: "/team/NICKY PRADHITIYA DINATA.JPG" },
       { nama: "Fabianto Dwitama", jabatan: "Wakil Ketua Himpunan", foto: null },
@@ -149,7 +152,9 @@ export const divisiOrganisasi = [
     id: "danus",
     nama: "Dana dan Usaha",
     singkatan: "DANUS",
-    deskripsi: "Mengelola sumber pendanaan dan kegiatan usaha untuk mendukung program kerja HMIF.",
+    fotoBersama: "/team/Danus.JPG", // Masukkan path foto bersama pengurus Danus, misal: "/team/danus-bersama.jpg"
+    deskripsi:
+      "Divisi Dana Usaha (Danus) adalah divisi yang bertanggung jawab dalam merancang, mengelola, dan melaksanakan kegiatan usaha organisasi guna memperoleh sumber pendanaan mandiri. Divisi ini berperan sebagai penunjang keuangan himpunan mahasiswa melalui kegiatan kewirausahaan yang kreatif, inovatif, dan berkelanjutan, sehingga dapat mendukung pelaksanaan program kerja serta meningkatkan kemandirian finansial organisasi.",
     anggota: [
       { nama: "Fiqri Arrijal", jabatan: "Ketua Divisi", foto: "/team/Fiqri Arrijal.JPG" },
       { nama: "Novindra Augustiar", jabatan: "Wakil Ketua Divisi", foto: "/team/Novindraaugustiar.JPG" },
@@ -167,7 +172,9 @@ export const divisiOrganisasi = [
     id: "humas",
     nama: "Hubungan Masyarakat",
     singkatan: "HUMAS",
-    deskripsi: "Menjaga citra HMIF, mengelola publikasi, dan membangun relasi dengan pihak eksternal.",
+    fotoBersama: "/team/HUMAS.JPG", // Masukkan path foto bersama pengurus Humas, misal: "/team/humas-bersama.jpg"
+    deskripsi:
+      "Divisi Hubungan Masyarakat (Humas) merupakan garda terdepan dalam membangun dan menjaga citra positif Himpunan Mahasiswa Informatika (HMIF). Divisi ini bertugas menjalin komunikasi strategis, memperluas jejaring kemitraan dengan instansi eksternal, alumni, dan organisasi mitra, serta mengelola publikasi media sosial untuk memastikan keterbukaan informasi dan relasi yang harmonis.",
     anggota: [
       { nama: "Maulidya Nazlita Az-Zahara", jabatan: "Ketua Divisi", foto: "/team/Maulidya Nazlita Az-Zahara .JPG" },
       { nama: "Ridho Pangestu", jabatan: "Wakil Ketua Divisi", foto: "/team/Ridho Pangestu .JPG" },
@@ -188,7 +195,9 @@ export const divisiOrganisasi = [
     id: "psda",
     nama: "Pemberdayaan Sumber Daya Anggota",
     singkatan: "PSDA",
-    deskripsi: "Menyiapkan mahasiswa Informatika yang siap berorganisasi dan berkembang secara personal.",
+    fotoBersama: "/team/PSDA.JPG", // Masukkan path foto bersama pengurus PSDA, misal: "/team/psda-bersama.jpg"
+    deskripsi:
+      "Divisi Pemberdayaan Sumber Daya Anggota (PSDA) berfokus pada pembinaan karakter, pengembangan potensi diri, dan penguatan solidaritas antar-anggota HMIF. Divisi ini menginisiasi berbagai program kaderisasi, pelatihan kepemimpinan, dan kegiatan pengembangan internal guna mencetak insan akademis Informatika yang berintegritas, aktif, dan berdaya saing.",
     anggota: [
       { nama: "Rizky Ramadhan Alfarizi", jabatan: "Ketua Divisi", foto: "/team/Rizky Ramadhan Alfarizi.JPG" },
       { nama: "Rizki Pratama", jabatan: "Wakil Ketua Divisi", foto: "/team/prat.JPG" },
@@ -207,7 +216,9 @@ export const divisiOrganisasi = [
     id: "mit",
     nama: "Media Informasi dan Teknologi",
     singkatan: "MIT",
-    deskripsi: "Mendorong budaya belajar teknis, eksplorasi teknologi, dan pengelolaan media digital HMIF.",
+    fotoBersama: "/team/MIT.JPG", // Masukkan path foto bersama pengurus MIT, misal: "/team/mit-bersama.jpg"
+    deskripsi:
+      "Divisi Media Informasi dan Teknologi (MIT) adalah divisi teknis dan kreatif yang bertugas mendorong eksplorasi teknologi informasi, riset, serta pengembangan inovasi digital di lingkungan HMIF. Selain itu, divisi ini bertanggung jawab atas pengelolaan infrastruktur sistem informasi himpunan, dokumentasi multimedia, serta penciptaan aset visual dan konten kreatif yang edukatif dan inspiratif.",
     anggota: [
       { nama: "Khoirul Faza Perdana", jabatan: "Ketua Divisi", foto: "/team/Faza.JPG" },
       { nama: "Dika Jaya Saputra", jabatan: "Wakil Ketua Divisi", foto: "/team/Dika.JPG" },
