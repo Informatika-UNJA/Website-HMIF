@@ -28,7 +28,7 @@ const markdownComponents = {
   a: ({ href, children }) => (
     <a
       href={href}
-      className="font-semibold text-teal-700 underline decoration-gold-500 decoration-2 underline-offset-4 transition-colors duration-150 hover:text-ink-900"
+      className="font-semibold text-teal-600 underline decoration-gold-500 decoration-2 underline-offset-4 transition-colors duration-150 hover:text-ink-900"
     >
       {children}
     </a>
@@ -96,8 +96,8 @@ export default function BeritaDetail() {
   return (
     <main id="main-content">
       <article>
-        <header className="relative overflow-hidden bg-ink-950 pb-16 pt-32 sm:pb-16 sm:pt-30">
-          <div className="container-hmif relative z-10">
+        <header className="relative overflow-hidden bg-ink-950 pb-8 pt-20 sm:pb-16 sm:pt-35">
+          <div className="container-hmif relative z-10 sm:pt-5">
             <Link
               to="/berita"
               className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ink-200 transition-colors duration-150 hover:text-paper"
@@ -106,7 +106,7 @@ export default function BeritaDetail() {
               Semua berita
             </Link>
 
-            <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
+            <div className="mt-5 sm:mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-8">
                 <p className="eyebrow text-gold-400">{article.category}</p>
                 <h1 className="mt-5 max-w-5xl text-balance font-display text-4xl font-semibold leading-[1.06] tracking-tight text-paper sm:text-5xl lg:text-6xl">
@@ -124,16 +124,16 @@ export default function BeritaDetail() {
         </header>
 
         <div className="bg-paper">
-          <div className="container-hmif py-10 sm:py-14">
+          <div className="container-hmif py-10 sm:py-10">
             <img
               src={article.cover}
               alt={article.coverAlt}
-              className="aspect-[16/8] w-full rounded-2xl object-cover outline outline-1 -outline-offset-1 outline-black/10 sm:rounded-[2rem]"
+              className="mx-auto aspect-[16/] w-full max-w-5xl rounded-xl object-cover sm:rounded-[2rem]"
             />
           </div>
 
           <div className="container-hmif pb-20 sm:pb-28">
-            <div className="mx-auto max-w-[68ch] space-y-7">
+            <div className="mx-auto max-w-[88ch] space-y-7 text-justify">
               <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
                 {article.content}
               </ReactMarkdown>
@@ -149,7 +149,7 @@ export default function BeritaDetail() {
             <h2 id="related-news-title" className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink-900">
               Berita lainnya
             </h2>
-            <div className="mt-10 grid gap-8 md:grid-cols-2">
+            <div className="mt-10 grid gap-8 md:grid-cols-3">
               {relatedArticles.map((item) => (
                 <Link key={item.slug} to={`/berita/${item.slug}`} className="group block">
                   <img
@@ -164,6 +164,9 @@ export default function BeritaDetail() {
                       <h3 className="mt-2 text-balance font-display text-2xl font-semibold leading-tight text-ink-900">
                         {item.title}
                       </h3>
+                      <div className="mt-3">
+                        <NewsMeta article={item} />
+                      </div>
                     </div>
                     <ArrowUpRight aria-hidden="true" className="mt-1 shrink-0 text-ink-500 transition-colors duration-150 group-hover:text-ink-900" size={22} strokeWidth={1.5} />
                   </div>

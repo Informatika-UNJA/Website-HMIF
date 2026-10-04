@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Newspaper } from "lucide-react";
+import { ArrowUpRight, Newspaper, Search, X } from "lucide-react";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import NewsMeta from "../components/NewsMeta";
@@ -8,16 +8,21 @@ import { newsArticles } from "../utils/news";
 
 export default function Berita() {
   const [activeCategory, setActiveCategory] = useState("Semua");
+  const [query, setQuery] = useState("");
+  const q = query.trim().toLowerCase();
   const categories = useMemo(
     () => ["Semua", ...new Set(newsArticles.map((article) => article.category))],
     [],
   );
   const featured = newsArticles.find((article) => article.featured) || newsArticles[0];
-  const filteredArticles = newsArticles.filter(
-    (article) =>
-      (article.slug !== featured?.slug || activeCategory !== "Semua") &&
-      (activeCategory === "Semua" || article.category === activeCategory),
-  );
+  const filteredArticles = newsArticles.filter((article) => {
+    const haystack = `${article.title} ${article.excerpt} ${article.category} ${article.author}`.toLowerCase();
+    if (q && !haystack.includes(q)) return false;
+    if (activeCategory !== "Semua" && article.category !== activeCategory) return false;
+    // Saat mencari, semua artikel (termasuk yang featured di hero) ikut tampil di daftar hasil.
+    if (q) return true;
+    return article.slug !== featured?.slug || activeCategory !== "Semua";
+  });
 
   return (
     <main id="main-content">
@@ -30,35 +35,39 @@ export default function Berita() {
       <section className="bg-paper py-16 sm:py-24">
         <div className="container-hmif">
           {featured && (
-            <Reveal as="article" className="group relative overflow-hidden rounded-[2rem] bg-ink-950 shadow-[0_0_0_1px_oklch(0_0_0/0.06),0_16px_40px_-24px_oklch(0_0_0/0.45)]">
+            <Reveal as="article" className="group relative overflow-hidden rounded-[2rem] bg-white shadow-[0_0_0_1px_oklch(0_0_0/0.08),0_16px_40px_-24px_oklch(0_0_0/0.35)]">
               <div className="grid lg:min-h-[26rem] lg:grid-cols-12">
-                <div className="relative min-h-56 overflow-hidden lg:col-span-6 lg:min-h-full">
+                <div className="relative min-h-56 overflow-hidden lg:col-span-7 lg:min-h-full">
                   <img
                     src={featured.cover}
                     alt={featured.coverAlt}
                     className="absolute inset-0 h-full w-full object-cover outline outline-1 -outline-offset-1 outline-black/10 transition-transform duration-500 ease-out group-hover:scale-[1.025]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-ink-950/25" />
                 </div>
 
-                <div className="relative flex flex-col justify-between gap-8 p-7 sm:p-9 lg:col-span-6">
+                <div className="flex flex-col justify-between gap-8 p-7 sm:p-9 lg:col-span-5">
                   <div>
                     <span className="eyebrow inline-flex rounded-full bg-gold-400 px-3 py-1.5 text-ink-950">
                       Berita utama · {featured.category}
                     </span>
-                    <h2 className="mt-5 text-balance font-display text-2xl font-semibold leading-[1.25] tracking-tight text-paper sm:text-3xl">
-                      {featured.title}
+                    <h2 className="mt-5 text-balance font-display text-2xl font-semibold leading-[1.25] tracking-tight text-ink-900 sm:text-3xl">
+                      <Link
+                        to={`/berita/${featured.slug}`}
+                        className="after:absolute after:inset-0 after:content-[''] decoration-gold-500 decoration-2 underline-offset-4 hover:underline"
+                      >
+                        {featured.title}
+                      </Link>
                     </h2>
-                    <p className="mt-4 text-pretty text-base leading-relaxed text-ink-200">
+                    <p className="mt-4 text-pretty text-base leading-relaxed text-ink-500">
                       {featured.excerpt}
                     </p>
                   </div>
 
                   <div className="space-y-6">
-                    <NewsMeta article={featured} light />
+                    <NewsMeta article={featured} />
                     <Link
                       to={`/berita/${featured.slug}`}
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-400 ps-5 pe-[18px] py-2.5 text-sm font-semibold text-ink-950 transition-[background-color,scale] duration-150 ease-out hover:bg-teal-300 active:scale-[0.96]"
+                      className="relative inline-flex min-h-11 items-center gap-2 rounded-full bg-teal-200 ps-5 pe-[18px] py-2.5 text-sm font-semibold text-ink-950 transition-[background-color,scale] duration-150 ease-out hover:bg-teal-300 active:scale-[0.96]"
                     >
                       Baca berita utama
                       <ArrowUpRight aria-hidden="true" size={18} strokeWidth={2} />
@@ -69,7 +78,7 @@ export default function Berita() {
             </Reveal>
           )}
 
-          <div className="mt-20 sm:mt-28">
+          <div className="mt-20 sm:mt-20">
             <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="eyebrow text-teal-600">Arsip berita</p>
@@ -78,7 +87,43 @@ export default function Berita() {
                 </h2>
               </div>
 
-              <div className="flex max-w-full gap-2 overflow-x-auto pb-2" role="group" aria-label="Filter kategori berita">
+              <div className="flex w-full flex-col gap-4 sm:w-auto sm:min-w-72">
+                <div role="search">
+                  <label htmlFor="cari-berita" className="sr-only">
+                    Cari berita
+                  </label>
+                  <div className="relative">
+                    <Search
+                      aria-hidden="true"
+                      size={16}
+                      strokeWidth={1.5}
+                      className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-ink-500"
+                    />
+                    <input
+                      id="cari-berita"
+                      type="text"
+                      value={query}
+                      onChange={(event) => setQuery(event.target.value)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Escape") setQuery("");
+                      }}
+                      placeholder="Cari judul, ringkasan, atau penulis…"
+                      className="min-h-11 w-full rounded-full bg-white py-2.5 ps-11 pe-11 text-sm text-ink-900 shadow-[0_0_0_1px_oklch(0_0_0/0.12)] placeholder:text-ink-500"
+                    />
+                    {query && (
+                      <button
+                        type="button"
+                        onClick={() => setQuery("")}
+                        aria-label="Hapus pencarian"
+                        className="absolute end-2 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full text-ink-500 transition-[background-color,color] duration-150 ease-out hover:bg-paper hover:text-ink-900"
+                      >
+                        <X aria-hidden="true" size={16} strokeWidth={1.5} />
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex max-w-full gap-2 overflow-x-auto pb-2" role="group" aria-label="Filter kategori berita">
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -94,13 +139,21 @@ export default function Berita() {
                     {category}
                   </button>
                 ))}
+                </div>
               </div>
             </Reveal>
 
             <p className="sr-only" role="status">
-              {filteredArticles.length} berita ditampilkan untuk kategori {activeCategory}.
+              {q
+                ? `${filteredArticles.length} berita ditemukan untuk pencarian "${query.trim()}" di kategori ${activeCategory}.`
+                : `${filteredArticles.length} berita ditampilkan untuk kategori ${activeCategory}.`}
             </p>
             <div className="mt-10">
+              {q && filteredArticles.length > 0 && (
+                <p className="mb-4 text-sm text-ink-500" aria-hidden="true">
+                  Menampilkan {filteredArticles.length} dari {newsArticles.length} berita untuk "{query.trim()}"
+                </p>
+              )}
               {filteredArticles.length > 0 ? (
                 <div className="divide-y divide-ink-200">
                   {filteredArticles.map((article, index) => (
@@ -133,6 +186,24 @@ export default function Berita() {
                       </Link>
                     </Reveal>
                   ))}
+                </div>
+              ) : q ? (
+                <div className="py-20 text-center">
+                  <Search aria-hidden="true" className="mx-auto text-ink-300" size={40} strokeWidth={1.5} />
+                  <h3 className="mt-5 font-display text-2xl font-semibold text-ink-900">
+                    Tidak ada berita yang cocok
+                  </h3>
+                  <p className="mx-auto mt-2 max-w-md text-pretty text-ink-500">
+                    Tidak ditemukan berita untuk "{query.trim()}"{" "}
+                    {activeCategory === "Semua" ? "di semua kategori" : `di kategori ${activeCategory}`}.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setQuery("")}
+                    className="mt-6 inline-flex min-h-11 items-center rounded-full bg-ink-900 px-5 py-2.5 text-sm font-semibold text-paper transition-[background-color,scale] duration-150 ease-out hover:bg-ink-800 active:scale-[0.96]"
+                  >
+                    Tampilkan semua berita
+                  </button>
                 </div>
               ) : (
                 <div className="py-20 text-center">
