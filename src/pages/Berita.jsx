@@ -30,9 +30,9 @@ export default function Berita() {
       <section className="bg-paper py-16 sm:py-24">
         <div className="container-hmif">
           {featured && (
-            <Reveal as="article" className="group relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-ink-950 shadow-[0_0_0_1px_oklch(0_0_0/0.06),0_16px_40px_-24px_oklch(0_0_0/0.45)]">
-              <div className="grid min-h-[31rem] lg:grid-cols-12">
-                <div className="relative min-h-72 overflow-hidden lg:col-span-7 lg:min-h-full">
+            <Reveal as="article" className="group relative overflow-hidden rounded-[2rem] bg-ink-950 shadow-[0_0_0_1px_oklch(0_0_0/0.06),0_16px_40px_-24px_oklch(0_0_0/0.45)]">
+              <div className="grid lg:min-h-[26rem] lg:grid-cols-12">
+                <div className="relative min-h-56 overflow-hidden lg:col-span-6 lg:min-h-full">
                   <img
                     src={featured.cover}
                     alt={featured.coverAlt}
@@ -41,15 +41,15 @@ export default function Berita() {
                   <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-ink-950/25" />
                 </div>
 
-                <div className="relative flex flex-col justify-between gap-10 p-7 sm:p-10 lg:col-span-5">
+                <div className="relative flex flex-col justify-between gap-8 p-7 sm:p-9 lg:col-span-6">
                   <div>
                     <span className="eyebrow inline-flex rounded-full bg-gold-400 px-3 py-1.5 text-ink-950">
                       Berita utama · {featured.category}
                     </span>
-                    <h2 className="mt-6 text-balance font-display text-2xl font-semibold leading-[1.25] tracking-tight text-paper sm:text-4xl">
+                    <h2 className="mt-5 text-balance font-display text-2xl font-semibold leading-[1.25] tracking-tight text-paper sm:text-3xl">
                       {featured.title}
                     </h2>
-                    <p className="mt-5 text-pretty text-base leading-relaxed text-ink-200">
+                    <p className="mt-4 text-pretty text-base leading-relaxed text-ink-200">
                       {featured.excerpt}
                     </p>
                   </div>

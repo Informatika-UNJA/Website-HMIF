@@ -96,7 +96,7 @@ export default function BeritaDetail() {
   return (
     <main id="main-content">
       <article>
-        <header className="relative overflow-hidden bg-ink-950 pb-16 pt-32 sm:pb-24 sm:pt-40">
+        <header className="relative overflow-hidden bg-ink-950 pb-16 pt-32 sm:pb-16 sm:pt-30">
           <div className="container-hmif relative z-10">
             <Link
               to="/berita"
