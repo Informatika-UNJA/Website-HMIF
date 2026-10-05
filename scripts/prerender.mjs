@@ -1,15 +1,4 @@
-/**
- * Prerender sederhana: membangun file HTML statis per route dari hasil `vite build`,
- * memakai Chrome/Edge headless (--dump-dom) tanpa dependensi npm tambahan.
- *
- * Cara kerja: jalankan server statis kecil untuk dist/, render tiap route di browser
- * headless (React dieksekusi penuh), lalu simpan DOM hasilnya ke
- * dist/<route>/index.html. Hasilnya: crawler yang tidak menjalankan JS (Bing sebagian,
- * bot AI, scraper sosial) tetap membaca konten lengkap.
- *
- * Nonaktif/bermasalah? Build tetap sukses: script keluar dengan peringatan saja.
- * Chrome/Edge di lokasi tak standar: set variabel lingkungan CHROME_PATH.
- */
+// SEO
 import { execFile } from "node:child_process";
 import { createServer } from "node:http";
 import { existsSync } from "node:fs";
