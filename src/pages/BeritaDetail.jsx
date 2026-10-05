@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import NewsMeta from "../components/NewsMeta";
 import { getNewsBySlug, newsArticles } from "../utils/news";
+import usePageMeta from "../utils/usePageMeta";
 
 const markdownComponents = {
   h2: ({ children }) => (
@@ -57,14 +57,22 @@ export default function BeritaDetail() {
   const { slug } = useParams();
   const article = getNewsBySlug(slug);
 
-  useEffect(() => {
-    if (!article) return undefined;
-    const previousTitle = document.title;
-    document.title = `${article.title} — HMIF UNJA`;
-    return () => {
-      document.title = previousTitle;
-    };
-  }, [article]);
+  usePageMeta(
+    article
+      ? {
+          title: `${article.title} — HMIF UNJA`,
+          description: article.excerpt,
+          path: `/berita/${article.slug}`,
+          image: article.cover,
+          imageAlt: article.coverAlt,
+        }
+      : {
+          title: "Berita tidak ditemukan — HMIF UNJA",
+          description: "Berita yang Anda cari tidak ditemukan di website HMIF UNJA.",
+          path: "/berita",
+          noindex: true,
+        },
+  );
 
   if (!article) {
     return (

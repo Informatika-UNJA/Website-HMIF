@@ -5,10 +5,17 @@ import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import NewsMeta from "../components/NewsMeta";
 import { newsArticles } from "../utils/news";
+import usePageMeta from "../utils/usePageMeta";
 
 export default function Berita() {
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [query, setQuery] = useState("");
+  usePageMeta({
+    title: "Berita & Kegiatan — HMIF UNJA",
+    description:
+      "Arsip berita dan kegiatan Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi — pengukuhan, makrab, hingga program kerja terbaru.",
+    path: "/berita",
+  });
   const q = query.trim().toLowerCase();
   const categories = useMemo(
     () => ["Semua", ...new Set(newsArticles.map((article) => article.category))],
@@ -28,7 +35,7 @@ export default function Berita() {
     <main id="main-content">
       <PageHeader
         eyebrow="Kabar HMIF"
-        title="Berita, gagasan, dan jejak kegiatan"
+        title="Berita & Kegiatan HMIF UNJA"
         subtitle="Ikuti perkembangan terbaru dari HMIF Informatika Universitas Jambi—mulai dari kegiatan, prestasi, hingga cerita dari balik layar organisasi."
       />
 

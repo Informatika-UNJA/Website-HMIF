@@ -4,15 +4,22 @@ import { ChevronDown, CircleCheck } from "lucide-react";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import { programKerja } from "../data/content";
+import usePageMeta from "../utils/usePageMeta";
 
 export default function ProgramKerja() {
   const [openKode, setOpenKode] = useState(programKerja[0]?.kode);
+  usePageMeta({
+    title: "Program Kerja HMIF UNJA — Enam Bidang Kepengurusan",
+    description:
+      "Enam bidang kepengurusan HMIF UNJA beserta program kerjanya — pengembangan sumber daya anggota, media & teknologi, humas, hingga dana dan usaha.",
+    path: "/program-kerja",
+  });
 
   return (
     <main>
       <PageHeader
         eyebrow="Program Kerja"
-        title="Enam bidang, satu arah tujuan"
+        title="Program Kerja HMIF UNJA — Enam Bidang, Satu Tujuan"
         subtitle="Setiap bidang memiliki fokus dan program kerja masing-masing yang saling melengkapi untuk mendukung mahasiswa Informatika."
       />
 

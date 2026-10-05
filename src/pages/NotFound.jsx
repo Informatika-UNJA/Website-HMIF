@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import usePageMeta from "../utils/usePageMeta";
 
 export default function NotFound() {
+  usePageMeta({
+    title: "Halaman Tidak Ditemukan — HMIF UNJA",
+    description: "Halaman yang Anda cari tidak ditemukan di website HMIF UNJA.",
+    path: "/",
+    noindex: true,
+  });
+
   return (
     <main>
       <section className="min-h-[70svh] flex items-center justify-center bg-ink-950 text-center px-6">
