@@ -2,14 +2,14 @@ import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Tentang from "./pages/Tentang";
-import ProgramKerja from "./pages/ProgramKerja";
-import StrukturOrganisasi from "./pages/StrukturOrganisasi";
-import Galeri from "./pages/Galeri";
-import Kontak from "./pages/Kontak";
-import NotFound from "./pages/NotFound";
 
+const Home = lazy(() => import("./pages/Home"));
+const Tentang = lazy(() => import("./pages/Tentang"));
+const ProgramKerja = lazy(() => import("./pages/ProgramKerja"));
+const StrukturOrganisasi = lazy(() => import("./pages/StrukturOrganisasi"));
+const Galeri = lazy(() => import("./pages/Galeri"));
+const Kontak = lazy(() => import("./pages/Kontak"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 const Berita = lazy(() => import("./pages/Berita"));
 const BeritaDetail = lazy(() => import("./pages/BeritaDetail"));
 
@@ -17,7 +17,7 @@ function PageLoading() {
   return (
     <main className="flex min-h-[70svh] items-center justify-center bg-ink-950 px-6 pt-20">
       <p role="status" className="eyebrow text-teal-400">
-        Memuat halaman berita…
+        Memuat halaman…
       </p>
     </main>
   );

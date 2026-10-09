@@ -5,16 +5,23 @@ import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import { divisiOrganisasi, strukturBidang } from "../data/content";
+import usePageMeta from "../utils/usePageMeta";
 
 export default function StrukturOrganisasi() {
   const [activeDivisi, setActiveDivisi] = useState(0);
   const current = divisiOrganisasi[activeDivisi];
+  usePageMeta({
+    title: "Struktur Organisasi HMIF UNJA — Pengurus Inti & Divisi",
+    description:
+      "Susunan kepengurusan HMIF UNJA: pengurus inti BPH, enam divisi, koordinator bidang, dan anggota Himpunan Mahasiswa Informatika Universitas Jambi.",
+    path: "/struktur-organisasi",
+  });
 
   return (
     <PageTransition>
       <PageHeader
         eyebrow="Struktur Organisasi"
-        title="Orang-orang di balik HMIF"
+        title="Struktur Organisasi HMIF UNJA"
         subtitle="Susunan pengurus dan koordinator bidang periode berjalan."
       />
 
