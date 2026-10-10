@@ -9,9 +9,9 @@ import usePageMeta from "../utils/usePageMeta";
 export default function ProgramKerja() {
   const [openKode, setOpenKode] = useState(programKerja[0]?.kode);
   usePageMeta({
-    title: "Program Kerja HMIF UNJA — Enam Bidang Kepengurusan",
+    title: "Program Kerja | HMIF UNJA",
     description:
-      "Enam bidang kepengurusan HMIF UNJA beserta program kerjanya — pengembangan sumber daya anggota, media & teknologi, humas, hingga dana dan usaha.",
+      "Enam bidang kepengurusan HMIF UNJA beserta program kerjanya, pengembangan sumber daya anggota, media & teknologi, humas, hingga dana dan usaha.",
     path: "/program-kerja",
   });
 
@@ -19,7 +19,7 @@ export default function ProgramKerja() {
     <main>
       <PageHeader
         eyebrow="Program Kerja"
-        title="Program Kerja HMIF UNJA — Enam Bidang, Satu Tujuan"
+        title="Program Kerja HMIF UNJA. Enam Bidang, Satu Tujuan"
         subtitle="Setiap bidang memiliki fokus dan program kerja masing-masing yang saling melengkapi untuk mendukung mahasiswa Informatika."
       />
 

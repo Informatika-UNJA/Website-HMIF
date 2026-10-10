@@ -4,7 +4,7 @@ import usePageMeta from "../utils/usePageMeta";
 
 export default function NotFound() {
   usePageMeta({
-    title: "Halaman Tidak Ditemukan — HMIF UNJA",
+    title: "Halaman Tidak Ditemukan",
     description: "Halaman yang Anda cari tidak ditemukan di website HMIF UNJA.",
     path: "/",
     noindex: true,

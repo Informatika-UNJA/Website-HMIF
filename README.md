@@ -5,7 +5,13 @@ React + Vite, Tailwind CSS, dan Framer Motion.
 
 <img alt="Screenshot From 2026-07-31 09-07-42" src="https://github.com/user-attachments/assets/afa19a5a-57eb-494f-9894-55fdc162d8dc" />
 
-## ✨ Fitur
+<p align="center"> Website Creator's
+   <br><br>
+   <a href="https://github.com/Informatika-UNJA/Website-HMIF/">
+  <img src="https://contributors-img.web.app/image?repo=Informatika-UNJA/Website-HMIF" />
+</a></p>
+
+## ✨ | Features
 
 - Landing page ringkas berisi rangkuman seluruh isi situs
 - Halaman **Tentang Kami** (sejarah, visi, misi, nilai, info Prodi Informatika)
@@ -19,33 +25,10 @@ React + Vite, Tailwind CSS, dan Framer Motion.
 - Animasi Framer Motion di seluruh halaman (scroll reveal, page transition, hover, dsb.)
 - Semua teks adalah **karangan/placeholder** silakan diedit bebas
 
-## 🚀 Try it yourself!
-
-Pastikan sudah menginstall [Node.js](https://nodejs.org) (versi 18 ke atas).
-
-```bash
-# 1. Masuk ke folder project
-cd hmif-website
-
-# 2. Install semua dependency
-npm install
-
-# 3. Jalankan mode development
-npm run dev
-```
-
-Buka `http://localhost:5173` di browser.
-
-Untuk build versi produksi (siap di-deploy):
-
-```bash
-npm run build
-```
-
 Hasil build ada di folder `dist/`. Folder ini bisa langsung di-upload ke layanan hosting
 statis seperti **Vercel**, **Netlify**, **GitHub Pages**, atau **Cloudflare Pages**.
 
-## 🖼️ Mengganti Foto Background (yang berganti-ganti otomatis)
+## 🖼️ | Mengganti Foto Background (yang berganti-ganti otomatis)
 
 1. Siapkan foto (disarankan format `.jpg`/`.png`, orientasi landscape, resolusi minimal
    1600×900 agar tajam saat full-screen).
@@ -53,7 +36,7 @@ statis seperti **Vercel**, **Netlify**, **GitHub Pages**, atau **Cloudflare Page
    atau menambah file baru misal `foto-1.jpg`.
 3. Buka `src/data/content.js`, cari bagian `backgroundImages`, lalu sesuaikan nama filenya:
 
-```js
+```
 export const backgroundImages = [
   "/backgrounds/foto-1.jpg",
   "/backgrounds/foto-2.jpg",
@@ -64,13 +47,13 @@ export const backgroundImages = [
 Background ini dipakai di halaman Beranda dan header setiap halaman lain, akan berganti
 otomatis dengan efek fade setiap beberapa detik.
 
-## 🖼️ Mengganti Foto Galeri
+## 🖼️ | Mengganti Foto Galeri
 
 Masukkan foto ke folder `public/gallery/`, lalu sesuaikan data `galleryPlaceholder` di
 `src/data/content.js` agar menunjuk ke foto tersebut (tambahkan properti `src` berisi path
 foto, lalu render `<img>` di `src/pages/Galeri.jsx` menggantikan ikon placeholder).
 
-## ✍️ Mengedit Semua Teks / Konten
+## ✍️ | Mengedit Semua Teks / Konten
 
 Hampir seluruh teks di website (deskripsi HMIF, visi misi, program kerja, struktur
 organisasi, info IFORIA, kontak, dll) terpusat di **satu file**:
@@ -84,24 +67,7 @@ Edit langsung di file tersebut — perubahan akan otomatis muncul di semua halam
 Konten berita dikelola terpisah sebagai file Markdown di `src/content/news/`. Lihat
 `src/content/news/README.md` untuk format metadata dan cara menambah artikel baru.
 
-## 📁 Struktur Folder
-
-```
-src/
-├── components/     → Navbar, Footer, BackgroundSlider, animasi reveal, dll
-├── content/news/   → Artikel berita dalam format Markdown
-├── data/
-│   └── content.js  → SEMUA teks & data konten (paling penting untuk diedit)
-├── pages/          → Setiap halaman situs (Home, Tentang, IFORIA, dll)
-├── App.jsx         → Pengaturan routing antar halaman
-└── index.css       → Style global & Tailwind
-
-public/
-├── backgrounds/    → Foto latar yang berganti-ganti otomatis
-└── gallery/        → Foto untuk halaman Galeri
-```
-
-## 🎨 Konsep Desain
+## 🎨 | Konsep Desain
 
 - **Warna**: dark chocolate (`ink`) sebagai warna utama dimana itu adalah warna himpunan, **gold** (aksen budaya/keunikan),
   dan **teal** (aksen teknologi) kombinasi khas, bukan template generik.
@@ -110,14 +76,14 @@ public/
 - **Motif signature**: gaya terminal/console (`>_`, tag versi `IFORIA // 2025`) dan
   timeline bergaya git-log untuk riwayat IFORIA tiap tahun.
 
-## 📬 Catatan tentang Form Kontak
+## 📬 | Catatan tentang Form Kontak
 
 Form di halaman Kontak saat ini akan membuka aplikasi email default pengunjung (`mailto:`).
 Ini cara paling sederhana tanpa perlu backend. Jika ingin pesan terkirim langsung dari
 situs tanpa membuka aplikasi email, hubungkan form tersebut ke layanan seperti
 [Formspree](https://formspree.io) atau backend sendiri.
 
-## 🛠️ Teknologi
+## 🛠️ | Tech
 
 - [React](https://react.dev) + [Vite](https://vitejs.dev)
 - [Tailwind CSS](https://tailwindcss.com)

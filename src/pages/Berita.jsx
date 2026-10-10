@@ -11,7 +11,7 @@ export default function Berita() {
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [query, setQuery] = useState("");
   usePageMeta({
-    title: "Berita & Kegiatan — HMIF UNJA",
+    title: "Berita & Kegiatan | HMIF UNJA",
     description:
       "Arsip berita dan kegiatan Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi — pengukuhan, makrab, hingga program kerja terbaru.",
     path: "/berita",

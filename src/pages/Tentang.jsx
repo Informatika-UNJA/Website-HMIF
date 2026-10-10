@@ -7,7 +7,7 @@ import usePageMeta from "../utils/usePageMeta";
 
 export default function Tentang() {
   usePageMeta({
-    title: "Tentang HMIF — Himpunan Mahasiswa Informatika Universitas Jambi",
+    title: "Tentang | HMIF UNJA",
     description:
       "Sejarah, visi, misi, dan nilai Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi — rumah bagi mahasiswa Informatika untuk berkarya dan bertumbuh.",
     path: "/tentang",
