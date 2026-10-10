@@ -11,7 +11,7 @@ export default function StrukturOrganisasi() {
   const [activeDivisi, setActiveDivisi] = useState(0);
   const current = divisiOrganisasi[activeDivisi];
   usePageMeta({
-    title: "Struktur Organisasi HMIF UNJA — Pengurus Inti & Divisi",
+    title: "Struktur Organisasi | HMIF UNJA",
     description:
       "Susunan kepengurusan HMIF UNJA: pengurus inti BPH, enam divisi, koordinator bidang, dan anggota Himpunan Mahasiswa Informatika Universitas Jambi.",
     path: "/struktur-organisasi",
