@@ -10,7 +10,7 @@ const icons = { Email: Mail, Instagram: AtSign, Lokasi: MapPin };
 export default function Kontak() {
   const [form, setForm] = useState({ nama: "", email: "", pesan: "" });
   usePageMeta({
-    title: "Kontak & Kanal Resmi — HMIF UNJA",
+    title: "Kontak & Kanal Resmi | HMIF UNJA",
     description:
       "Hubungi HMIF UNJA melalui email hmif@unja.ac.id atau Instagram @hmifunja — Fakultas Sains dan Teknologi, Universitas Jambi, Kampus Mendalo.",
     path: "/kontak",
