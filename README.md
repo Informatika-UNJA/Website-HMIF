@@ -5,6 +5,12 @@ React + Vite, Tailwind CSS, dan Framer Motion.
 
 <img alt="Screenshot From 2026-07-31 09-07-42" src="https://github.com/user-attachments/assets/afa19a5a-57eb-494f-9894-55fdc162d8dc" />
 
+<p align="center"> Website Creator's
+   <br><br>
+   <a href="https://github.com/Informatika-UNJA/Website-HMIF/">
+  <img src="https://contributors-img.web.app/image?repo=Informatika-UNJA/Website-HMIF" />
+</a></p>
+
 ## ✨ | Features
 
 - Landing page ringkas berisi rangkuman seluruh isi situs
