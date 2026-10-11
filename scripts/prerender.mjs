@@ -63,6 +63,25 @@ async function newsRoutes() {
   return routes;
 }
 
+function routeToFile(route) {
+  return route === "/" ? "index.html" : path.join(route.replace(/^\//, ""), "index.html");
+}
+
+async function writeSpaShells(routes) {
+  const shell = await readFile(path.join(DIST, "index.html"));
+  let ok = 0;
+  for (const route of routes) {
+    if (route === "/") continue;
+    const rel = routeToFile(route);
+    const out = path.join(DIST, rel);
+    await mkdir(path.dirname(out), { recursive: true });
+    await writeFile(out, shell);
+    ok++;
+    console.log(`[prerender] shell ${route} -> dist/${rel.split(path.sep).join("/")}`);
+  }
+  console.log(`[prerender] SPA shell disalin ke ${ok} route (tanpa Chrome).`);
+}
+
 function startStaticServer() {
   return new Promise((resolve) => {
     const server = createServer(async (req, res) => {
@@ -104,20 +123,21 @@ async function main() {
     console.warn("[prerender] dist/ tidak ditemukan — jalankan `vite build` dulu. Prerender dilewati.");
     process.exit(0);
   }
+  const routes = [...STATIC_ROUTES, ...(await newsRoutes())];
   const chrome = findChrome();
   if (!chrome) {
-    console.warn("[prerender] Chrome/Edge tidak ditemukan (set CHROME_PATH untuk memaksa). Prerender dilewati.");
+    console.warn("[prerender] Chrome/Edge tidak ditemukan — menyalin SPA shell ke setiap route.");
+    await writeSpaShells(routes);
     process.exit(0);
   }
 
-  const routes = [...STATIC_ROUTES, ...(await newsRoutes())];
   const server = await startStaticServer();
   const port = server.address().port;
 
   let ok = 0;
   for (const route of routes) {
     const html = await dumpDom(chrome, `http://127.0.0.1:${port}${route}`);
-    const rel = route === "/" ? "index.html" : path.join(route.replace(/^\//, ""), "index.html");
+    const rel = routeToFile(route);
     const out = path.join(DIST, rel);
     await mkdir(path.dirname(out), { recursive: true });
     await writeFile(out, html);
