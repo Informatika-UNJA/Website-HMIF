@@ -47,7 +47,7 @@ function findChrome() {
 }
 
 // Route statis + slug berita dibaca dari frontmatter (sinkron dengan src/utils/news.js)
-const STATIC_ROUTES = ["/", "/tentang", "/program-kerja", "/struktur-organisasi", "/galeri", "/berita", "/kontak"];
+const STATIC_ROUTES = ["/", "/tentang", "/struktur-organisasi", "/galeri", "/berita", "/kontak"];
 
 async function newsRoutes() {
   const dir = path.join(ROOT, "src", "content", "news");

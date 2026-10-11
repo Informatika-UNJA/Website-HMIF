@@ -11,7 +11,7 @@ export default function Galeri() {
   const [active, setActive] = useState("semua");
   const [selectedIndex, setSelectedIndex] = useState(null);
   usePageMeta({
-    title: "Galeri Kegiatan — HMIF UNJA",
+    title: "Galeri | HMIF UNJA",
     description:
       "Galeri foto kegiatan HMIF UNJA — pengukuhan, malam keakraban, PKKMB, dan momen kebersamaan mahasiswa Informatika Universitas Jambi.",
     path: "/galeri",

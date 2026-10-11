@@ -1,55 +1,69 @@
-import { lazy, Suspense, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
+import RouteCurtain from "./components/RouteCurtain";
 
-const Home = lazy(() => import("./pages/Home"));
-const Tentang = lazy(() => import("./pages/Tentang"));
-const ProgramKerja = lazy(() => import("./pages/ProgramKerja"));
-const StrukturOrganisasi = lazy(() => import("./pages/StrukturOrganisasi"));
-const Galeri = lazy(() => import("./pages/Galeri"));
-const Kontak = lazy(() => import("./pages/Kontak"));
-const NotFound = lazy(() => import("./pages/NotFound"));
-const Berita = lazy(() => import("./pages/Berita"));
-const BeritaDetail = lazy(() => import("./pages/BeritaDetail"));
-
-function PageLoading() {
-  return (
-    <main className="flex min-h-[70svh] items-center justify-center bg-ink-950 px-6 pt-20">
-      <p role="status" className="eyebrow text-teal-400">
-        Memuat halaman…
-      </p>
-    </main>
-  );
-}
+// Semua halaman di-import langsung (tanpa lazy-loading) supaya perpindahan halaman
+// instan dan tidak pernah menampilkan layar "Memuat halaman…".
+import Home from "./pages/Home";
+import Tentang from "./pages/Tentang";
+import StrukturOrganisasi from "./pages/StrukturOrganisasi";
+import Galeri from "./pages/Galeri";
+import Kontak from "./pages/Kontak";
+import NotFound from "./pages/NotFound";
+import Berita from "./pages/Berita";
+import BeritaDetail from "./pages/BeritaDetail";
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
-  }, [pathname]);
+    // Link dengan #anchor (mis. /struktur-organisasi#program-kerja) -> geser ke elemen tujuan.
+    if (hash) {
+      const t = setTimeout(() => {
+        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 380);
+      return () => clearTimeout(t);
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname, hash]);
   return null;
 }
 
 export default function App() {
+  const { pathname } = useLocation();
+  const reduce = useReducedMotion();
+
   return (
     <div className="min-h-screen flex flex-col bg-paper">
+      <RouteCurtain />
       <Navbar />
       <ScrollToTop />
-      <Suspense fallback={<PageLoading />}>
+      {/* Fade singkat saat pindah halaman (hanya masuk, tanpa jeda keluar) */}
+      <motion.div
+        key={pathname}
+        className="flex-1"
+        initial={reduce ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tentang" element={<Tentang />} />
-          <Route path="/program-kerja" element={<ProgramKerja />} />
           <Route path="/struktur-organisasi" element={<StrukturOrganisasi />} />
+          {/* Halaman Program Kerja sudah digabung ke Struktur Organisasi — link lama diarahkan ke sana */}
+          <Route path="/program-kerja" element={<Navigate to="/struktur-organisasi#program-kerja" replace />} />
           <Route path="/galeri" element={<Galeri />} />
           <Route path="/berita" element={<Berita />} />
           <Route path="/berita/:slug" element={<BeritaDetail />} />
           <Route path="/kontak" element={<Kontak />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </Suspense>
+      </motion.div>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

@@ -17,7 +17,7 @@ const markdownComponents = {
       {children}
     </h3>
   ),
-  p: ({ children }) => <p className="text-base leading-[1.75] text-ink-600 sm:text-lg">{children}</p>,
+  p: ({ children }) => <p className="text-justify text-base leading-[1.75] text-ink-600 sm:text-lg">{children}</p>,
   ul: ({ children }) => <ul className="list-disc space-y-2 ps-6 text-base leading-[1.75] text-ink-600 marker:text-gold-600 sm:text-lg">{children}</ul>,
   ol: ({ children }) => <ol className="list-decimal space-y-2 ps-6 text-base leading-[1.75] text-ink-600 marker:font-semibold marker:text-gold-600 sm:text-lg">{children}</ol>,
   blockquote: ({ children }) => (
@@ -37,7 +37,6 @@ const markdownComponents = {
     <img
       src={src}
       alt={alt || ""}
-      loading="lazy"
       className="my-10 w-full rounded-2xl object-cover outline outline-1 -outline-offset-1 outline-black/10"
     />
   ),
@@ -163,7 +162,6 @@ export default function BeritaDetail() {
                   <img
                     src={item.cover}
                     alt={item.coverAlt}
-                    loading="lazy"
                     className="aspect-[16/9] w-full rounded-2xl object-cover outline outline-1 -outline-offset-1 outline-black/10 transition-transform duration-300 ease-out group-hover:-translate-y-1"
                   />
                   <div className="mt-5 flex items-start justify-between gap-6">

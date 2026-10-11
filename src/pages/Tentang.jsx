@@ -1,13 +1,46 @@
-import { Target, Compass, Sparkles } from "lucide-react";
+import { Target, Compass, Users, Zap, ShieldCheck, Sprout, Handshake, RefreshCw } from "lucide-react";
 import { motion } from "framer-motion";
 import PageHeader from "../components/PageHeader";
 import Reveal, { Stagger, StaggerItem } from "../components/Reveal";
+import SpotlightCard from "../components/SpotlightCard";
 import { aboutHmif, prodiInfo, siteInfo } from "../data/content";
 import usePageMeta from "../utils/usePageMeta";
 
+// Tiap nilai punya ikon, warna, dan gerakan hover sendiri — sesuai maknanya.
+const nilaiTheme = {
+  kolaboratif: {
+    Icon: Handshake,
+    chip: "bg-amber-100 text-amber-700",
+    border: "hover:border-amber-400/70",
+    glow: "rgba(245,158,11,0.16)",
+    hover: { scale: [1, 1.22, 1.12], transition: { duration: 0.45 } }, // berkumpul
+  },
+  adaptif: {
+    Icon: RefreshCw,
+    chip: "bg-sky-100 text-sky-700",
+    border: "hover:border-sky-400/70",
+    glow: "rgba(14,165,233,0.16)",
+    hover: { rotate: [0, -14, 14, -6, 0], scale: 1.15, transition: { duration: 0.5 } }, // menyambar
+  },
+  integritas: {
+    Icon: ShieldCheck,
+    chip: "bg-indigo-100 text-indigo-700",
+    border: "hover:border-indigo-400/70",
+    glow: "rgba(99,102,241,0.16)",
+    hover: { y: -4, scale: 1.12, transition: { type: "spring", stiffness: 300, damping: 14 } }, // kokoh
+  },
+  berkelanjutan: {
+    Icon: Sprout,
+    chip: "bg-emerald-100 text-emerald-700",
+    border: "hover:border-emerald-400/70",
+    glow: "rgba(16,185,129,0.16)",
+    hover: { scale: 1.25, y: -3, rotate: 8, transformOrigin: "50% 100%", transition: { duration: 0.5 } }, // tumbuh
+  },
+};
+
 export default function Tentang() {
   usePageMeta({
-    title: "Tentang HMIF — Himpunan Mahasiswa Informatika Universitas Jambi",
+    title: "Tentang | HMIF UNJA",
     description:
       "Sejarah, visi, misi, dan nilai Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi — rumah bagi mahasiswa Informatika untuk berkarya dan bertumbuh.",
     path: "/tentang",
@@ -35,16 +68,14 @@ export default function Tentang() {
             src="/logo-hmif.png"
             alt="Logo HMIF Universitas Jambi"
             initial={{ opacity: 0, scale: 0.85, y: 30 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-48 sm:w-64 md:w-72 lg:w-80 object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.08)]"
           />
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-8 font-display text-xl sm:text-2xl md:text-3xl font-semibold text-paper tracking-tight text-center"
           >
@@ -52,8 +83,7 @@ export default function Tentang() {
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-2 font-mono text-sm text-gold-400 tracking-wider uppercase"
           >
@@ -77,37 +107,47 @@ export default function Tentang() {
             <h2 className="font-display text-2xl sm:text-3xl font-semibold text-ink-900 mb-5">
               Dari nol, membangun tradisi
             </h2>
-            <p className="text-ink-500 leading-relaxed mb-4">{aboutHmif.sejarah}</p>
-            <p className="text-ink-500 leading-relaxed">{aboutHmif.intro}</p>
+            <p className="text-ink-500 leading-relaxed mb-4 text-justify">{aboutHmif.sejarah}</p>
+            <p className="text-ink-500 leading-relaxed text-justify">{aboutHmif.intro}</p>
           </Reveal>
 
           <Reveal delay={0.1} className="lg:col-span-5">
             <div className="rounded-2xl border border-ink-100 bg-white p-7 shadow-sm h-full">
               <Compass className="text-teal-500 mb-4" size={26} />
               <p className="eyebrow text-ink-400 mb-2">Visi</p>
-              <p className="text-ink-700 leading-relaxed">{aboutHmif.visi}</p>
+              <p className="text-ink-700 leading-relaxed text-justify">{aboutHmif.visi}</p>
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* Misi */}
-      <section className="bg-ink-950 py-20 sm:py-24">
-        <div className="container-hmif">
-          <Reveal className="max-w-2xl mb-12">
+ <section className="relative overflow-hidden bg-ink-950 py-20 sm:py-24">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-teal-500/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-gold-500/10 blur-3xl" />
+
+        <div className="container-hmif relative">
+          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <p className="eyebrow text-gold-400 mb-4">Misi</p>
             <h2 className="font-display text-2xl sm:text-3xl font-semibold text-paper">
               Langkah nyata menuju visi bersama
             </h2>
+            <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-gold-500" />
           </Reveal>
-          <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          {/* flex-wrap + justify-center: berapa pun jumlah misi, baris terakhir selalu rata tengah.
+              Lebar kartu: 1 kolom (HP), 2 kolom (tablet), 3 kolom (desktop). */}
+          <Stagger className="mx-auto flex max-w-6xl flex-wrap justify-center gap-4 sm:gap-5">
             {aboutHmif.misi.map((m, i) => (
-              <StaggerItem key={i}>
-                <div className="flex gap-4 rounded-xl border border-white/10 bg-teal-100 p-6 h-full hover:border-teal-300 transition-colors">
-                  <span className="font-mono text-teal-600 text-sm shrink-0 font-semibold">
+              <StaggerItem
+                key={i}
+                className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.84rem)]"
+              >
+                <div className="group flex h-full flex-col items-center rounded-2xl border border-white/10 border-t-2 border-t-gold-500 bg-teal-100 px-6 pb-7 pt-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30">
+                  <span className="mb-4 flex size-11 items-center justify-center rounded-full bg-ink-950 font-mono text-sm font-semibold text-gold-400 ring-4 ring-gold-500/20 transition-transform duration-300 group-hover:scale-110">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-ink-900 text-sm font-medium leading-relaxed">{m}</p>
+                  <p className="text-ink-900 text-sm sm:text-base font-medium leading-relaxed">{m}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -118,22 +158,37 @@ export default function Tentang() {
       {/* Nilai */}
       <section className="bg-paper py-20 sm:py-24">
         <div className="container-hmif">
-          <Reveal className="max-w-2xl mb-12">
+          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <p className="eyebrow text-teal-600 mb-4">Nilai Kami</p>
-            <h2 className="font-display text-2xl sm:text-3xl font-semibold text-ink-900">
+            <h2 className="font-display text-2xl sm:text-3xl font-semibold text-ink-900 text-balance">
               Prinsip yang kami pegang
             </h2>
+            <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-gold-500" />
           </Reveal>
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {aboutHmif.nilai.map((n) => (
-              <StaggerItem key={n.title}>
-                <div className="h-full rounded-2xl border border-ink-100 bg-white p-6 shadow-sm hover:shadow-md hover:border-teal-400/40 hover:-translate-y-1 transition-all duration-300">
-                  <Sparkles className="text-teal-400 mb-4" size={22} />
-                  <h3 className="font-display font-semibold text-ink-900 mb-2">{n.title}</h3>
-                  <p className="text-sm text-ink-500 leading-relaxed">{n.desc}</p>
-                </div>
-              </StaggerItem>
-            ))}
+            {aboutHmif.nilai.map((n) => {
+              const t = nilaiTheme[n.icon] ?? nilaiTheme.kolaboratif;
+              const Icon = t.Icon;
+              return (
+                <StaggerItem key={n.title} className="h-full">
+                  <motion.div initial="rest" animate="rest" whileHover="hover" className="h-full">
+                    <SpotlightCard
+                      glow={t.glow}
+                      className={`h-full rounded-2xl border border-ink-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${t.border}`}
+                    >
+                      <motion.span
+                        variants={{ rest: { scale: 1, y: 0, rotate: 0 }, hover: t.hover }}
+                        className={`mb-5 flex size-12 items-center justify-center rounded-xl ${t.chip}`}
+                      >
+                        <Icon size={24} strokeWidth={1.75} />
+                      </motion.span>
+                      <h3 className="font-display font-semibold text-ink-900 mb-2">{n.title}</h3>
+                      <p className="text-sm text-ink-500 leading-relaxed text-justify">{n.desc}</p>
+                    </SpotlightCard>
+                  </motion.div>
+                </StaggerItem>
+              );
+            })}
           </Stagger>
         </div>
       </section>
@@ -146,15 +201,14 @@ export default function Tentang() {
             <h2 className="font-display text-2xl sm:text-3xl font-semibold text-paper mb-5">
               Informatika {siteInfo.university}
             </h2>
-            <p className="text-ink-300 leading-relaxed">{prodiInfo.intro}</p>
+            <p className="text-ink-300 leading-relaxed text-justify">{prodiInfo.intro}</p>
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {prodiInfo.fokus.map((f) => (
                 <div key={f.title} className="rounded-xl border border-white/10 bg-teal-100 p-5">
-                  <Target className="text-teal-600 mb-3" size={18} />
                   <h4 className="font-display text-ink-900 font-medium text-sm mb-1.5">{f.title}</h4>
-                  <p className="text-xs text-ink-500 leading-relaxed">{f.desc}</p>
+                  <p className="text-xs text-ink-500 leading-relaxed text-justify">{f.desc}</p>
                 </div>
               ))}
             </div>

@@ -25,6 +25,32 @@
   .container-hmif {
     @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
   }
+  /* garis bawah yang menggambar dari kiri saat hover */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    padding-bottom: 2px;
+    transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s;
+  }
+  .link-draw:hover {
+    background-size: 100% 1px;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  /* kursor berkedip bergaya terminal */
+  .caret::after {
+    content: "_";
+    margin-left: 2px;
+    color: #D4A657;
+    animation: caret-blink 1.1s steps(1) infinite;
+  }
   .grain::before {
     content: "";
     position: absolute;
@@ -32,6 +58,10 @@
     background-image: theme("backgroundImage.grain");
     pointer-events: none;
   }
+}
+
+@keyframes caret-blink {
+  50% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -11,7 +11,7 @@ export default function Berita() {
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [query, setQuery] = useState("");
   usePageMeta({
-    title: "Berita & Kegiatan — HMIF UNJA",
+    title: "Berita | HMIF UNJA",
     description:
       "Arsip berita dan kegiatan Himpunan Mahasiswa Informatika (HMIF) Universitas Jambi — pengukuhan, makrab, hingga program kerja terbaru.",
     path: "/berita",
@@ -65,7 +65,7 @@ export default function Berita() {
                         {featured.title}
                       </Link>
                     </h2>
-                    <p className="mt-4 text-pretty text-base leading-relaxed text-ink-500">
+                    <p className="mt-4 text-justify text-base leading-relaxed text-ink-500">
                       {featured.excerpt}
                     </p>
                   </div>
@@ -172,7 +172,6 @@ export default function Berita() {
                         <img
                           src={article.cover}
                           alt={article.coverAlt}
-                          loading="lazy"
                           className="aspect-[16/10] w-full rounded-xl object-cover outline outline-1 -outline-offset-1 outline-black/10 sm:h-28"
                         />
                         <div>
@@ -180,7 +179,7 @@ export default function Berita() {
                           <h3 className="mt-2 text-balance font-display text-xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-2xl">
                             {article.title}
                           </h3>
-                          <p className="mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-ink-500 sm:text-base">
+                          <p className="mt-3 max-w-2xl text-justify text-sm leading-relaxed text-ink-500 sm:text-base">
                             {article.excerpt}
                           </p>
                           <div className="mt-4">
