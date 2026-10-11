@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
   Users,
@@ -18,17 +18,26 @@ import BackgroundSlider from "../components/BackgroundSlider";
 import PageTransition from "../components/PageTransition";
 import Reveal, { Stagger, StaggerItem } from "../components/Reveal";
 import ImageModal from "../components/ImageModal";
+import Typewriter from "../components/Typewriter";
+import VelocityMarquee from "../components/VelocityMarquee";
+import Tilt from "../components/Tilt";
+import Magnetic from "../components/Magnetic";
 import {
   siteInfo,
   backgroundImages,
   aboutHmif,
   prodiInfo,
-  programKerja,
+  divisiOrganisasi,
   galleryPlaceholder,
 } from "../data/content";
 import { formatNewsDate, newsArticles } from "../utils/news";
 
 const fokusIcons = [Code2, Brain, Network, Cpu];
+
+// Divisi yang punya program kerja (data diambil dari divisiOrganisasi di content.js)
+const divisiProker = divisiOrganisasi.filter((d) => d.programKerja);
+const EASE = [0.22, 1, 0.36, 1];
+const NILAI_WORDS = aboutHmif.nilai.map((n) => n.title.toLowerCase());
 
 const bidangIcons = {
   PSDA: Users,
@@ -41,12 +50,18 @@ export default function Home() {
   const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(null);
   const homeGallery = galleryPlaceholder.slice(0, 4);
   const latestNews = newsArticles.slice(0, 3);
+  // Parallax hero: latar bergerak lebih lambat dari konten (terhubung langsung ke scroll)
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 800], [0, 220]);
+  const bgScale = useTransform(scrollY, [0, 800], [1, 1.12]);
 
   return (
     <PageTransition>
       {/* ============ HERO ============ */}
       <section className="relative min-h-[100svh] flex items-end overflow-hidden">
-        <BackgroundSlider images={backgroundImages} interval={5000} />
+        <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0">
+          <BackgroundSlider images={backgroundImages} interval={5000} />
+        </motion.div>
 
         <div className="container-hmif relative z-10 pb-16 pt-40 sm:pb-24">
           <motion.p
@@ -55,16 +70,30 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="eyebrow text-teal-400 mb-4 flex items-center gap-2"
           >
-            <span className="text-gold-400">&gt;</span> whoami? {siteInfo.fullName}
+            <span className="text-gold-400">&gt;</span> <span>whoami? {siteInfo.fullName}</span>
           </motion.p>
 
+          {/* Satu momen utama: judul muncul kata per kata dari balik garis */}
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            aria-label={siteInfo.tagline}
+            initial="hidden"
+            animate="show"
+            variants={{ show: { transition: { staggerChildren: 0.09, delayChildren: 0.12 } } }}
             className="font-display font-semibold text-paper text-4xl sm:text-6xl md:text-7xl tracking-tight max-w-4xl leading-[1.05]"
           >
-            {siteInfo.tagline}
+            {siteInfo.tagline.split(" ").map((w, i, arr) => (
+              <Fragment key={i}>
+                <span aria-hidden="true" className="inline-block overflow-hidden pb-[0.14em] align-bottom">
+                  <motion.span
+                    className="inline-block"
+                    variants={{ hidden: { y: "115%" }, show: { y: 0, transition: { duration: 0.75, ease: EASE } } }}
+                  >
+                    {w}
+                  </motion.span>
+                </span>
+                {i < arr.length - 1 && " "}
+              </Fragment>
+            ))}
           </motion.h1>
 
           <motion.p
@@ -77,19 +106,31 @@ export default function Home() {
             {siteInfo.university} untuk belajar, berkarya, dan bertumbuh bersama.
           </motion.p>
 
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-6 font-mono text-sm text-ink-300 sm:text-base"
+          >
+            <span className="text-gold-400">$</span> hmif --nilai{" "}
+            <Typewriter words={NILAI_WORDS} className="text-gold-300" />
+          </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.28 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <Link
-              to="/tentang"
-              className="group inline-flex items-center gap-2 rounded-full bg-teal-400 text-ink-950 font-semibold px-6 py-3 text-sm hover:bg-teal-300 transition-colors"
-            >
-              Tentang Kami
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
+            <Magnetic>
+              <Link
+                to="/tentang"
+                className="group inline-flex items-center gap-2 rounded-full bg-teal-400 text-ink-950 font-semibold px-6 py-3 text-sm hover:bg-teal-300 transition-colors"
+              >
+                Tentang Kami
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </Magnetic>
           </motion.div>
 
           <motion.div
@@ -105,15 +146,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ============ MARQUEE (bereaksi pada kecepatan & arah scroll) ============ */}
+      <div aria-hidden="true" className="border-y border-white/10 bg-ink-950 py-4 font-mono text-sm text-ink-300">
+        <VelocityMarquee>
+          {[0, 1].flatMap((k) =>
+            [siteInfo.tagline, ...prodiInfo.fokus.map((f) => f.title)].map((t, i) => (
+              <span key={`${k}-${i}`} className="flex items-center whitespace-nowrap">
+                <span className="px-6">{t}</span>
+                <span className="text-gold-500">|</span>
+              </span>
+            ))
+          )}
+        </VelocityMarquee>
+      </div>
+
       {/* ============ TENTANG HMIF — RINGKAS ============ */}
       <section className="relative bg-paper py-24 sm:py-28">
         <div className="container-hmif grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <Reveal className="lg:col-span-7" y={28}>
-            <p className="eyebrow text-teal-600 mb-4">01. Tentang Himpunan</p>
+            <p className="eyebrow text-teal-600 mb-4">Tentang Himpunan</p>
             <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight mb-6">
               Satu himpunan, satu keluarga besar Informatika
             </h2>
-            <p className="text-ink-500 text-base sm:text-lg leading-relaxed mb-6">
+            <p className="text-ink-500 text-base sm:text-lg leading-relaxed mb-6 text-justify">
               {aboutHmif.intro}
             </p>
             <Link
@@ -125,6 +180,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.1} className="lg:col-span-5">
+            <Tilt>
             <div className="relative group overflow-hidden rounded-2xl shadow-xl shadow-ink-900/10">
               <img
                 src={aboutHmif.image}
@@ -133,6 +189,7 @@ export default function Home() {
               />
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-ink-950/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
             </div>
+            </Tilt>
           </Reveal>
         </div>
       </section>
@@ -145,11 +202,11 @@ export default function Home() {
         <div className="container-hmif relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-14">
             <Reveal className="lg:col-span-7">
-              <p className="eyebrow text-gold-400 mb-4">02. Program Studi</p>
+              <p className="eyebrow text-gold-400 mb-4">Program Studi</p>
               <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper tracking-tight mb-6">
                 Program Studi Informatika {siteInfo.university}
               </h2>
-              <p className="text-ink-300 text-base sm:text-lg leading-relaxed">
+              <p className="text-ink-300 text-base sm:text-lg leading-relaxed text-justify">
                 {prodiInfo.intro}
               </p>
             </Reveal>
@@ -175,7 +232,7 @@ export default function Home() {
                   <div className="h-full rounded-2xl border border-white/10 bg-teal-100 p-6 hover:border-white/40 hover:bg-teal-100/[0.9] transition-colors">
                     <Icon className="text-teal-600 mb-4" size={23} />
                     <h3 className="font-display font-semibold text-ink-900 mb-2">{item.title}</h3>
-                    <p className="text-sm text-ink-500 leading-relaxed">{item.desc}</p>
+                    <p className="text-sm text-ink-500 leading-relaxed text-justify">{item.desc}</p>
                   </div>
                 </StaggerItem>
               );
@@ -185,52 +242,52 @@ export default function Home() {
       </section>
 
       {/* ============ PROGRAM KERJA PREVIEW ============ */}
+      {/* Program kerja kini hidup di halaman Struktur Organisasi (per divisi). Kartu di bawah langsung membuka program kerja divisi terkait. */}
       <section id="program-kerja" className="relative scroll-mt-16 bg-paper py-24 sm:scroll-mt-20 sm:py-28">
         <div className="container-hmif grid gap-14 lg:grid-cols-12 lg:gap-12 xl:gap-20">
-          <Reveal className="lg:col-span-4" y={28}>
+          <Reveal className="lg:col-span-4" y={20}>
             <div className="lg:sticky lg:top-32">
-              <p className="eyebrow mb-4 text-teal-600">03. Program Kerja</p>
+              <p className="eyebrow mb-4 text-teal-600">Program Kerja</p>
               <h2 className="max-w-lg text-balance font-display text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl">
                 Empat divisi, satu arah gerak
               </h2>
-              <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-ink-500 sm:text-lg">
-                Setiap divisi memiliki peran khusus, lalu bergerak sebagai satu sistem untuk mendukung mahasiswa Informatika.
+              <p className="mt-6 max-w-md text-justify text-base leading-relaxed text-ink-500 sm:text-lg">
+                Setiap divisi memiliki peran khusus, lalu bergerak sebagai satu sistem untuk mendukung mahasiswa Informatika. Pilih divisi untuk melihat program kerjanya.
               </p>
               <Link
-                to="/program-kerja"
+                to={`/struktur-organisasi?divisi=${divisiProker[0].id}#program-kerja`}
                 className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-ink-900 py-2.5 ps-5 pe-[18px] text-sm font-semibold text-paper transition-[background-color,scale] duration-150 ease-out hover:bg-ink-700 active:scale-[0.96]"
               >
-                Jelajahi semua program
+                Lihat program kerja
                 <ArrowRight aria-hidden="true" size={16} strokeWidth={2} />
               </Link>
             </div>
           </Reveal>
 
           <Stagger className="divide-y divide-ink-200 border-y border-ink-200 lg:col-span-8" stagger={0.08}>
-            {programKerja.map((bidang) => {
-              const IconComponent = bidangIcons[bidang.kode] || Layers;
+            {divisiProker.map((d) => {
+              const IconComponent = bidangIcons[d.singkatan] || Layers;
               return (
-                <StaggerItem key={bidang.kode}>
+                <StaggerItem key={d.id}>
                   <Link
-                    to="/program-kerja"
+                    to={`/struktur-organisasi?divisi=${d.id}#program-kerja`}
                     className="group grid min-h-44 grid-cols-[1fr_auto] gap-x-4 gap-y-5 py-8 transition-colors duration-150 hover:bg-white/70 sm:grid-cols-[8rem_1fr_auto] sm:items-center sm:gap-7 sm:px-5 sm:-mx-5"
                   >
                     <div className="col-start-1 row-start-1 flex items-center gap-3 sm:flex-col sm:items-start">
-                      <span className="flex size-12 items-center justify-center rounded-xl bg-white text-teal-700 shadow-[0_0_0_1px_oklch(0_0_0/0.06),0_2px_4px_oklch(0_0_0/0.06)] transition-[background-color,color,box-shadow] duration-150 group-hover:bg-ink-900 group-hover:text-paper group-hover:shadow-[0_0_0_1px_oklch(0_0_0/0.08),0_4px_8px_oklch(0_0_0/0.08)]">
+                      <span className="flex size-12 items-center justify-center rounded-xl bg-white text-teal-700 shadow-[0_0_0_1px_oklch(0_0_0/0.06),0_2px_4px_oklch(0_0_0/0.06)] transition-[background-color,color,box-shadow,transform] duration-300 group-hover:-rotate-6 group-hover:bg-ink-900 group-hover:text-paper group-hover:shadow-[0_0_0_1px_oklch(0_0_0/0.08),0_4px_8px_oklch(0_0_0/0.08)]">
                         <IconComponent aria-hidden="true" size={22} strokeWidth={1.5} />
                       </span>
-                      <span className="eyebrow whitespace-nowrap text-teal-600">
-                        {bidang.kode}
-                      </span>
+                      <span className="eyebrow whitespace-nowrap text-teal-600">{d.singkatan}</span>
                     </div>
 
                     <div className="col-span-2 row-start-2 sm:col-span-1 sm:col-start-2 sm:row-start-1">
                       <h3 className="text-balance font-display text-xl font-semibold leading-tight text-ink-900 transition-colors duration-150 group-hover:text-teal-700 sm:text-2xl">
-                        {bidang.nama}
+                        {d.nama}
                       </h3>
-                      <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-ink-500 sm:text-base">
-                        {bidang.deskripsi}
+                      <p className="mt-3 max-w-xl text-justify text-sm leading-relaxed text-ink-500 sm:text-base">
+                        {d.programKerja.deskripsi}
                       </p>
+                      <p className="mt-3 font-mono text-xs text-gold-700">{d.programKerja.program.length} program kerja</p>
                     </div>
 
                     <span className="col-start-2 row-start-1 flex size-11 items-center justify-center self-start rounded-full text-ink-600 shadow-[0_0_0_1px_oklch(0_0_0/0.12)] transition-[background-color,color,scale] duration-150 ease-out group-hover:bg-gold-400 group-hover:text-ink-950 group-active:scale-[0.96] sm:col-start-3 sm:self-auto">
@@ -249,7 +306,7 @@ export default function Home() {
         <div className="container-hmif">
           <Reveal className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="eyebrow mb-4 text-gold-400">04. Berita Terbaru</p>
+              <p className="eyebrow mb-4 text-gold-400">Berita Terbaru</p>
               <h2 className="max-w-2xl text-balance font-display text-3xl font-semibold tracking-tight text-paper sm:text-4xl">
                 Kabar terbaru dari HMIF
               </h2>
@@ -286,7 +343,7 @@ export default function Home() {
                       <h3 className="mt-3 max-w-2xl text-balance font-display text-2xl font-semibold leading-tight tracking-tight text-paper transition-colors duration-150 group-hover:text-gold-300 sm:text-3xl">
                         {latestNews[0].title}
                       </h3>
-                      <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-ink-300">
+                      <p className="mt-3 max-w-2xl text-justify leading-relaxed text-ink-300">
                         {latestNews[0].excerpt}
                       </p>
                     </div>
@@ -308,7 +365,6 @@ export default function Home() {
                         <img
                           src={article.cover}
                           alt={article.coverAlt}
-                          loading="lazy"
                           className="aspect-[16/10] w-full object-cover outline outline-1 -outline-offset-1 outline-white/10 transition-transform duration-300 ease-out group-hover/row:scale-[1.025]"
                         />
                       </div>
@@ -324,7 +380,7 @@ export default function Home() {
                           <h3 className="mt-3 text-balance font-display text-xl font-semibold leading-tight text-paper transition-colors duration-150 group-hover/row:text-gold-300">
                             {article.title}
                           </h3>
-                          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-ink-300">
+                          <p className="mt-3 line-clamp-2 text-justify text-sm leading-relaxed text-ink-300">
                             {article.excerpt}
                           </p>
                         </div>
@@ -354,7 +410,7 @@ export default function Home() {
         <div className="container-hmif">
           <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
             <div>
-              <p className="eyebrow text-teal-600 mb-4">05. Galeri</p>
+              <p className="eyebrow text-teal-600 mb-4">Galeri</p>
               <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink-900 tracking-tight">
                 Momen-momen HMIF
               </h2>
