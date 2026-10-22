@@ -245,6 +245,8 @@ export const galleryPlaceholder = [
   { id: 9, category: "kegiatan", caption: "Foto Bersama Panitia Iforia 2026", src: "/gallery/iforia-1.jpg" },
   { id: 10, category: "kegiatan", caption: "Foto Bersama Peserta Iforia 2026", src: "/gallery/iforia-2.jpg" },
   { id: 11, category: "kegiatan", caption: "Foto Ketua HMIF dan Ketua Pelaksana beserta dosen informatika saat Iforia 2026", src: "/gallery/iforia-3.jpg" },
+  { id: 12, category: "kegiatan", caption: "Foto Perlombaan antar gugus Iforia 2026", src: "/gallery/iforia-4.JPG" },
+  { id: 13, category: "kegiatan", caption: "Foto Penampilan pensi peserta Iforia 2026", src: "/gallery/iforia-5.JPG" },
 
 
 
