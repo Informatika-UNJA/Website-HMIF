@@ -258,6 +258,9 @@ export const galleryPlaceholder = [
   { id: 6, category: "kegiatan", caption: " Malam Keakraban Himpunan Mahasiswa Informatika", src: "/gallery/makrab-3.jpg" },
   { id: 7, category: "kegiatan", caption: " Pengukuhan Himpunan Mahasiswa Informatika", src: "/gallery/pengukuhan-3.jpg" },
   { id: 8, category: "kegiatan", caption: " Malam Keakraban Himpunan Mahasiswa Informatika", src: "/gallery/makrab-4.jpg" },
+  { id: 9, category: "kegiatan", caption: "Foto Bersama Panitia Iforia 2026", src: "/gallery/iforia-1.jpg" },
+  { id: 10, category: "kegiatan", caption: "Foto Bersama Peserta Iforia 2026", src: "/gallery/iforia-2.jpg" },
+  { id: 11, category: "kegiatan", caption: "Foto Ketua HMIF dan Ketua Pelaksana beserta dosen informatika saat Iforia 2026", src: "/gallery/iforia-3.jpg" },
 
 
 
