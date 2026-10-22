@@ -3,11 +3,25 @@ import { Mail, AtSign, MapPin, Send } from "lucide-react";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import { siteInfo, contactChannels } from "../data/content";
+import usePageMeta from "../utils/usePageMeta";
+import { InstagramIcon, GithubIcon, LinkedinIcon } from "../components/BrandIcons";
 
-const icons = { Email: Mail, Instagram: AtSign, Lokasi: MapPin };
+const icons = {
+  Email: Mail,
+  Instagram: InstagramIcon,
+  GitHub: GithubIcon,
+  LinkedIn: LinkedinIcon,
+  Lokasi: MapPin,
+};
 
 export default function Kontak() {
   const [form, setForm] = useState({ nama: "", email: "", pesan: "" });
+  usePageMeta({
+    title: "Kontak & Kanal Resmi | HMIF UNJA",
+    description:
+      "Hubungi HMIF UNJA melalui email hmif@unja.ac.id atau Instagram @hmifunja — Fakultas Sains dan Teknologi, Universitas Jambi, Kampus Mendalo.",
+    path: "/kontak",
+  });
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -24,7 +38,7 @@ export default function Kontak() {
     <main>
       <PageHeader
         eyebrow="Kontak"
-        title="Mari terhubung dengan kami"
+        title="Kontak HMIF UNJA"
         subtitle="Punya pertanyaan, ide kolaborasi, atau ingin bergabung? Sampaikan lewat form di bawah atau kanal resmi kami."
       />
 

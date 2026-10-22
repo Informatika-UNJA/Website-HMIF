@@ -1,6 +1,28 @@
 import { Link } from "react-router-dom";
 import { Mail, AtSign, MapPin } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons/faLinkedinIn";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
 import { navLinks, siteInfo } from "../data/content";
+
+const socialLinks = [
+  {
+    label: "GitHub HMIF UNJA",
+    href: `https://github.com/${siteInfo.github}`,
+    icon: faGithub,
+  },
+  {
+    label: "LinkedIn HMIF UNJA",
+    href: `https://linkedin.com/company/${siteInfo.linkedin}`,
+    icon: faLinkedinIn,
+  },
+  {
+    label: "Instagram HMIF UNJA",
+    href: `https://instagram.com/${siteInfo.instagram.replace("@", "")}`,
+    icon: faInstagram,
+  },
+];
 
 export default function Footer() {
   return (
@@ -19,29 +41,20 @@ export default function Footer() {
             <p className="text-sm text-ink-400 mt-1">
               {siteInfo.university}
             </p>
-            <a
-              href={`https://instagram.com/hmifunja/${siteInfo.instagram.replace("@", "")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram HMIF UNJA"
-              className="mt-4 inline-flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-gold-400 text-ink-950 hover:bg-gold-500 hover:scale-100 shadow-md shadow-gold-400/20 transition-all duration-300 group"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-              </svg>
-            </a>
+            <div className="mt-4 flex items-center gap-3">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gold-400 text-ink-950 hover:bg-gold-500 shadow-md shadow-gold-400/20 transition-all duration-300"
+                >
+                  <FontAwesomeIcon icon={item.icon} className="text-[22px]" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -50,7 +63,7 @@ export default function Footer() {
           <ul className="space-y-2">
             {navLinks.map((l) => (
               <li key={l.to}>
-                <Link to={l.to} className="text-sm hover:text-white transition-colors">
+                <Link to={l.to} className="link-draw text-sm hover:text-white transition-colors">
                   {l.label}
                 </Link>
               </li>
@@ -80,7 +93,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-hmif py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-ink-400">
           <p>© {new Date().getFullYear()} {siteInfo.fullName}, {siteInfo.university}</p>
-          <p className="font-mono">status: <span className="text-teal-400">aktif</span></p>
+          <p className="font-mono">Informatika! <span className="text-teal-400">Menyala!</span></p>
         </div>
       </div>
     </footer>

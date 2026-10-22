@@ -7,12 +7,21 @@ import { navLinks } from "../data/content";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      // turun jauh -> sembunyikan; naik sedikit saja -> tampil lagi
+      if (y > last + 6 && y > 160) setHidden(true);
+      else if (y < last - 6 || y < 160) setHidden(false);
+      last = y;
+    };
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -20,8 +29,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled || open
-        ? "bg-ink-950/85 backdrop-blur-md border-b border-white/10"
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${hidden && !open ? "-translate-y-full" : "translate-y-0"} ${scrolled || open
+        ? "bg-ink-950/85 backdrop-blur-md"
         : "bg-gradient-to-b from-ink-950/70 to-transparent"
         }`}
     >
@@ -88,7 +97,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden overflow-hidden border-t border-white/10 bg-ink-950/95 backdrop-blur-md"
+            className="lg:hidden overflow-hidden bg-ink-950/95 backdrop-blur-md"
           >
             <div className="container-hmif py-4 flex flex-col gap-1">
               {navLinks.map((link, i) => (
